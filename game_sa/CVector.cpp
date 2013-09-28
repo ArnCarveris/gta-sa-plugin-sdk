@@ -1,5 +1,16 @@
 #include "CVector.h"
 
+#define FUNC_CVector__Magnitude 0x4082C0
+#define FUNC_CVector__Normalise 0x59C910
+#define FUNC_CVector__NormaliseGetLength 0x59C970
+#define FUNC_CVector__Cross 0x70F890
+#define FUNC_CVector__Sum 0x40FDD0
+#define FUNC_CVector__Difference 0x40FE00
+#define FUNC_CVector__operatorAssignmentCVector 0x411B50
+#define FUNC_CVector__operatorAdditionAssignmentCVector 0x411A00
+#define FUNC_CVector__operatorMultiplicationAssignmentFloat 0x40FEF0
+#define FUNC_CVector__operatorDivisionAssignmentFloat 0x0411A30
+
 // Returns length of vector
 float CVector::Magnitude()
 {

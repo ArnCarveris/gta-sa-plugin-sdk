@@ -1,7 +1,9 @@
 #pragma once
 
+#include "plugin\plugin.h"
+
 #pragma pack(push, 1)
-class CRect
+class PLUGIN_API CRect
 {
 public:
 	float x1;

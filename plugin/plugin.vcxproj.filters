@@ -128,5 +128,11 @@
     <ClCompile Include="plugin.cpp">
       <Filter>Файлы исходного кода\plugin</Filter>
     </ClCompile>
+    <ClCompile Include="..\game_sa\CRect.cpp">
+      <Filter>Файлы исходного кода\game_sa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game_sa\CSphere.cpp">
+      <Filter>Файлы исходного кода\game_sa</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

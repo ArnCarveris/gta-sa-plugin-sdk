@@ -1,7 +1,5 @@
 #pragma once
-#include "plugin.h"
-
-#define FUNC_CZone__GetTranslatedName 0x5720C0
+#include "plugin\plugin.h"
 
 enum eZoneType
 {

@@ -1,17 +1,15 @@
 #pragma once
 
+#include "plugin\plugin.h"
 #include "CVector.h"
 
 #pragma pack(push, 1)
-class CSphere
+class PLUGIN_API CSphere
 {
 public:
 	CVector center;
 	float radius;
 
-	void Set(float _radius, CVector  const& _center)
-	{
-		((void (__thiscall *)(CSphere *, float, CVector  const&))0x40FCF0)(this, radius, center);
-	}
+	void Set(float _radius, CVector  const& _center);
 };
 #pragma pack(pop)

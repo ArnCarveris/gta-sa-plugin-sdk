@@ -1,30 +1,7 @@
 #pragma once
 #include <stdio.h>
 
-#include "plugin.h"
-
-#define VAR_TheText 0xC1B340;
-
-#define FUNC_CText__Constructor 0x6A00F0
-#define FUNC_CText__Destructor 0x6A0140
-#define FUNC_CText__Get 0x6A0050
-#define FUNC_CText__Load 0x6A01A0
-#define FUNC_CText__LoadMissionTable 0x69FBF0
-#define FUNC_CText__LoadMpack 0x69F9A0
-#define FUNC_CText__Unload 0x69FF20
-#define FUNC_CText__ReadTag 0x69F940
-#define FUNC_CText__getMissionTableName 0x69FBD0
-
-#define FUNC_CText__Tabl__Constructor 0x69F480
-#define FUNC_CText__Tabl__Read 0x69F670
-
-#define FUNC_CText__TKey__Read 0x69F490
-#define FUNC_CText__TKey__Destructor 0x69F510
-#define FUNC_CText__TKey__PatchOffsets 0x69F540
-#define FUNC_CText__TKey__Bsearch 0x69F570
-#define FUNC_CText__TKey__GetTextByLabel 0x6A0000
-
-#define FUNC_CText__TDat__Read 0x69F5D0
+#include "plugin\plugin.h"
 
 #pragma pack(push, 1)
 struct PLUGIN_API CText__TDat
@@ -137,4 +114,4 @@ public:
 };
 #pragma pack(pop)
 
-static CText& TheText = *(CText*)VAR_TheText;
+static CText& TheText = *(CText*)0xC1B340;

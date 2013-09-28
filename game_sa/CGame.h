@@ -1,6 +1,4 @@
-#include "plugin.h"
-
-#define VAR_CGame__currArea 0xB72914
+#include "plugin\plugin.h"
 
 class PLUGIN_API CGame
 {

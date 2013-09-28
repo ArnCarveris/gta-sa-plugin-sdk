@@ -7,6 +7,8 @@
 /**************************************************************/
 #pragma once
 
+#define PLUGIN_EXPORT
+
 #include <Windows.h>
 
 #ifdef PLUGIN_EXPORT

@@ -38,7 +38,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>D:\Games\GTA_SA2\plugin;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -54,7 +56,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <ExceptionHandling>false</ExceptionHandling>
+      <ExceptionHandling>Sync</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <BufferSecurityCheck>false</BufferSecurityCheck>
     </ClCompile>
@@ -91,8 +93,10 @@
     <ClCompile Include="..\game_sa\CMatrix.cpp" />
     <ClCompile Include="..\game_sa\CMessages.cpp" />
     <ClCompile Include="..\game_sa\CQuaternion.cpp" />
+    <ClCompile Include="..\game_sa\CRect.cpp" />
     <ClCompile Include="..\game_sa\CRGBA.cpp" />
     <ClCompile Include="..\game_sa\CRunningScript.cpp" />
+    <ClCompile Include="..\game_sa\CSphere.cpp" />
     <ClCompile Include="..\game_sa\CText.cpp" />
     <ClCompile Include="..\game_sa\CTheZones.cpp" />
     <ClCompile Include="..\game_sa\CVector.cpp" />

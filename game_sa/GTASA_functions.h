@@ -1,4 +1,4 @@
-#include "plugin.h"
+#include "plugin\plugin.h"
 #include "CVector.h"
 #define FUNC_GTASA_crc32fromBlock 0x53CED0
 #define FUNC_GTASA_crc32FromString 0x53CF00

@@ -1,5 +1,3 @@
-#define PLUGIN_EXPORT
-
 #include "plugin.h"
 #include <d3d9.h>
 #include <list>
@@ -57,19 +55,19 @@ PLUGIN_API void plugin::Core::RegisterFunc(eFuncType type, void (*func)())
 {
 	switch(type)
 	{
-	case eFuncType::FUNC_BEFORE_RESET:
+	case FUNC_BEFORE_RESET:
 		DeviceResetBeforeList.push_back(func);
 		break;
-	case eFuncType::FUNC_AFTER_RESET:
+	case FUNC_AFTER_RESET:
 		DeviceResetAfterList.push_back(func);
 		break;
-	case eFuncType::FUNC_DRAWING:
+	case FUNC_DRAWING:
 		DefaultDrawingList.push_back(func);
 		break;
-	case eFuncType::FUNC_MENU_DRAWING:
+	case FUNC_MENU_DRAWING:
 		MenuDrawingList.push_back(func);
 		break;
-	case eFuncType::FUNC_PRERENDER_AFTER:
+	case FUNC_PRERENDER_AFTER:
 		PreRenderAfterList.push_back(func);
 	}
 }

@@ -1,4 +1,4 @@
-#include "plugin.h"
+#include "plugin\plugin.h"
 
 union tScriptVarValue 
 {
