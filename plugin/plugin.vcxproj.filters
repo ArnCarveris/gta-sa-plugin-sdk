@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Файлы исходного кода">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Заголовочные файлы">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Заголовочные файлы\plugin">
+      <UniqueIdentifier>{14042a78-af1d-4656-9eba-027884fde2ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\patch">
+      <UniqueIdentifier>{c6c36bba-7340-4b26-b55e-3b2217b61f22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\game_sa">
+      <UniqueIdentifier>{117de506-e7d5-491e-b6e2-c86becff7c8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\plugin">
+      <UniqueIdentifier>{0d4ed343-b58b-48d2-9a20-224db84e3324}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\patch">
+      <UniqueIdentifier>{da4c7095-aab9-44bd-b2cb-79304465d406}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\game_sa">
+      <UniqueIdentifier>{e9f430b0-1ea9-4570-ad93-a49b5c0c953f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\game_sa\CBox.h">
+      <Filter>Заголовочные файлы\game_sa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game_sa\CClock.h">
+      <Filter>Заголовочные файлы\game_sa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game_sa\CGame.h">
+      <Filter>Заголовочные файлы\game_sa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game_sa\CMatrix.h">
+      <Filter>Заголовочные файлы\game_sa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game_sa\CMessages.h">
+      <Filter>Заголовочные файлы\game_sa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game_sa\CQuaternion.h">
+      <Filter>Заголовочные файлы\game_sa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game_sa\CRect.h">
+      <Filter>Заголовочные файлы\game_sa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game_sa\CRGBA.h">
+      <Filter>Заголовочные файлы\game_sa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game_sa\CRunningScript.h">
+      <Filter>Заголовочные файлы\game_sa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game_sa\CSphere.h">
+      <Filter>Заголовочные файлы\game_sa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game_sa\CText.h">
+      <Filter>Заголовочные файлы\game_sa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game_sa\CTheZones.h">
+      <Filter>Заголовочные файлы\game_sa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game_sa\CVector.h">
+      <Filter>Заголовочные файлы\game_sa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game_sa\CZone.h">
+      <Filter>Заголовочные файлы\game_sa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game_sa\GTASA_functions.h">
+      <Filter>Заголовочные файлы\game_sa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game_sa\RenderWare.h">
+      <Filter>Заголовочные файлы\game_sa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\patch\CPatch.h">
+      <Filter>Заголовочные файлы\patch</Filter>
+    </ClInclude>
+    <ClInclude Include="plugin.h">
+      <Filter>Заголовочные файлы\plugin</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\game_sa\CBox.cpp">
+      <Filter>Файлы исходного кода\game_sa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game_sa\CClock.cpp">
+      <Filter>Файлы исходного кода\game_sa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game_sa\CGame.cpp">
+      <Filter>Файлы исходного кода\game_sa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game_sa\CMatrix.cpp">
+      <Filter>Файлы исходного кода\game_sa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game_sa\CMessages.cpp">
+      <Filter>Файлы исходного кода\game_sa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game_sa\CQuaternion.cpp">
+      <Filter>Файлы исходного кода\game_sa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game_sa\CRGBA.cpp">
+      <Filter>Файлы исходного кода\game_sa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game_sa\CRunningScript.cpp">
+      <Filter>Файлы исходного кода\game_sa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game_sa\CText.cpp">
+      <Filter>Файлы исходного кода\game_sa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game_sa\CTheZones.cpp">
+      <Filter>Файлы исходного кода\game_sa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game_sa\CVector.cpp">
+      <Filter>Файлы исходного кода\game_sa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game_sa\CZone.cpp">
+      <Filter>Файлы исходного кода\game_sa</Filter>
+    </ClCompile>
+    <ClCompile Include="plugin.cpp">
+      <Filter>Файлы исходного кода\plugin</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
