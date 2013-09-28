@@ -80,6 +80,7 @@
     <ClInclude Include="..\game_sa\CRunningScript.h" />
     <ClInclude Include="..\game_sa\CSphere.h" />
     <ClInclude Include="..\game_sa\CText.h" />
+    <ClInclude Include="..\game_sa\CTheScripts.h" />
     <ClInclude Include="..\game_sa\CTheZones.h" />
     <ClInclude Include="..\game_sa\CVector.h" />
     <ClInclude Include="..\game_sa\CZone.h" />
@@ -100,6 +101,7 @@
     <ClCompile Include="..\game_sa\CRunningScript.cpp" />
     <ClCompile Include="..\game_sa\CSphere.cpp" />
     <ClCompile Include="..\game_sa\CText.cpp" />
+    <ClCompile Include="..\game_sa\CTheScripts.cpp" />
     <ClCompile Include="..\game_sa\CTheZones.cpp" />
     <ClCompile Include="..\game_sa\CVector.cpp" />
     <ClCompile Include="..\game_sa\CZone.cpp" />
