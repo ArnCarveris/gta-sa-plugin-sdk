@@ -1,7 +1,7 @@
 #include "plugin.h"
 #include <d3d9.h>
 #include <list>
-#include "CPatch.h"
+#include "patch\CPatch.h"
 
 using namespace std;
 
