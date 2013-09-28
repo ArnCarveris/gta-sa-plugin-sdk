@@ -18,7 +18,7 @@
 
 #define FUNC(a) (void (*a)())
 
-#define VALIDATE_STRUCT_SIZE(struc, size) static_assert(sizeof(struc) == size, "Invalid structure size of " #struc)
+#define VALIDATE_SIZE(struc, size) static_assert(sizeof(struc) == size, "Invalid structure size of " #struc)
 
 enum eFuncType
 {

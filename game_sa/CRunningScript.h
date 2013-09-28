@@ -9,6 +9,7 @@
 #define FUNC_CRunningScript__CollectParametersToNewScript 0x464500
 #define FUNC_CRunningScript__Process 0x469F00
 #define FUNC_CRunningScript__DoDeatharrestCheck 0x485A50
+#define FUNC_CRunningScript__CollectParameterWithoutMovingIP 0x464250
 
 union tScriptVarValue 
 {
@@ -18,6 +19,8 @@ union tScriptVarValue
 	void		*pParam;
 	char		*szParam;
 };
+
+VALIDATE_SIZE(tScriptVarValue, 0x4);
 
 #pragma pack(push, 1)
 struct PLUGIN_API CRunningScript
@@ -66,6 +69,9 @@ struct PLUGIN_API CRunningScript
 	// Collects parameters
 	void CRunningScript::CollectParameters(__int16 count);
 
+	// Collects parameter and returns it.
+	tScriptVarValue CRunningScript::CollectParameterWithoutMovingIP();
+
 	// Stores parameters
 	void CRunningScript::StoreParameters(__int16 count);
 
@@ -75,12 +81,10 @@ struct PLUGIN_API CRunningScript
 	// Performs death arrest check
 	void CRunningScript::DoDeatharrestCheck();
 
-	// 
-
 	// Processes running script
 	void CRunningScript::Process();
 
 };
 #pragma pack(pop)
 
-VALIDATE_STRUCT_SIZE(CRunningScript, 0xE0);
+VALIDATE_SIZE(CRunningScript, 0xE0);

@@ -45,4 +45,4 @@ public:
 };
 #pragma pack(pop)
 
-VALIDATE_STRUCT_SIZE(CMatrix, 0x48);
+VALIDATE_SIZE(CMatrix, 0x48);
