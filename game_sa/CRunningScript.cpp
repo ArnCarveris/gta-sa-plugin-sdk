@@ -12,10 +12,28 @@ void CRunningScript::ProcessOneCommand()
 	 ((void (__thiscall*)(CRunningScript*)) FUNC_CRunningScript__ProcessOneCommand )(this);
 }
 
+// Reads array offset and value from array index variable.
+void CRunningScript::GetArrayOffsetAndValueOfIndexVariable(__int16 *pOffset, __int32 *pIdx)
+{
+	((void (__thiscall*)(CRunningScript*, __int16*, __int32*)) FUNC_CRunningScript__GetArrayOffsetAndValueOfIndexVariable )(this, pOffset, pIdx);	
+}
+
+// Returns offset of global variable
+__int16 CRunningScript::GetOffsetOfGlobalVariable()
+{
+	return ((__int16 (__thiscall*)(CRunningScript*)) FUNC_CRunningScript__GetOffsetOfGlobalVariable )(this);
+}
+
 // Returns pointer to script variable of any type.
 tScriptVarValue* CRunningScript::GetPointerToScriptVariable(unsigned __int8 unk1)
 {
 	return ((tScriptVarValue* (__thiscall*)(CRunningScript*, unsigned __int8)) FUNC_CRunningScript__GetPointerToScriptVariable )(this, unk1);
+}
+
+// Returns p-ointer to local variable pointed by offset and array index as well as multiplier.
+void CRunningScript::GetPointerLocalVariableByArrayIndex(__int16 off, __int16 idx, unsigned __int8 mul)
+{
+	((void (__thiscall*)(CRunningScript*, __int16, __int16, unsigned __int8)) FUNC_CRunningScript__GetPointerLocalVariableByArrayIndex )(this, off, idx, mul);
 }
 
 // Collects parameters
@@ -51,10 +69,22 @@ void CRunningScript::CollectParametersToNewScript(CRunningScript* pNewScript)
 	((void (__thiscall*)(CRunningScript*, CRunningScript*)) FUNC_CRunningScript__CollectParametersToNewScript )(this, pNewScript);
 }
 
+// Sets instruction pointer, used in GOTO-like commands
+void CRunningScript::SetIntructionPointer(__int32 newIP)
+{
+	((void (__thiscall*)(CRunningScript*, __int32)) FUNC_CRunningScript__UpdateCompareFlag )(this, newIP);
+}
+
 // Updates comparement flag, used in conditional commands
 void CRunningScript::UpdateCompareFlag(bool state)
 {
 	((void (__thiscall*)(CRunningScript*, bool)) FUNC_CRunningScript__UpdateCompareFlag )(this, state);
+}
+
+// Terminates a script
+void CRunningScript::TerminateThisScript()
+{
+	((void (__thiscall*)(CRunningScript*)) FUNC_CRunningScript__TerminateThisScript )(this);
 }
 
 // Performs death arrest check
@@ -257,4 +287,16 @@ void CRunningScript::LocateCharObjectCommand(unsigned __int16 commandID)
 void CRunningScript::LocateObjectCommand(unsigned __int16 commandID)
 {
 	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__LocateObjectCommand )(this, commandID);
+}
+
+// Processes commands that check if object is in area
+void CRunningScript::ObjectInAreaCheckCommand(unsigned __int16 commandID)
+{
+	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__ObjectInAreaCheckCommand )(this, commandID);
+}
+
+// Checks if ped type conforms to valid ped types.
+bool CRunningScript::ThisIsAValidRandomPed(ePedType pedType, bool civilian, bool gang, bool criminal)
+{
+	return ((bool (__thiscall*)(CRunningScript*, ePedType, bool, bool, bool)) FUNC_CRunningScript__ThisIsAValidRandomPed )(this, pedType, civilian, gang, criminal);
 }

@@ -1,8 +1,13 @@
 #pragma once
 #include "plugin/plugin.h"
+#include "CPed.h"
 
 #define FUNC_CRunningScript__Init 0x4648E0
+#define FUNC_CRunningScript__GetArrayOffsetAndValueOfIndexVariable 0x463CF0
+#define FUNC_CRunningScript__GetOffsetOfGlobalVariable 0x464700
 #define FUNC_CRunningScript__GetPointerToScriptVariable 0x464790
+#define FUNC_CRunningScript__GetPointerLocalVariableByArrayIndex 0x463CC0
+
 #define FUNC_CRunningScript__ProcessOneCommand 0x469EB0
 #define FUNC_CRunningScript__CollectParameters 0x464080
 #define FUNC_CRunningScript__StoreParameters 0x464370
@@ -10,10 +15,12 @@
 #define FUNC_CRunningScript__Process 0x469F00
 #define FUNC_CRunningScript__DoDeatharrestCheck 0x485A50
 #define FUNC_CRunningScript__CollectParameterWithoutMovingIP 0x464250
+#define FUNC_CRunningScript__SetIntructionPointer 0x464DA0
 #define FUNC_CRunningScript__UpdateCompareFlag 0x4859D0
 #define FUNC_CRunningScript__AddScriptToList 0x464C00
 #define FUNC_CRunningScript__RemoveScriptFromList 0x464BD0
 #define FUNC_CRunningScript__GetPadState 0x485B10
+#define FUNC_CRunningScript__TerminateThisScript 0x465AA0
 
 #define FUNC_CRunningScript__LocateCarCommand 0x487A20
 #define FUNC_CRunningScript__LocateCharCarCommand 0x487420
@@ -21,6 +28,8 @@
 #define FUNC_CRunningScript__LocateCharCommand 0x486D80
 #define FUNC_CRunningScript__LocateCharObjectCommand 0x487720
 #define FUNC_CRunningScript__LocateObjectCommand 0x487D10
+#define FUNC_CRunningScript__ObjectInAreaCheckCommand 0x489150
+#define FUNC_CRunningScript__ThisIsAValidRandomPed 0x489490
 
 // Command handlers
 #define FUNC_CRunningScript__ProcessCommands_0To99 0x465E60
@@ -69,10 +78,10 @@ public:
 	CRunningScript	*next;
 	CRunningScript	*prev;
 	char			threadName[8];
-	BYTE			*baseIp;
-	BYTE			*ip;			
-	BYTE			*gosub_stack[8];
-	WORD			stack_index;
+	BYTE			*baseIP;
+	BYTE			*curIP;			
+	BYTE			*gosubStack[8];
+	WORD			gosubStackLevel;
 	WORD			_f3A;
 	tScriptVarValue	tls[32];	
 	DWORD			timers[2];	
@@ -81,7 +90,7 @@ public:
 	bool			MissionCleanUpFlag;
 	bool			IsExternalThread;
 	BYTE			_fC8;
-	char			_fC9;
+	char			scrType;
 	BYTE			_fCA;
 	BYTE			_fCB;
 	DWORD			wakeTime;
@@ -110,6 +119,14 @@ public:
 	// Performs death arrest check
 	void CRunningScript::DoDeatharrestCheck();
 
+	/////// USED HEAVILY IN COMMANDS //////
+
+	// Reads array offset and value from array index variable.
+	void CRunningScript::GetArrayOffsetAndValueOfIndexVariable(__int16 *pOffset, __int32 *pIdx);
+
+	// Returns offset of global variable
+	__int16 CRunningScript::GetOffsetOfGlobalVariable();
+
 	// Returns pointer to script variable of any type.
 	tScriptVarValue* CRunningScript::GetPointerToScriptVariable(unsigned __int8 unk1);
 
@@ -125,8 +142,19 @@ public:
 	// Collects parameters and puts them to local variables of new script
 	void CRunningScript::CollectParametersToNewScript(CRunningScript* pNewScript);
 
+	// Sets instruction pointer, used in GOTO-like commands
+	void CRunningScript::SetIntructionPointer(__int32 newIP);
+
 	// Updates comparement flag, used in conditional commands
 	void CRunningScript::UpdateCompareFlag(bool state);
+
+	// Terminates a script
+	void CRunningScript::TerminateThisScript();
+
+	///////////////////
+
+	// Returns p-ointer to local variable pointed by offset and array index as well as multiplier.
+	void CRunningScript::GetPointerLocalVariableByArrayIndex(__int16 off, __int16 idx, unsigned __int8 mul);
 
 	// Adds script to list
 	void CRunningScript::AddScriptToList(CRunningScript ** list);
@@ -184,7 +212,11 @@ public:
 	// Processes commands where object locates map point
 	void CRunningScript::LocateObjectCommand(unsigned __int16 commandID);
 
-	// 
+	// Processes commands that check if object is in area
+	void CRunningScript::ObjectInAreaCheckCommand(unsigned __int16 commandID);
+
+	// Checks if ped type conforms to valid ped types.
+	bool CRunningScript::ThisIsAValidRandomPed(ePedType pedType, bool civilian, bool gang, bool criminal);
 };
 #pragma pack(pop)
 
