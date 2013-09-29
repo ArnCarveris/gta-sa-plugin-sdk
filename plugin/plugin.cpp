@@ -13,6 +13,8 @@ list<void (*)()>DeviceResetAfterList;
 list<void (*)()>DefaultDrawingList;
 list<void (*)()>MenuDrawingList;
 list<void (*)()>PreRenderAfterList;
+list<void (*)()>InitialiseRWList;
+list<void (*)()>ShutdownRWList;
 
 void Initialise();
 void Shutdown();
@@ -43,6 +45,8 @@ void Initialise()
 	CPatch::RedirectCall(0x53E293, plugin::Core::DefaultDrawingFuncExe);
 	CPatch::RedirectCall(0x57C2B5, plugin::Core::MenuDrawingFuncExe);
 	CPatch::RedirectCall(0x53EA03, plugin::Core::PreRenderAfterFuncExe);
+	CPatch::RedirectCall(0x5BD779, plugin::Core::InitialiseRwFuncExe);
+	CPatch::RedirectCall(0x53BC21, plugin::Core::ShutdownRwFuncExe);
 }
 
 void Shutdown()
@@ -155,4 +159,28 @@ void plugin::Core::PreRenderAfterFuncExe()
 {
 	CALLVOID(0x563430);
 	plugin::Core::PreRenderAfterFunc();
+}
+
+PLUGIN_API void plugin::Core::InitialiseRwFunc()
+{
+	for(auto i = InitialiseRWList.begin(); i != InitialiseRWList.end(); ++i)
+		(*i)();
+}
+
+PLUGIN_API void plugin::Core::InitialiseRwFuncExe()
+{
+	CALLVOID(0x5BD779);
+	plugin::Core::InitialiseRwFunc();
+}
+
+PLUGIN_API void plugin::Core::ShutdownRwFunc()
+{
+	for(auto i = ShutdownRWList.begin(); i != ShutdownRWList.end(); ++i)
+		(*i)();
+}
+
+PLUGIN_API void plugin::Core::ShutdownRwFuncExe()
+{
+	CALLVOID(0x730900);
+	plugin::Core::ShutdownRwFunc();
 }
