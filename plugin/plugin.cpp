@@ -73,6 +73,13 @@ void plugin::Core::RegisterFunc(eFuncType type, tRegisteredFunction func)
 		break;
 	case FUNC_PRERENDER_AFTER:
 		PreRenderAfterList.push_back(func);
+		break;
+	case FUNC_INITIALISE_RW:
+		InitialiseRWList.push_back(func);
+		break;
+	case FUNC_SHUTDOWN_RW:
+		ShutdownRWList.push_back(func);
+		break;
 	}
 }
 
@@ -169,7 +176,7 @@ PLUGIN_API void plugin::Core::InitialiseRwFunc()
 
 PLUGIN_API void plugin::Core::InitialiseRwFuncExe()
 {
-	CALLVOID(0x5BD779);
+	CALLVOID(0x704630);
 	plugin::Core::InitialiseRwFunc();
 }
 
