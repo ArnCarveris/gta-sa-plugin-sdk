@@ -20,6 +20,8 @@
 
 #define VALIDATE_SIZE(struc, size) static_assert(sizeof(struc) == size, "Invalid structure size of " #struc)
 
+typedef void (__cdecl* tRegisteredFunction)();
+
 enum eFuncType
 {
 	FUNC_BEFORE_RESET,      /* calls at 0x7F9788
@@ -61,7 +63,9 @@ enum eFuncType
 	FUNC_MENU_DRAWING,      /* calls at 0x57C2B5
 							*/
 	FUNC_PRERENDER_BEFORE,
-	FUNC_PRERENDER_AFTER
+	FUNC_PRERENDER_AFTER,
+	FUNC_INITIALISE_RW,    // when RenderWare is initialising
+	FUNC_SHUTDOWN_RW       // when RenderWare is closing
 };
 
 enum eGame
@@ -82,30 +86,31 @@ public:
 	int reserved[2];
 };
 
-class PLUGIN_API plugin
+namespace plugin
 {
-public:
-	class PLUGIN_API Core
+	namespace Core
 	{
-	public:
-		typedef void (__cdecl* tRegisteredFunction)();
-
-		static void RegisterFunc(eFuncType type, tRegisteredFunction func);
-		static void DeviceResetAfterFunc();
-		static void DeviceResetBeforeFunc();
-		static long DeviceResetFuncExe();
-		static void DefaultDrawingFunc();
-		static void DefaultDrawingFuncExe();
-		static void MenuDrawingFunc();
-		static void MenuDrawingFuncExe();
-		static void PreRenderAfterFunc();
-		static void PreRenderAfterFuncExe();
+		PLUGIN_API void RegisterFunc(eFuncType type, tRegisteredFunction func);
+		PLUGIN_API void DeviceResetAfterFunc();
+		PLUGIN_API void DeviceResetBeforeFunc();
+		PLUGIN_API long DeviceResetFuncExe();
+		PLUGIN_API void DefaultDrawingFunc();
+		PLUGIN_API void DefaultDrawingFuncExe();
+		PLUGIN_API void MenuDrawingFunc();
+		PLUGIN_API void MenuDrawingFuncExe();
+		PLUGIN_API void PreRenderBeforeFunc();
+		PLUGIN_API void PreRenderBeforeFuncExe();
+		PLUGIN_API void PreRenderAfterFunc();
+		PLUGIN_API void PreRenderAfterFuncExe();
+		PLUGIN_API void InitialiseRwFunc();
+		PLUGIN_API void InitialiseRwFuncExe();
+		PLUGIN_API void ShutdownRwFunc();
+		PLUGIN_API void ShutdownRwFuncExe();
 	};
-	class PLUGIN_API System
+	namespace System
 	{
-	public:
-		static CPlugin const * RegisterPlugin(char *name, char *author, char *filename, char *version, unsigned int versionId, 
+		PLUGIN_API CPlugin const * RegisterPlugin(char *name, char *author, char *filename, char *version, unsigned int versionId, 
 			unsigned int game, void *additionalData);
-		static CPlugin const * GetPluginByName(char *name);
+		PLUGIN_API CPlugin const * GetPluginByName(char *name);
 	};
 };
