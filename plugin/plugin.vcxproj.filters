@@ -96,6 +96,12 @@
     <ClInclude Include="CRunningScriptWrapper.h">
       <Filter>Header files\plugin</Filter>
     </ClInclude>
+    <ClInclude Include="..\game_sa\CBulletTraces.h">
+      <Filter>Header files\game_sa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game_sa\CFileMgr.h">
+      <Filter>Header files\game_sa</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\game_sa\CBox.cpp">
@@ -151,6 +157,12 @@
     </ClCompile>
     <ClCompile Include="CRunningScriptWrapper.cpp">
       <Filter>Source code files\plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game_sa\CBulletTraces.cpp">
+      <Filter>Source code files\game_sa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game_sa\CFileMgr.cpp">
+      <Filter>Source code files\game_sa</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

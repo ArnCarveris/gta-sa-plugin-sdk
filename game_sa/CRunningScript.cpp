@@ -57,6 +57,12 @@ tScriptVarValue CRunningScript::CollectParameterWithoutMovingIP()
 	return value;
 }
 
+// Collects string parameter
+void CRunningScript::CollectStringParameter(char *pBuffer, unsigned __int8 nBufferLength)
+{
+	((void (__thiscall*)(CRunningScript*, char *, unsigned __int8)) FUNC_CRunningScript__CollectStringParameter )(this, pBuffer, nBufferLength);
+}
+
 // Stores parameters
 void CRunningScript::StoreParameters(__int16 count)
 {

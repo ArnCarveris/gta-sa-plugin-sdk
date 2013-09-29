@@ -71,7 +71,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\game_sa\CBox.h" />
+    <ClInclude Include="..\game_sa\CBulletTraces.h" />
     <ClInclude Include="..\game_sa\CClock.h" />
+    <ClInclude Include="..\game_sa\CFileMgr.h" />
     <ClInclude Include="..\game_sa\CGame.h" />
     <ClInclude Include="..\game_sa\CMatrix.h" />
     <ClInclude Include="..\game_sa\CMessages.h" />
@@ -94,7 +96,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\game_sa\CBox.cpp" />
+    <ClCompile Include="..\game_sa\CBulletTraces.cpp" />
     <ClCompile Include="..\game_sa\CClock.cpp" />
+    <ClCompile Include="..\game_sa\CFileMgr.cpp" />
     <ClCompile Include="..\game_sa\CGame.cpp" />
     <ClCompile Include="..\game_sa\CMatrix.cpp" />
     <ClCompile Include="..\game_sa\CMessages.cpp" />

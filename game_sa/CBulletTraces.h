@@ -17,7 +17,7 @@ public:
 };
 #pragma pack(pop)
 
-VALIDATE_STRUCT_SIZE(CBulletTrace, 0x2C);
+VALIDATE_SIZE(CBulletTrace, 0x2C);
 
 #define MAX_BULLETTRACES 16
 
