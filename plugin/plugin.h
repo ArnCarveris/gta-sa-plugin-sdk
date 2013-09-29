@@ -82,28 +82,30 @@ public:
 	int reserved[2];
 };
 
-class plugin
+class PLUGIN_API plugin
 {
 public:
-	class Core
+	class PLUGIN_API Core
 	{
 	public:
-		PLUGIN_API static void RegisterFunc(eFuncType type, void (*func)());
-		PLUGIN_API static void DeviceResetAfterFunc();
-		PLUGIN_API static void DeviceResetBeforeFunc();
-		PLUGIN_API static long DeviceResetFuncExe();
-		PLUGIN_API static void DefaultDrawingFunc();
-		PLUGIN_API static void DefaultDrawingFuncExe();
-		PLUGIN_API static void MenuDrawingFunc();
-		PLUGIN_API static void MenuDrawingFuncExe();
-		PLUGIN_API static void PreRenderAfterFunc();
-		PLUGIN_API static void PreRenderAfterFuncExe();
+		typedef void (__cdecl* tRegisteredFunction)();
+
+		static void RegisterFunc(eFuncType type, tRegisteredFunction func);
+		static void DeviceResetAfterFunc();
+		static void DeviceResetBeforeFunc();
+		static long DeviceResetFuncExe();
+		static void DefaultDrawingFunc();
+		static void DefaultDrawingFuncExe();
+		static void MenuDrawingFunc();
+		static void MenuDrawingFuncExe();
+		static void PreRenderAfterFunc();
+		static void PreRenderAfterFuncExe();
 	};
-	class System
+	class PLUGIN_API System
 	{
 	public:
-		PLUGIN_API static CPlugin const * RegisterPlugin(char *name, char *author, char *filename, char *version, unsigned int versionId, 
+		static CPlugin const * RegisterPlugin(char *name, char *author, char *filename, char *version, unsigned int versionId, 
 			unsigned int game, void *additionalData);
-		PLUGIN_API static CPlugin const * GetPluginByName(char *name);
+		static CPlugin const * GetPluginByName(char *name);
 	};
 };

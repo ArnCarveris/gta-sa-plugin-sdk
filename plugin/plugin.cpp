@@ -51,7 +51,7 @@ void Shutdown()
 		delete *i;
 }
 
-PLUGIN_API void plugin::Core::RegisterFunc(eFuncType type, void (*func)())
+void plugin::Core::RegisterFunc(eFuncType type, tRegisteredFunction func)
 {
 	switch(type)
 	{
@@ -72,7 +72,7 @@ PLUGIN_API void plugin::Core::RegisterFunc(eFuncType type, void (*func)())
 	}
 }
 
-PLUGIN_API CPlugin const * plugin::System::RegisterPlugin(char *name, 
+CPlugin const * plugin::System::RegisterPlugin(char *name, 
 						  char *author, 
 						  char *filename, 
 						  char *version, 
@@ -92,7 +92,7 @@ PLUGIN_API CPlugin const * plugin::System::RegisterPlugin(char *name,
 	return plug;
 }
 
-PLUGIN_API CPlugin const * plugin::System::GetPluginByName(char *name)
+CPlugin const * plugin::System::GetPluginByName(char *name)
 {
 	for(auto i = pluginList.begin(); i != pluginList.end(); ++i)
 	{
@@ -102,7 +102,7 @@ PLUGIN_API CPlugin const * plugin::System::GetPluginByName(char *name)
 	return NULL;
 }
 
-PLUGIN_API long plugin::Core::DeviceResetFuncExe()
+long plugin::Core::DeviceResetFuncExe()
 {
 	plugin::Core::DeviceResetBeforeFunc();
 	HRESULT result = (*(IDirect3DDevice9 **)0xC97C28)->Reset((D3DPRESENT_PARAMETERS *)0xC9C040);
@@ -110,48 +110,48 @@ PLUGIN_API long plugin::Core::DeviceResetFuncExe()
 	return result;
 }
 
-PLUGIN_API void plugin::Core::DeviceResetBeforeFunc()
+void plugin::Core::DeviceResetBeforeFunc()
 {
 	for(auto i = DeviceResetBeforeList.begin(); i != DeviceResetBeforeList.end(); ++i)
 		(*i)();
 }
 
-PLUGIN_API void plugin::Core::DeviceResetAfterFunc()
+void plugin::Core::DeviceResetAfterFunc()
 {
 	for(auto i = DeviceResetAfterList.begin(); i != DeviceResetAfterList.end(); ++i)
 		(*i)();
 }
 
-PLUGIN_API void plugin::Core::DefaultDrawingFunc()
+void plugin::Core::DefaultDrawingFunc()
 {
 	for(auto i = DefaultDrawingList.begin(); i != DefaultDrawingList.end(); ++i)
 		(*i)();
 }
 
-PLUGIN_API void plugin::Core::DefaultDrawingFuncExe()
+void plugin::Core::DefaultDrawingFuncExe()
 {
 	plugin::Core::DefaultDrawingFunc();
 }
 
-PLUGIN_API void plugin::Core::MenuDrawingFunc()
+void plugin::Core::MenuDrawingFunc()
 {
 	for(auto i = MenuDrawingList.begin(); i != MenuDrawingList.end(); ++i)
 		(*i)();
 }
 
-PLUGIN_API void plugin::Core::MenuDrawingFuncExe()
+void plugin::Core::MenuDrawingFuncExe()
 {
 	plugin::Core::MenuDrawingFunc();
 	CALLVOID(0x734750);
 }
 
-PLUGIN_API void plugin::Core::PreRenderAfterFunc()
+void plugin::Core::PreRenderAfterFunc()
 {
 	for(auto i = PreRenderAfterList.begin(); i != PreRenderAfterList.end(); ++i)
 		(*i)();
 }
 
-PLUGIN_API void plugin::Core::PreRenderAfterFuncExe()
+void plugin::Core::PreRenderAfterFuncExe()
 {
 	CALLVOID(0x563430);
 	plugin::Core::PreRenderAfterFunc();

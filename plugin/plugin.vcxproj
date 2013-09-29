@@ -41,6 +41,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;$(SolutionDir);$(WindowsSDK_IncludePath)</IncludePath>
     <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSDK_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86)</LibraryPath>
+    <OutDir>D:\Projects\GTA Speed\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -74,6 +75,7 @@
     <ClInclude Include="..\game_sa\CGame.h" />
     <ClInclude Include="..\game_sa\CMatrix.h" />
     <ClInclude Include="..\game_sa\CMessages.h" />
+    <ClInclude Include="..\game_sa\CPed.h" />
     <ClInclude Include="..\game_sa\CQuaternion.h" />
     <ClInclude Include="..\game_sa\CRect.h" />
     <ClInclude Include="..\game_sa\CRGBA.h" />
@@ -87,6 +89,7 @@
     <ClInclude Include="..\game_sa\GTASA_functions.h" />
     <ClInclude Include="..\game_sa\RenderWare.h" />
     <ClInclude Include="..\patch\CPatch.h" />
+    <ClInclude Include="CRunningScriptWrapper.h" />
     <ClInclude Include="plugin.h" />
   </ItemGroup>
   <ItemGroup>
@@ -95,6 +98,7 @@
     <ClCompile Include="..\game_sa\CGame.cpp" />
     <ClCompile Include="..\game_sa\CMatrix.cpp" />
     <ClCompile Include="..\game_sa\CMessages.cpp" />
+    <ClCompile Include="..\game_sa\CPed.cpp" />
     <ClCompile Include="..\game_sa\CQuaternion.cpp" />
     <ClCompile Include="..\game_sa\CRect.cpp" />
     <ClCompile Include="..\game_sa\CRGBA.cpp" />
@@ -105,6 +109,7 @@
     <ClCompile Include="..\game_sa\CTheZones.cpp" />
     <ClCompile Include="..\game_sa\CVector.cpp" />
     <ClCompile Include="..\game_sa\CZone.cpp" />
+    <ClCompile Include="CRunningScriptWrapper.cpp" />
     <ClCompile Include="plugin.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
