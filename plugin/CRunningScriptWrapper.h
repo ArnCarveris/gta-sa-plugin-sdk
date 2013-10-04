@@ -1,8 +1,6 @@
 #pragma once
 #include "game_sa\CRunningScript.h"
 #include "game_sa\CTheScripts.h"
-#include "game_sa\CMessages.h"
-#include <stdio.h>
 
 enum eRunningScriptWrapperDataValueType
 {

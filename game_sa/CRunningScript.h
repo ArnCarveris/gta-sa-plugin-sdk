@@ -1,6 +1,6 @@
 #pragma once
 #include "plugin/plugin.h"
-#include "CPed.h"
+#include "ePedType.h"
 
 #define FUNC_CRunningScript__Init 0x4648E0
 #define FUNC_CRunningScript__GetArrayOffsetAndValueOfIndexVariable 0x463CF0
