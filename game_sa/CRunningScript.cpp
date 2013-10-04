@@ -7,9 +7,9 @@ void CRunningScript::Init()
 }
 
 // Processes one command
-void CRunningScript::ProcessOneCommand()
+int CRunningScript::ProcessOneCommand()
 {
-	 ((void (__thiscall*)(CRunningScript*)) FUNC_CRunningScript__ProcessOneCommand )(this);
+	 return ((int (__thiscall*)(CRunningScript*)) FUNC_CRunningScript__ProcessOneCommand )(this);
 }
 
 // Reads array offset and value from array index variable.
@@ -30,7 +30,13 @@ tScriptVarValue* CRunningScript::GetPointerToScriptVariable(unsigned __int8 unk1
 	return ((tScriptVarValue* (__thiscall*)(CRunningScript*, unsigned __int8)) FUNC_CRunningScript__GetPointerToScriptVariable )(this, unk1);
 }
 
-// Returns p-ointer to local variable pointed by offset and array index as well as multiplier.
+// Returns condition result
+inline bool CRunningScript::GetConditionResult()
+{
+	return this -> condResult;
+}
+
+// Returns pointer to local variable pointed by offset and array index as well as multiplier.
 void CRunningScript::GetPointerLocalVariableByArrayIndex(__int16 off, __int16 idx, unsigned __int8 mul)
 {
 	((void (__thiscall*)(CRunningScript*, __int16, __int16, unsigned __int8)) FUNC_CRunningScript__GetPointerLocalVariableByArrayIndex )(this, off, idx, mul);

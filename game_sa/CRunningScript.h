@@ -63,7 +63,6 @@
 
 enum eArgumentDataTypesFormat_GTA_III_VC_SA : __int8
 {
-	SCM_ARGUMENT_TYPE_UNDEFINED,
 	SCM_ARGUMENT_TYPE_END_OF_ARGUMENTS,
 	SCM_ARGUMENT_TYPE_STATIC_INT_32BITS,
 	SCM_ARGUMENT_TYPE_GLOBAL_NUMBER_VARIABLE,
@@ -147,7 +146,7 @@ public:
 	void CRunningScript::Process();
 
 	// Processes one command
-	void CRunningScript::ProcessOneCommand();
+	int CRunningScript::ProcessOneCommand();
 
 	// Performs death arrest check
 	void CRunningScript::DoDeatharrestCheck();
@@ -189,7 +188,10 @@ public:
 
 	///////////////////
 
-	// Returns p-ointer to local variable pointed by offset and array index as well as multiplier.
+	// Returns condition result
+	bool CRunningScript::GetConditionResult();
+
+	// Returns pointer to local variable pointed by offset and array index as well as multiplier.
 	void CRunningScript::GetPointerLocalVariableByArrayIndex(__int16 off, __int16 idx, unsigned __int8 mul);
 
 	// Adds script to list
