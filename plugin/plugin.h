@@ -18,6 +18,7 @@
 
 #define FUNC(a) (void (*a)())
 
+#define PREPARE_FOR_REDIRECTION() __asm { mov eax, -1 }
 #define VALIDATE_SIZE(struc, size) static_assert(sizeof(struc) == size, "Invalid structure size of " #struc)
 
 typedef void (__cdecl* tRegisteredFunction)();
