@@ -1,5 +1,10 @@
 #include "CMatrix.h"
 
+NOINLINE CMatrix::CMatrix()
+{
+
+}
+
 CMatrix::CMatrix(CMatrix const& matrix)
 {
 	((void (__thiscall *)(CMatrix *, CMatrix const&))0x59BCF0)(this, matrix);
