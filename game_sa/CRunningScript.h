@@ -11,7 +11,7 @@
 
 #define FUNC_CRunningScript__ProcessOneCommand 0x469EB0
 #define FUNC_CRunningScript__CollectParameters 0x464080
-#define FUNC_CRunningScript__CollectStringParameter 0x464080
+#define FUNC_CRunningScript__CollectStringParameter 0x463D50
 #define FUNC_CRunningScript__StoreParameters 0x464370
 #define FUNC_CRunningScript__CollectParametersToNewScript 0x464500
 #define FUNC_CRunningScript__Process 0x469F00

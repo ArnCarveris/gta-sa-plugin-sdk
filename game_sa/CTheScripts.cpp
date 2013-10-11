@@ -1,4 +1,4 @@
 #include "CTheScripts.h"
 
 // VARIABLES
-char* CTheScripts::ScriptSpace = (char*)0xA49960;
+char* CTheScripts::ScriptSpace = (char*)VAR_CTheScripts__ScriptSpace;

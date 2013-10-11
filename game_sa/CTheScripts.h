@@ -1,5 +1,6 @@
 #pragma once
 #include "plugin\plugin.h"
+#include "CRunningScript.h"
 
 #define VAR_CTheScripts__ScriptSpace 0xA49960
 
