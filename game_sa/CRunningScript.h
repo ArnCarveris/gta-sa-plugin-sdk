@@ -1,5 +1,6 @@
 #pragma once
 #include "plugin/plugin.h"
+#include "eCommandName.h"
 #include "ePedType.h"
 
 #define FUNC_CRunningScript__Init 0x4648E0
@@ -107,6 +108,7 @@ VALIDATE_SIZE(tScriptVarValue, 0x4);
 class PLUGIN_API CRunningScript
 {
 public:
+	// FUNCTIONS
 	CRunningScript	*next;
 	CRunningScript	*prev;
 	char			threadName[8];
@@ -134,6 +136,7 @@ public:
 	WORD			_fD6;
 	DWORD			sceneSkipOffset;
 	bool			missionFlag;
+	// VARIABLES
 
 	// bellow is align in 4 bytes
 	WORD			scmFunction;
@@ -204,54 +207,54 @@ public:
 	short CRunningScript::GetPadState(unsigned short playerIndex, unsigned short buttonID);
 
 	// Command handlers
-	void CRunningScript::ProcessCommands_0To99(unsigned __int16 commandID);
-	void CRunningScript::ProcessCommands_100To199(unsigned __int16 commandID);
-	void CRunningScript::ProcessCommands_200To299(unsigned __int16 commandID);
-	void CRunningScript::ProcessCommands_300To399(unsigned __int16 commandID);
-	void CRunningScript::ProcessCommands_400To499(unsigned __int16 commandID);
-	void CRunningScript::ProcessCommands_500To599(unsigned __int16 commandID);
-	void CRunningScript::ProcessCommands_600To699(unsigned __int16 commandID);
-	void CRunningScript::ProcessCommands_700To799(unsigned __int16 commandID);
-	void CRunningScript::ProcessCommands_800To899(unsigned __int16 commandID);
-	void CRunningScript::ProcessCommands_900To999(unsigned __int16 commandID);
-	void CRunningScript::ProcessCommands_1000To1099(unsigned __int16 commandID);
-	void CRunningScript::ProcessCommands_1100To1199(unsigned __int16 commandID);
-	void CRunningScript::ProcessCommands_1200To1299(unsigned __int16 commandID);
-	void CRunningScript::ProcessCommands_1300To1399(unsigned __int16 commandID);
-	void CRunningScript::ProcessCommands_1400To1499(unsigned __int16 commandID);
-	void CRunningScript::ProcessCommands_1500To1599(unsigned __int16 commandID);
-	void CRunningScript::ProcessCommands_1600To1699(unsigned __int16 commandID);
-	void CRunningScript::ProcessCommands_1700To1799(unsigned __int16 commandID);
-	void CRunningScript::ProcessCommands_1800To1899(unsigned __int16 commandID);
-	void CRunningScript::ProcessCommands_1900To1999(unsigned __int16 commandID);
-	void CRunningScript::ProcessCommands_2000To2099(unsigned __int16 commandID);
-	void CRunningScript::ProcessCommands_2100To2199(unsigned __int16 commandID);
-	void CRunningScript::ProcessCommands_2200To2299(unsigned __int16 commandID);
-	void CRunningScript::ProcessCommands_2300To2399(unsigned __int16 commandID);
-	void CRunningScript::ProcessCommands_2400To2499(unsigned __int16 commandID);
-	void CRunningScript::ProcessCommands_2500To2599(unsigned __int16 commandID);
-	void CRunningScript::ProcessCommands_2600To2699(unsigned __int16 commandID);
+	void CRunningScript::ProcessCommands_0To99(eCommandName commandID);
+	void CRunningScript::ProcessCommands_100To199(eCommandName commandID);
+	void CRunningScript::ProcessCommands_200To299(eCommandName commandID);
+	void CRunningScript::ProcessCommands_300To399(eCommandName commandID);
+	void CRunningScript::ProcessCommands_400To499(eCommandName commandID);
+	void CRunningScript::ProcessCommands_500To599(eCommandName commandID);
+	void CRunningScript::ProcessCommands_600To699(eCommandName commandID);
+	void CRunningScript::ProcessCommands_700To799(eCommandName commandID);
+	void CRunningScript::ProcessCommands_800To899(eCommandName commandID);
+	void CRunningScript::ProcessCommands_900To999(eCommandName commandID);
+	void CRunningScript::ProcessCommands_1000To1099(eCommandName commandID);
+	void CRunningScript::ProcessCommands_1100To1199(eCommandName commandID);
+	void CRunningScript::ProcessCommands_1200To1299(eCommandName commandID);
+	void CRunningScript::ProcessCommands_1300To1399(eCommandName commandID);
+	void CRunningScript::ProcessCommands_1400To1499(eCommandName commandID);
+	void CRunningScript::ProcessCommands_1500To1599(eCommandName commandID);
+	void CRunningScript::ProcessCommands_1600To1699(eCommandName commandID);
+	void CRunningScript::ProcessCommands_1700To1799(eCommandName commandID);
+	void CRunningScript::ProcessCommands_1800To1899(eCommandName commandID);
+	void CRunningScript::ProcessCommands_1900To1999(eCommandName commandID);
+	void CRunningScript::ProcessCommands_2000To2099(eCommandName commandID);
+	void CRunningScript::ProcessCommands_2100To2199(eCommandName commandID);
+	void CRunningScript::ProcessCommands_2200To2299(eCommandName commandID);
+	void CRunningScript::ProcessCommands_2300To2399(eCommandName commandID);
+	void CRunningScript::ProcessCommands_2400To2499(eCommandName commandID);
+	void CRunningScript::ProcessCommands_2500To2599(eCommandName commandID);
+	void CRunningScript::ProcessCommands_2600To2699(eCommandName commandID);
 
 	// Processes commands that locate a vehicle
-	void CRunningScript::LocateCarCommand(unsigned __int16 commandID);
+	void CRunningScript::LocateCarCommand(eCommandName commandID);
 
 	// Processes commands where char locates car
-	void CRunningScript::LocateCharCarCommand(unsigned __int16 commandID);
+	void CRunningScript::LocateCharCarCommand(eCommandName commandID);
 
 	// Processes commands where char locates another char
-	void CRunningScript::LocateCharCharCommand(unsigned __int16 commandID);
+	void CRunningScript::LocateCharCharCommand(eCommandName commandID);
 
 	// Processes commands where char locates map point
-	void CRunningScript::LocateCharCommand(unsigned __int16 commandID);
+	void CRunningScript::LocateCharCommand(eCommandName commandID);
 
 	// Processes commands where char locates object
-	void CRunningScript::LocateCharObjectCommand(unsigned __int16 commandID);
+	void CRunningScript::LocateCharObjectCommand(eCommandName commandID);
 
 	// Processes commands where object locates map point
-	void CRunningScript::LocateObjectCommand(unsigned __int16 commandID);
+	void CRunningScript::LocateObjectCommand(eCommandName commandID);
 
 	// Processes commands that check if object is in area
-	void CRunningScript::ObjectInAreaCheckCommand(unsigned __int16 commandID);
+	void CRunningScript::ObjectInAreaCheckCommand(eCommandName commandID);
 
 	// Checks if ped type conforms to valid ped types.
 	bool CRunningScript::ThisIsAValidRandomPed(ePedType pedType, bool civilian, bool gang, bool criminal);

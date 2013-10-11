@@ -1,4 +1,5 @@
 #pragma once
+#include "game_sa\eCommandName.h"
 #include "game_sa\CRunningScript.h"
 #include "game_sa\CTheScripts.h"
 
@@ -98,6 +99,9 @@ public:
 	// Saves returned values to object of type tRunningScriptWrapper_SavedReturnedValuesArray.	
 	// This function may only be called after execution of CallCommand - pushing values past the execution of CallCommand will overwrite values
 	void SaveReturnedValues(tRunningScriptWrapper_SavedReturnedValuesArray& arrayOfSavedReturnedValues);
+
+	// Calls a command.
+	int CRunningScriptWrapper::CallCommand(eCommandName commandID);
 
 	// Calls a command.
 	int CRunningScriptWrapper::CallCommand(__int16 commandID);

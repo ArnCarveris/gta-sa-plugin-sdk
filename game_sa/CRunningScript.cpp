@@ -130,181 +130,181 @@ short CRunningScript::GetPadState(unsigned short playerIndex, unsigned short but
 }
 
 // Command handlers
-void CRunningScript::ProcessCommands_0To99(unsigned __int16 commandID)
+void CRunningScript::ProcessCommands_0To99(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__ProcessCommands_0To99 )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__ProcessCommands_0To99 )(this, commandID);
 }
 
-void CRunningScript::ProcessCommands_100To199(unsigned __int16 commandID)
+void CRunningScript::ProcessCommands_100To199(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__ProcessCommands_100To199 )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__ProcessCommands_100To199 )(this, commandID);
 }
 
-void CRunningScript::ProcessCommands_200To299(unsigned __int16 commandID)
+void CRunningScript::ProcessCommands_200To299(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__ProcessCommands_200To299 )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__ProcessCommands_200To299 )(this, commandID);
 }
 
-void CRunningScript::ProcessCommands_300To399(unsigned __int16 commandID)
+void CRunningScript::ProcessCommands_300To399(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__ProcessCommands_300To399 )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__ProcessCommands_300To399 )(this, commandID);
 }
 
-void CRunningScript::ProcessCommands_400To499(unsigned __int16 commandID)
+void CRunningScript::ProcessCommands_400To499(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__ProcessCommands_400To499 )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__ProcessCommands_400To499 )(this, commandID);
 }
 
-void CRunningScript::ProcessCommands_500To599(unsigned __int16 commandID)
+void CRunningScript::ProcessCommands_500To599(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__ProcessCommands_500To599 )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__ProcessCommands_500To599 )(this, commandID);
 }
 
-void CRunningScript::ProcessCommands_600To699(unsigned __int16 commandID)
+void CRunningScript::ProcessCommands_600To699(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__ProcessCommands_600To699 )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__ProcessCommands_600To699 )(this, commandID);
 }
 
-void CRunningScript::ProcessCommands_700To799(unsigned __int16 commandID)
+void CRunningScript::ProcessCommands_700To799(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__ProcessCommands_700To799 )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__ProcessCommands_700To799 )(this, commandID);
 }
 
-void CRunningScript::ProcessCommands_800To899(unsigned __int16 commandID)
+void CRunningScript::ProcessCommands_800To899(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__ProcessCommands_800To899 )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__ProcessCommands_800To899 )(this, commandID);
 }
 
-void CRunningScript::ProcessCommands_900To999(unsigned __int16 commandID)
+void CRunningScript::ProcessCommands_900To999(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__ProcessCommands_900To999 )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__ProcessCommands_900To999 )(this, commandID);
 }
 
-void CRunningScript::ProcessCommands_1000To1099(unsigned __int16 commandID)
+void CRunningScript::ProcessCommands_1000To1099(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__ProcessCommands_1000To1099 )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__ProcessCommands_1000To1099 )(this, commandID);
 }
 
-void CRunningScript::ProcessCommands_1100To1199(unsigned __int16 commandID)
+void CRunningScript::ProcessCommands_1100To1199(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__ProcessCommands_1100To1199 )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__ProcessCommands_1100To1199 )(this, commandID);
 }
 
-void CRunningScript::ProcessCommands_1200To1299(unsigned __int16 commandID)
+void CRunningScript::ProcessCommands_1200To1299(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__ProcessCommands_1200To1299 )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__ProcessCommands_1200To1299 )(this, commandID);
 }
 
-void CRunningScript::ProcessCommands_1300To1399(unsigned __int16 commandID)
+void CRunningScript::ProcessCommands_1300To1399(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__ProcessCommands_1300To1399 )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__ProcessCommands_1300To1399 )(this, commandID);
 }
 
-void CRunningScript::ProcessCommands_1400To1499(unsigned __int16 commandID)
+void CRunningScript::ProcessCommands_1400To1499(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__ProcessCommands_1400To1499 )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__ProcessCommands_1400To1499 )(this, commandID);
 }
 
-void CRunningScript::ProcessCommands_1500To1599(unsigned __int16 commandID)
+void CRunningScript::ProcessCommands_1500To1599(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__ProcessCommands_1500To1599 )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__ProcessCommands_1500To1599 )(this, commandID);
 }
 
-void CRunningScript::ProcessCommands_1600To1699(unsigned __int16 commandID)
+void CRunningScript::ProcessCommands_1600To1699(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__ProcessCommands_1600To1699 )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__ProcessCommands_1600To1699 )(this, commandID);
 }
 
-void CRunningScript::ProcessCommands_1700To1799(unsigned __int16 commandID)
+void CRunningScript::ProcessCommands_1700To1799(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__ProcessCommands_1700To1799 )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__ProcessCommands_1700To1799 )(this, commandID);
 }
 
-void CRunningScript::ProcessCommands_1800To1899(unsigned __int16 commandID)
+void CRunningScript::ProcessCommands_1800To1899(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__ProcessCommands_1800To1899 )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__ProcessCommands_1800To1899 )(this, commandID);
 }
 
-void CRunningScript::ProcessCommands_1900To1999(unsigned __int16 commandID)
+void CRunningScript::ProcessCommands_1900To1999(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__ProcessCommands_1900To1999 )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__ProcessCommands_1900To1999 )(this, commandID);
 }
 
-void CRunningScript::ProcessCommands_2000To2099(unsigned __int16 commandID)
+void CRunningScript::ProcessCommands_2000To2099(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__ProcessCommands_2000To2099 )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__ProcessCommands_2000To2099 )(this, commandID);
 }
 
-void CRunningScript::ProcessCommands_2100To2199(unsigned __int16 commandID)
+void CRunningScript::ProcessCommands_2100To2199(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__ProcessCommands_2100To2199 )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__ProcessCommands_2100To2199 )(this, commandID);
 }
 
-void CRunningScript::ProcessCommands_2200To2299(unsigned __int16 commandID)
+void CRunningScript::ProcessCommands_2200To2299(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__ProcessCommands_2200To2299 )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__ProcessCommands_2200To2299 )(this, commandID);
 }
 
-void CRunningScript::ProcessCommands_2300To2399(unsigned __int16 commandID)
+void CRunningScript::ProcessCommands_2300To2399(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__ProcessCommands_2300To2399 )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__ProcessCommands_2300To2399 )(this, commandID);
 }
 
-void CRunningScript::ProcessCommands_2400To2499(unsigned __int16 commandID)
+void CRunningScript::ProcessCommands_2400To2499(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__ProcessCommands_2400To2499 )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__ProcessCommands_2400To2499 )(this, commandID);
 }
 
-void CRunningScript::ProcessCommands_2500To2599(unsigned __int16 commandID)
+void CRunningScript::ProcessCommands_2500To2599(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__ProcessCommands_2500To2599 )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__ProcessCommands_2500To2599 )(this, commandID);
 }
 
-void CRunningScript::ProcessCommands_2600To2699(unsigned __int16 commandID)
+void CRunningScript::ProcessCommands_2600To2699(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__ProcessCommands_2600To2699 )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__ProcessCommands_2600To2699 )(this, commandID);
 }
 
 // Processes commands that locate a vehicle
-void CRunningScript::LocateCarCommand(unsigned __int16 commandID)
+void CRunningScript::LocateCarCommand(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__LocateCarCommand )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__LocateCarCommand )(this, commandID);
 }
 
 // Processes commands where char locates car
-void CRunningScript::LocateCharCarCommand(unsigned __int16 commandID)
+void CRunningScript::LocateCharCarCommand(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__LocateCharCarCommand )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__LocateCharCarCommand )(this, commandID);
 }
 
 // Processes commands where char locates another char
-void CRunningScript::LocateCharCharCommand(unsigned __int16 commandID)
+void CRunningScript::LocateCharCharCommand(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__LocateCharCharCommand )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__LocateCharCharCommand )(this, commandID);
 }
 
 // Processes commands where char locates map point
-void CRunningScript::LocateCharCommand(unsigned __int16 commandID)
+void CRunningScript::LocateCharCommand(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__LocateCharCommand )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__LocateCharCommand )(this, commandID);
 }
 
 // Processes commands where char locates object
-void CRunningScript::LocateCharObjectCommand(unsigned __int16 commandID)
+void CRunningScript::LocateCharObjectCommand(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__LocateCharObjectCommand )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__LocateCharObjectCommand )(this, commandID);
 }
 
 // Processes commands where object locates map point
-void CRunningScript::LocateObjectCommand(unsigned __int16 commandID)
+void CRunningScript::LocateObjectCommand(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__LocateObjectCommand )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__LocateObjectCommand )(this, commandID);
 }
 
 // Processes commands that check if object is in area
-void CRunningScript::ObjectInAreaCheckCommand(unsigned __int16 commandID)
+void CRunningScript::ObjectInAreaCheckCommand(eCommandName commandID)
 {
-	((void (__thiscall*)(CRunningScript*, unsigned __int16)) FUNC_CRunningScript__ObjectInAreaCheckCommand )(this, commandID);
+	((void (__thiscall*)(CRunningScript*, eCommandName)) FUNC_CRunningScript__ObjectInAreaCheckCommand )(this, commandID);
 }
 
 // Checks if ped type conforms to valid ped types.

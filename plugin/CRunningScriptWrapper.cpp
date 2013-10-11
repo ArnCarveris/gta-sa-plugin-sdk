@@ -27,7 +27,7 @@ CRunningScriptWrapper::CRunningScriptWrapper()
 }
 
 // Calls a command.
-int CRunningScriptWrapper::CallCommand(__int16 commandID)
+int CRunningScriptWrapper::CallCommand(eCommandName commandID)
 {
 	*(__int16*)this -> CommandSpace = commandID;
 
@@ -38,6 +38,12 @@ int CRunningScriptWrapper::CallCommand(__int16 commandID)
 	this -> InitWrapperVars();
 
 	return result;
+}
+
+// Calls a command.
+int CRunningScriptWrapper::CallCommand(__int16 commandID)
+{
+	return this -> CallCommand((eCommandName)commandID);
 }
 
 // Returns offset of global variable by number of variable
