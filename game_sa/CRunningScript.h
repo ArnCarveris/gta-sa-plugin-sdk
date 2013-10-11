@@ -1,7 +1,7 @@
 #pragma once
 #include "plugin/plugin.h"
-#include "eCommandName.h"
 #include "ePedType.h"
+#include "eCommandName.h"
 
 #define FUNC_CRunningScript__Init 0x4648E0
 #define FUNC_CRunningScript__GetArrayOffsetAndValueOfIndexVariable 0x463CF0
@@ -261,4 +261,4 @@ public:
 };
 #pragma pack(pop)
 
-VALIDATE_SIZE(CRunningScript, 0xE0);
+//VALIDATE_SIZE(CRunningScript, 0xE0);
