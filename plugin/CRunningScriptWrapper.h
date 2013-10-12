@@ -5,10 +5,10 @@
 
 enum eRunningScriptWrapperDataValueType
 {
-	RUNNING_SCRIPT_VALUE_TYPE_INT,			// 4 bytes, integer
-	RUNNING_SCRIPT_VALUE_TYPE_FLOAT,		// 4 bytes, float
-	RUNNING_SCRIPT_VALUE_TYPE_TEXT_LABEL,	// 8 bytes, short string
-	RUNNING_SCRIPT_VALUE_TYPE_STRING		// 16 bytes, long string
+	RUNNING_SCRIPT_VALUE_TYPE_INT = 1,			// 4 bytes, integer
+	RUNNING_SCRIPT_VALUE_TYPE_FLOAT = 2,		// 4 bytes, float
+	RUNNING_SCRIPT_VALUE_TYPE_TEXT_LABEL = 3,	// 8 bytes, short string
+	RUNNING_SCRIPT_VALUE_TYPE_STRING = 4		// 16 bytes, long string
 };
 
 #pragma pack(push, 1)
@@ -93,9 +93,6 @@ public:
 	// Constructor
 	CRunningScriptWrapper::CRunningScriptWrapper();
 
-	// Initializes wrapper variables
-	void CRunningScriptWrapper::InitWrapperVars();
-
 	// Saves returned values to object of type tRunningScriptWrapper_SavedReturnedValuesArray.	
 	// This function may only be called after execution of CallCommand - pushing values past the execution of CallCommand will overwrite values
 	void SaveReturnedValues(tRunningScriptWrapper_SavedReturnedValuesArray& arrayOfSavedReturnedValues);
@@ -145,6 +142,9 @@ public:
 	void CRunningScriptWrapper::PushReturnArguments(eRunningScriptWrapperDataValueType valueType, int count);
 
 private:
+	// Initializes wrapper variables
+	void CRunningScriptWrapper::InitWrapperVars();
+
 	// Pushes string value
 	void CRunningScriptWrapper::PushStringAsVar(const char* value, eRunningScriptWrapperDataValueType valueType, bool bIsReturnedValue);
 
