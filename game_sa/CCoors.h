@@ -4,7 +4,6 @@
 
 #include "plugin\plugin.h"
 #include "CMatrix.h"
-//#include "CPlaceable.h"
 #include "CVector.h"
 
 class PLUGIN_API CCoors : public CMatrix

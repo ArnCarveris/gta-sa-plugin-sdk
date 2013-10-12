@@ -8,7 +8,7 @@ class PLUGIN_API CSimpleCoors
 {
 public:
 	CVector m_vPosn;
-	float m_fAngle;
+	float m_fHeading;
 
 	CSimpleCoors();
 

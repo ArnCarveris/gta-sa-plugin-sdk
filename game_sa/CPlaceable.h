@@ -1,12 +1,12 @@
 #pragma once
 #include "plugin\plugin.h"
-#include "RenderWare.h"
 #include "CSimpleCoors.h"
 #include "CCoors.h"
 
 #pragma pack(push, 4)
 class PLUGIN_API CPlaceable
 {
+public:
 	CSimpleCoors m_Placement;
 	CCoors *m_pCoords;
 	// just a temporary thing

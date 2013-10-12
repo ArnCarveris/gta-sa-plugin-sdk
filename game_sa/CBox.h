@@ -1,5 +1,6 @@
 #pragma once
 
+#include "plugin\plugin.h"
 #include "CVector.h"
 
 #pragma pack(push, 1)
