@@ -1,13 +1,16 @@
 #pragma once
 
+#include "plugin\plugin.h"
 #include "CVector.h"
 #include "CMatrix.h"
 
-class CSimpleCoors
+class PLUGIN_API CSimpleCoors
 {
 public:
 	CVector m_vPosn;
 	float m_fAngle;
+
+	CSimpleCoors();
 
 	void Get(RwMatrix *out); // possibly was operator= ? Idk how R* used this
 	void Get(CMatrix *out);

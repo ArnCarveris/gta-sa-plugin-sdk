@@ -6,6 +6,9 @@
 class PLUGIN_API CVector : public RwV3d
 {
 public:
+	CVector();
+	CVector(float x, float y, float z);
+
 	// Returns length of vector
 	float Magnitude();
 

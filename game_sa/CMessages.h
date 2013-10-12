@@ -32,11 +32,11 @@ struct PreviousBrief
 class PLUGIN_API CMessages
 {
 public:
-	// Brief messages shown in menu. Count: 20
+	// count: 20
 	static PreviousBrief *PreviousBriefs;
-	// Small messages. Count: 8
+	// count: 8
 	static Message *BriefMessages;
-	// Big messages. Count: 7 (for each text style)
+	// count: 7 (for each text style)
 	static BigMessage *BIGMessages;
 	// Returns length of a string
 	static unsigned int GetStringLength(char *string);

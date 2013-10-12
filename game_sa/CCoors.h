@@ -2,13 +2,15 @@
 
 // NOT FINISHED!
 
+#include "plugin\plugin.h"
 #include "CMatrix.h"
+//#include "CPlaceable.h"
 #include "CVector.h"
 
-class CCoors : public CMatrix
+class PLUGIN_API CCoors : public CMatrix
 {
 public:
-	void *m_pPlaceable;
+	class CPlaceable *m_pOwner;
 	class CCoors *m_pPrev;
 	class CCoors *m_pNext;
 

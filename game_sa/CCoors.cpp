@@ -2,12 +2,14 @@
 
 NOINLINE CCoors::CCoors()
 {
-	((void (__thiscall *)(CCoors *))0x54F0C0)(this);
+	PREPARE_FOR_REDIRECTION();
+	//((void (__thiscall *)(CCoors *))0x54F0C0)(this);
 }
 
-CCoors::~CCoors()
+NOINLINE CCoors::~CCoors()
 {
-	((void (__thiscall *)(CCoors *))0x54E8E0)(this);
+	PREPARE_FOR_REDIRECTION();
+	//((void (__thiscall *)(CCoors *))0x54E8E0)(this);
 }
 
 CCoors *CCoors::GetPrev()

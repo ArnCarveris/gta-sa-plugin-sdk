@@ -11,6 +11,16 @@
 #define FUNC_CVector__operatorMultiplicationAssignmentFloat 0x40FEF0
 #define FUNC_CVector__operatorDivisionAssignmentFloat 0x0411A30
 
+NOINLINE CVector::CVector()
+{
+	// dummy
+}
+
+CVector::CVector(float x, float y, float z)
+{
+	((void(__thiscall *)(CVector *, float, float, float))0x420B10)(this, x, y, z);
+}
+
 // Returns length of vector
 float CVector::Magnitude()
 {

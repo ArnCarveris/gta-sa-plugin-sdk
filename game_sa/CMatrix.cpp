@@ -2,7 +2,7 @@
 
 NOINLINE CMatrix::CMatrix()
 {
-
+	// dummy
 }
 
 CMatrix::CMatrix(CMatrix const& matrix)
