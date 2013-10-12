@@ -27,11 +27,11 @@ CRunningScriptWrapper::CRunningScriptWrapper()
 }
 
 // Calls a command.
-int CRunningScriptWrapper::CallCommand(eCommandName commandID)
+char CRunningScriptWrapper::CallCommand(eCommandName commandID)
 {
 	*(__int16*)this -> CommandSpace = commandID;
 
-	int result = this -> ProcessOneCommand();
+	char result = this -> ProcessOneCommand();
 
 	this -> numberOfReturnedValues = this -> pushReturnValueIndex;
 
@@ -41,7 +41,7 @@ int CRunningScriptWrapper::CallCommand(eCommandName commandID)
 }
 
 // Calls a command.
-int CRunningScriptWrapper::CallCommand(__int16 commandID)
+char CRunningScriptWrapper::CallCommand(__int16 commandID)
 {
 	return this -> CallCommand((eCommandName)commandID);
 }

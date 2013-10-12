@@ -98,10 +98,10 @@ public:
 	void SaveReturnedValues(tRunningScriptWrapper_SavedReturnedValuesArray& arrayOfSavedReturnedValues);
 
 	// Calls a command.
-	int CRunningScriptWrapper::CallCommand(eCommandName commandID);
+	char CRunningScriptWrapper::CallCommand(eCommandName commandID);
 
 	// Calls a command.
-	int CRunningScriptWrapper::CallCommand(__int16 commandID);
+	char CRunningScriptWrapper::CallCommand(__int16 commandID);
 
 	// Returns offset of global variable by number of variable
 	static int CRunningScriptWrapper::GetGlobalVariableOffsetByNumber(int variableNum);
