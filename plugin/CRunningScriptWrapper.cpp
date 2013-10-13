@@ -26,7 +26,7 @@ CRunningScriptWrapper::CRunningScriptWrapper()
 	this -> InitWrapperVars();
 }
 
-// Calls a command.
+// Calls a command. Return values: (-1 : invalid command ID, 0: continue, 1: WAIT)
 char CRunningScriptWrapper::CallCommand(eCommandName commandID)
 {
 	*(__int16*)this -> CommandSpace = commandID;
@@ -40,7 +40,7 @@ char CRunningScriptWrapper::CallCommand(eCommandName commandID)
 	return result;
 }
 
-// Calls a command.
+// Calls a command. Return values: (-1 : invalid command ID, 0: continue, 1: WAIT)
 char CRunningScriptWrapper::CallCommand(__int16 commandID)
 {
 	return this -> CallCommand((eCommandName)commandID);

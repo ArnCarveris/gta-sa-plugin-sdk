@@ -12,9 +12,15 @@ list<void (*)()>DeviceResetBeforeList;
 list<void (*)()>DeviceResetAfterList;
 list<void (*)()>DefaultDrawingList;
 list<void (*)()>MenuDrawingList;
+list<void (*)()>PreRenderBeforeList;
 list<void (*)()>PreRenderAfterList;
 list<void (*)()>InitialiseRWList;
 list<void (*)()>ShutdownRWList;
+list<void (*)()>InitGameList;
+list<void (*)()>ReInitGameList;
+list<void (*)()>GameProcessList;
+list<void (*)()>GameProcessBeforeScriptsList;
+list<void (*)()>GameProcessAfterScriptsList;
 
 void Initialise();
 void Shutdown();
@@ -47,6 +53,15 @@ void Initialise()
 	CPatch::RedirectCall(0x53EA03, plugin::Core::PreRenderAfterFuncExe);
 	CPatch::RedirectCall(0x5BD779, plugin::Core::InitialiseRwFuncExe);
 	CPatch::RedirectCall(0x53BC21, plugin::Core::ShutdownRwFuncExe);
+	CPatch::RedirectCall(0x748CFB, plugin::Core::InitGameFuncExe);
+	CPatch::RedirectCall(0x748E09, plugin::Core::ReInitGameFuncExe);
+	CPatch::RedirectCall(0x748E48, plugin::Core::ReInitGameFuncExe);
+	CPatch::RedirectCall(0x53E981, plugin::Core::GameProcessFuncExe);
+	CPatch::RedirectCall(0x440A0D, plugin::Core::GameProcessScriptsFuncExe);
+	CPatch::RedirectCall(0x53BCC9, plugin::Core::GameProcessScriptsFuncExe); // _LoadGame
+	CPatch::RedirectCall(0x53BE8D, plugin::Core::GameProcessScriptsFuncExe); // CGame::ReInitGameObjectVariables()
+	CPatch::RedirectCall(0x53BFC7, plugin::Core::GameProcessScriptsFuncExe); // CGame::Process
+	CPatch::RedirectCall(0x618F05, plugin::Core::GameProcessScriptsFuncExe);
 }
 
 void Shutdown()
@@ -71,6 +86,9 @@ void plugin::Core::RegisterFunc(eFuncType type, tRegisteredFunction func)
 	case FUNC_MENU_DRAWING:
 		MenuDrawingList.push_back(func);
 		break;
+	case FUNC_PRERENDER_BEFORE:
+		PreRenderBeforeList.push_back(func);
+		break;
 	case FUNC_PRERENDER_AFTER:
 		PreRenderAfterList.push_back(func);
 		break;
@@ -79,6 +97,21 @@ void plugin::Core::RegisterFunc(eFuncType type, tRegisteredFunction func)
 		break;
 	case FUNC_SHUTDOWN_RW:
 		ShutdownRWList.push_back(func);
+		break;
+	case FUNC_INIT_GAME:
+		InitGameList.push_back(func);
+		break;
+	case FUNC_RE_INIT_GAME:
+		ReInitGameList.push_back(func);
+		break;
+	case FUNC_GAME_PROCESS:
+		GameProcessList.push_back(func);
+		break;
+	case FUNC_GAME_PROCESS_BEFORE_SCRIPTS:
+		GameProcessBeforeScriptsList.push_back(func);
+		break;
+	case FUNC_GAME_PROCESS_AFTER_SCRIPTS:
+		GameProcessAfterScriptsList.push_back(func);
 		break;
 	}
 }
@@ -190,4 +223,59 @@ PLUGIN_API void plugin::Core::ShutdownRwFuncExe()
 {
 	CALLVOID(0x730900);
 	plugin::Core::ShutdownRwFunc();
+}
+
+PLUGIN_API void plugin::Core::InitGameFunc()
+{
+	for(auto i = InitGameList.begin(); i != InitGameList.end(); ++i)
+		(*i)();
+}
+
+PLUGIN_API void plugin::Core::InitGameFuncExe()
+{
+	CALLVOID(0x53E580); // call LoadTheGame() at WinMain()
+	plugin::Core::InitGameFunc();
+}
+
+PLUGIN_API void plugin::Core::ReInitGameFunc()
+{
+	for(auto i = ReInitGameList.begin(); i != ReInitGameList.end(); ++i)
+		(*i)();
+}
+
+PLUGIN_API void plugin::Core::ReInitGameFuncExe()
+{
+	CALLVOID(0x53C680); // call CGame::InitialiseWhenRestarting() at WinMain()
+	plugin::Core::ReInitGameFunc();
+}
+
+PLUGIN_API void plugin::Core::GameProcessFunc()
+{
+	for(auto i = GameProcessList.begin(); i != GameProcessList.end(); ++i)
+		(*i)();
+}
+
+PLUGIN_API void plugin::Core::GameProcessFuncExe()
+{
+	CALLVOID(0x53BEE0); // call CGame::Process() at Idle()
+	plugin::Core::GameProcessFunc();
+}
+
+PLUGIN_API void plugin::Core::GameProcessScriptsFuncExe()
+{
+	plugin::Core::GameProcessBeforeScriptsFunc();
+	CALLVOID(0x46A000); // call CTheScripts::Process
+	plugin::Core::GameProcessAfterScriptsFunc();
+}
+
+PLUGIN_API void plugin::Core::GameProcessBeforeScriptsFunc()
+{
+	for(auto i = GameProcessBeforeScriptsList.begin(); i != GameProcessBeforeScriptsList.end(); ++i)
+		(*i)();
+}
+
+PLUGIN_API void plugin::Core::GameProcessAfterScriptsFunc()
+{
+	for(auto i = GameProcessAfterScriptsList.begin(); i != GameProcessAfterScriptsList.end(); ++i)
+		(*i)();
 }

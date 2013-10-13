@@ -97,10 +97,10 @@ public:
 	// This function may only be called after execution of CallCommand - pushing values past the execution of CallCommand will overwrite values
 	void SaveReturnedValues(tRunningScriptWrapper_SavedReturnedValuesArray& arrayOfSavedReturnedValues);
 
-	// Calls a command.
+	// Calls a command. Return values: (-1 : invalid command ID, 0: continue, 1: WAIT)
 	char CRunningScriptWrapper::CallCommand(eCommandName commandID);
 
-	// Calls a command.
+	// Calls a command. Return values: (-1 : invalid command ID, 0: continue, 1: WAIT)
 	char CRunningScriptWrapper::CallCommand(__int16 commandID);
 
 	// Returns offset of global variable by number of variable

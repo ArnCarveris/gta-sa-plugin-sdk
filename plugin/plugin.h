@@ -18,48 +18,16 @@
 
 #define FUNC(a) (void (*a)())
 
-#define NOINLINE __declspec(noinline)
 #define PREPARE_FOR_REDIRECTION() __asm { mov eax, -1 }
 #define VALIDATE_SIZE(struc, size) static_assert(sizeof(struc) == size, "Invalid structure size of " #struc)
+#define NOINLINE __declspec(noinline)
 
 typedef void (__cdecl* tRegisteredFunction)();
 
 enum eFuncType
 {
-	FUNC_BEFORE_RESET,      /* calls at 0x7F9788
-	                        /*          0x7F9710
-							/*          0x7F935C
-							/*          0x7F9248
-							/*          0x7F86C2
-							/*          0x7F9A16
-							/*          0x7F839F
-							/*          0x7F8327
-							/*          0x7F81FF
-							/*          0x7F8187
-							/*          0x7F7AA4
-							/*          0x7F8B79
-							/*          0x7F7990
-							/*          0x7F9B43
-							/*          0x7F8C86
-							/*          0x7F87C4
-							*/
-	FUNC_AFTER_RESET,       /* calls at 0x7F9788
-	                        /*          0x7F9710
-							/*          0x7F935C
-							/*          0x7F9248
-							/*          0x7F86C2
-							/*          0x7F9A16
-							/*          0x7F839F
-							/*          0x7F8327
-							/*          0x7F81FF
-							/*          0x7F8187
-							/*          0x7F7AA4
-							/*          0x7F8B79
-							/*          0x7F7990
-							/*          0x7F9B43
-							/*          0x7F8C86
-							/*          0x7F87C4
-							*/
+	FUNC_BEFORE_RESET,     // D3D9 Reset
+	FUNC_AFTER_RESET,
 	FUNC_DRAWING,           /* calls at 0x53E293
 							*/
 	FUNC_MENU_DRAWING,      /* calls at 0x57C2B5
@@ -67,7 +35,12 @@ enum eFuncType
 	FUNC_PRERENDER_BEFORE,
 	FUNC_PRERENDER_AFTER,
 	FUNC_INITIALISE_RW,    // when RenderWare is initialising
-	FUNC_SHUTDOWN_RW       // when RenderWare is closing
+	FUNC_SHUTDOWN_RW,      // when RenderWare is closing
+	FUNC_INIT_GAME,        // when game is loading in first
+	FUNC_RE_INIT_GAME,     // when game is re-loading
+	FUNC_GAME_PROCESS,     // when game is processing
+	FUNC_GAME_PROCESS_BEFORE_SCRIPTS, // before scripts processing
+	FUNC_GAME_PROCESS_AFTER_SCRIPTS   // after scripts processing
 };
 
 enum eGame
@@ -108,6 +81,15 @@ namespace plugin
 		PLUGIN_API void InitialiseRwFuncExe();
 		PLUGIN_API void ShutdownRwFunc();
 		PLUGIN_API void ShutdownRwFuncExe();
+		PLUGIN_API void InitGameFunc();
+		PLUGIN_API void InitGameFuncExe();
+		PLUGIN_API void ReInitGameFunc();
+		PLUGIN_API void ReInitGameFuncExe();
+		PLUGIN_API void GameProcessFunc();
+		PLUGIN_API void GameProcessFuncExe();
+		PLUGIN_API void GameProcessScriptsFuncExe();
+		PLUGIN_API void GameProcessBeforeScriptsFunc();
+		PLUGIN_API void GameProcessAfterScriptsFunc();
 	};
 	namespace System
 	{
