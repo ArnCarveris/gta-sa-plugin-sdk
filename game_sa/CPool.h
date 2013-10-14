@@ -88,12 +88,12 @@ public:
 		int searchTo = this -> m_Size;
 		bool bSearchingFromBeginningDone = false;
 
+		this -> m_Top++;
+
 		while(true)
 		{
 			while(true)
 			{
-				this -> m_Top++;
-
 				if(this -> m_Top == searchTo)
 					break;
 
@@ -105,6 +105,8 @@ public:
 					objectFlags -> seed = objectFlags -> seed ^ (objectFlags -> seed + 1);
 					return &this -> m_Objects[this -> m_Top];
 				}
+
+				this -> m_Top++;
 			}
 
 			this -> m_Top = 0;

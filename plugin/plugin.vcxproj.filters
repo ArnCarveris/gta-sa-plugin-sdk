@@ -114,6 +114,39 @@
     <ClInclude Include="..\game_sa\eCommandName.h">
       <Filter>Header files\game_sa</Filter>
     </ClInclude>
+    <ClInclude Include="..\game_sa\eWeaponType.h">
+      <Filter>Header files\game_sa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game_sa\CPlaceable.h">
+      <Filter>Header files\game_sa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game_sa\CPlaneTrail.h">
+      <Filter>Header files\game_sa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game_sa\CSimpleCoors.h">
+      <Filter>Header files\game_sa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game_sa\CLink.h">
+      <Filter>Header files\game_sa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game_sa\CReference.h">
+      <Filter>Source code files\game_sa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game_sa\CReferences.h">
+      <Filter>Source code files\game_sa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game_sa\CPool.h">
+      <Filter>Header files\game_sa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game_sa\CEntity.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game_sa\eEntityStatus.h">
+      <Filter>Header files\game_sa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game_sa\eEntityType.h">
+      <Filter>Header files\game_sa</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\game_sa\CBox.cpp">
@@ -180,6 +213,24 @@
       <Filter>Source code files\game_sa</Filter>
     </ClCompile>
     <ClCompile Include="..\game_sa\CSprite2d.cpp">
+      <Filter>Source code files\game_sa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game_sa\CPlaceable.cpp">
+      <Filter>Source code files\game_sa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game_sa\CPlaneTrail.cpp">
+      <Filter>Source code files\game_sa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game_sa\CSimpleCoors.cpp">
+      <Filter>Source code files\game_sa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game_sa\CEntity.cpp">
+      <Filter>Source code files\game_sa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game_sa\CReference.cpp">
+      <Filter>Source code files\game_sa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game_sa\CReferences.cpp">
       <Filter>Source code files\game_sa</Filter>
     </ClCompile>
   </ItemGroup>
