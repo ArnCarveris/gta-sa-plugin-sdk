@@ -52,6 +52,17 @@ public:
 		this -> m_ByteMap = NULL;
 		this -> m_Size = 0;
 		this -> m_Top = 0;
+		this -> m_bInitialized = false;
+	}
+
+	// Clears pool
+	void Clear()
+	{
+		if(!this -> m_bInitialized)
+			return;
+
+		for(int i = 0; i < this -> m_Size; i++)
+			this -> m_ByteMap[i].bIsFreeSlot = true;
 	}
 
 	// Returns pointer to object by index
@@ -121,7 +132,14 @@ public:
 			else
 				return NULL;
 		}
+	}
 
+	// Deallocates object
+	void Deallocate(T* pObject)
+	{
+		int idx = pObject - this -> m_Objects;
+
+		this -> m_ByteMap[idx].bIsFreeSlot = true;
 	}
 
 	// Returns SCM handle for object
