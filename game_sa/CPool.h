@@ -1,3 +1,5 @@
+#include "plugin\plugin.h"
+
 struct tPoolObjectFlags
 {
 	char seed : 7;			// used to validate SCM handles
