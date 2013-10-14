@@ -86,7 +86,7 @@ public:
 	{
 		int startSearchFrom = this -> m_Top + 1;
 		int searchTo = this -> m_Size;
-		bool bDearchingFromBeginningDone = false;
+		bool bSearchingFromBeginningDone = false;
 
 		while(true)
 		{
@@ -109,10 +109,10 @@ public:
 
 			this -> m_Top = 0;
 
-			if(!bDearchingFromBeginningDone)
+			if(!bSearchingFromBeginningDone)
 			{
 				searchTo = startSearchFrom;
-				bDearchingFromBeginningDone = true;
+				bSearchingFromBeginningDone = true;
 			}
 			else
 				return NULL;
