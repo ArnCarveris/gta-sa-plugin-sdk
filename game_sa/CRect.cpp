@@ -14,3 +14,23 @@ bool CRect::IsFlipped()
 {
 	return ((bool (__thiscall *)(CRect *))0x404190)(this);
 }
+
+void CRect::Restrict(CRect const& restriction)
+{
+	((void (__thiscall *)(CRect *, CRect const&))0x404200)(this, restriction);
+}
+
+void CRect::Resize(float resizeX, float resizeY)
+{
+	((void (__thiscall *)(CRect *, float, float))0x404260)(this, resizeX, resizeY);
+}
+
+bool CRect::IsPointInside(CVector2D const& point)
+{
+	return ((bool (__thiscall *)(CRect *, CVector2D const&))0x404290)(this, point);
+}
+
+bool CRect::IsCircleInside(CVector2D const& circleCenter, float circleRadius)
+{
+	return ((bool (__thiscall *)(CRect *, CVector2D const&, float))0x4042D0)(this, circleCenter, circleRadius);
+}
