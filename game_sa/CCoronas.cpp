@@ -6,6 +6,8 @@ unsigned __int8& CCoronas::SunBlockedByClouds = *(unsigned __int8 *)0xC3E030;
 bool& CCoronas::bChangeBrightnessImmediately = *(bool *)0xC3E034;
 unsigned __int32& CCoronas::NumRegisteredCoronas = *(unsigned __int32 *)0xC3E038;
 CRegisteredCorona *CCoronas::aCoronas = (CRegisteredCorona *)0xC3E058;
+float& CCoronas::LightsMult = *(float *)0x8D4B5C;
+unsigned __int32& CCoronas::MoonSize = *(unsigned __int32 *)0x8D4B60;
 
 void CCoronas::Init()
 {

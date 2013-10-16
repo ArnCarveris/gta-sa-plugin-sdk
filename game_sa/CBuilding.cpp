@@ -3,13 +3,13 @@
 NOINLINE CBuilding::CBuilding()
 {
 	PREPARE_FOR_REDIRECTION();
-	//((void (__thiscall *)(CEntity *))0x403E00)(this);
+	//((void (__thiscall *)(CBuilding *))0x403E00)(this);
 }
 
 NOINLINE CBuilding::~CBuilding()
 {
 	PREPARE_FOR_REDIRECTION();
-	//((void (__thiscall *)(CEntity *))0x404180)(this);
+	//((void (__thiscall *)(CBuilding *))0x404180)(this);
 }
 
 void CBuilding::ReplaceWithNewModel(int newModelIndex)

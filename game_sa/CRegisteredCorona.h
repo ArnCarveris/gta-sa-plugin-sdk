@@ -6,6 +6,16 @@
 #include "CRGBA.h"
 #include "CEntity.h"
 
+enum eCoronaType
+{
+	CORONATYPE_SHINYSTAR,
+	CORONATYPE_HEADLIGHT,
+	CORONATYPE_MOON,
+	CORONATYPE_REFLECTION,
+	CORONATYPE_HEADLIGHTLINE,
+	CORONATYPE_RING_B = 9
+};
+
 #pragma pack(push,4)
 class PLUGIN_API CRegisteredCorona
 {
