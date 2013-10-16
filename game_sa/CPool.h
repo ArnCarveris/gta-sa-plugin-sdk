@@ -155,7 +155,7 @@ public:
 	{
 		int idx = handle / 256;
 
-		return !this -> m_ByteMap[idx].bIsFreeSlot ? &this -> m_Objects[idx] : NULL;
+		return *(BYTE*)&this -> m_ByteMap[idx] == *(BYTE*)&handle ? &this -> m_Objects[idx] : NULL;
 	}
 };
 #pragma pack(pop)
