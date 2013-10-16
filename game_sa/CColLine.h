@@ -8,9 +8,9 @@ class PLUGIN_API CColLine
 {
 public:
 	CVector m_vStart;
-	float m_fStartSize;
+	float m_Field_C;
 	CVector m_vEnd;
-	float m_fEndSize;
+	float m_Field_1C;
 
 	CColLine(CVector  const& start, CVector  const& end);
 	void Set(CVector  const& start, CVector  const& end);

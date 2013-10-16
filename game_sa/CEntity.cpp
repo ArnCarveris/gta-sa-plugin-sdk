@@ -118,3 +118,133 @@ void CEntity::FlagToDestroyWhenNextProcessed()
 {
 	((void (__thiscall *)(CEntity *))this->vtable[21])(this);
 }
+
+void CEntity::UpdateRwFrame()
+{
+	((void (__thiscall *)(CEntity *))0x532B00)(this);
+}
+
+void CEntity::UpdateRpHAnim()
+{
+	((void (__thiscall *)(CEntity *))0x532B20)(this);
+}
+
+bool CEntity::HasPreRenderEffects()
+{
+	return ((bool (__thiscall *)(CEntity *))0x532B70)(this);
+}
+
+void CEntity::ModifyMatrixForPoleInWind()
+{
+	((void (__thiscall *)(CEntity *))0x532DB0)(this);
+}
+
+void CEntity::PreRenderForGlassWindow()
+{
+	((void (__thiscall *)(CEntity *))0x533240)(this);
+}
+
+void CEntity::SetRwObjectAlpha(int alpha)
+{
+	((void (__thiscall *)(CEntity *, int))0x5332C0)(this, alpha);
+}
+
+CVector CEntity::GetSlotmachineWheelPosn(unsigned int wheelId)
+{
+	return ((CVector (__thiscall *)(CEntity *, unsigned int))0x533380)(this, wheelId);
+}
+
+void CEntity::Initialise2dEffects()
+{
+	((void (__thiscall *)(CEntity *))0x533790)(this);
+}
+
+void CEntity::Destroy2dEffects()
+{
+	((void (__thiscall *)(CEntity *))0x533BF0)(this);
+}
+
+void CEntity::AttachToRwObject(RwObject *object, bool moveToObject)
+{
+	((void (__thiscall *)(CEntity *, RwObject *, bool))0x533ED0)(this, object, moveToObject);
+}
+
+CVector CEntity::GetBoundCentre()
+{
+	return ((CVector (__thiscall *)(CEntity *))0x534250)(this);
+}
+
+void CEntity::GetBoundCentre(CVector& out)
+{
+	((void (__thiscall *)(CEntity *, CVector&))0x534290)(this, out);
+}
+
+bool CEntity::GetIsTouching(CEntity *entity)
+{
+	return ((bool (__thiscall *)(CEntity *, CEntity *))0x5343F0)(this, entity);
+}
+
+bool CEntity::GetIsTouching(CVector const &posn, float radius)
+{
+	return ((bool (__thiscall *)(CEntity *, CVector const &, float))0x5344B0)(this, posn, radius);
+}
+
+bool CEntity::GetIsOnScreen()
+{
+	return ((bool (__thiscall *)(CEntity *))0x534540)(this);
+}
+
+void CEntity::ModifyMatrixForTreeInWind()
+{
+	((void (__thiscall *)(CEntity *))0x534E90)(this);
+}
+
+void CEntity::ModifyMatrixForBannerInWind()
+{
+	((void (__thiscall *)(CEntity *))0x535040)(this);
+}
+
+CColModel *CEntity::GetColModel()
+{
+	return ((CColModel *(__thiscall *)(CEntity *))0x535300)(this);
+}
+
+float CEntity::GetDistanceFromCentreOfMassToBaseOfModel()
+{
+	return ((float (__thiscall *)(CEntity *))0x536BE0)(this);
+}
+
+void CEntity::CleanUpOldReference(CEntity**pEntity)
+{
+	((void (__thiscall *)(CEntity *, CEntity**))0x571A00)(this, pEntity);
+}
+
+void CEntity::ResolveReferences()
+{
+	((void (__thiscall *)(CEntity *))0x571A40)(this);
+}
+
+void CEntity::PruneReferences()
+{
+	((void (__thiscall *)(CEntity *))0x571A90)(this);
+}
+
+void CEntity::RegisterReference(CEntity**pEntity)
+{
+	((void (__thiscall *)(CEntity *, CEntity**))0x571B70)(this, pEntity);
+}
+
+void CEntity::ProcessLightsForEntity()
+{
+	((void (__thiscall *)(CEntity *))0x6FC7A0)(this);
+}
+
+void CEntity::RemoveEscalator()
+{
+	((void (__thiscall *)(CEntity *))0x717900)(this);
+}
+
+bool CEntity::IsEntityOccluded()
+{
+	return ((bool (__thiscall *)(CEntity *))0x71FAE0)(this);
+}

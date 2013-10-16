@@ -82,7 +82,7 @@ void CPlaceable::SetCoors(CCoors *coors)
 	((void (__thiscall *)(CPlaceable *, CCoors *))0x54F610)(this, coors);
 }
 
-void CPlaceable::TransformFromObjectSpace(CVector *out, CVector const& offset)
+CVector CPlaceable::FromObjectSpace(CVector const& offset)
 {
-	((void (__thiscall *)(CPlaceable *, CVector *, CVector const&))0x5334F0)(this, out, offset);
+	return ((CVector (__thiscall *)(CPlaceable *, CVector const&))0x5334F0)(this, offset);
 }

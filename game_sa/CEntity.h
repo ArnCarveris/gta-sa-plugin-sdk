@@ -59,7 +59,7 @@ public:
 	unsigned __int8 m_nNumLodChildrenRendered;
 	unsigned __int8 m_nTypeState;
 	unsigned __int8 m_nType : 3;
-    unsigned __int8 m_nStatus : 5;
+	unsigned __int8 m_nStatus : 5;
 
 	CEntity();
 	~CEntity();
@@ -106,10 +106,10 @@ public:
 	void ModifyMatrixForBannerInWind();
 	CColModel *GetColModel();
 	float GetDistanceFromCentreOfMassToBaseOfModel();
-	void CleanUpOldReference(class CEntity**);
+	void CleanUpOldReference(class CEntity**pEntity);
 	void ResolveReferences();
 	void PruneReferences();
-	void RegisterReference(CEntity**);
+	void RegisterReference(CEntity**pEntity);
 	void ProcessLightsForEntity();
 	void RemoveEscalator();
 	bool IsEntityOccluded();

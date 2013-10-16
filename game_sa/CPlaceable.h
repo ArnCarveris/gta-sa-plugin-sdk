@@ -6,11 +6,11 @@
 #pragma pack(push, 4)
 class PLUGIN_API CPlaceable
 {
+protected:
+	void **vtable;
 public:
 	CSimpleCoors m_Placement;
 	CCoors *m_pCoords;
-	// just a temporary thing
-	virtual void _F()=0;
 
 	CPlaceable();
 	~CPlaceable();
@@ -30,7 +30,7 @@ public:
 	void CreateCoors();
 	void CreateL1Coors();
 	void SetCoors(CCoors *coors);
-	void TransformFromObjectSpace(CVector *dst, CVector const& offset);
+	CVector FromObjectSpace(CVector const& offset);
 };
 #pragma pack(pop)
 

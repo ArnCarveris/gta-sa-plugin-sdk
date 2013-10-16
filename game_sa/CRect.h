@@ -10,7 +10,7 @@ public:
 
 	/* CRect class describes a rectangle.
 
-	      A(X1;Y1)-----------------------|
+		  A(X1;Y1)-----------------------|
 		  |                               |
 		  |                               |
 		  |                               |

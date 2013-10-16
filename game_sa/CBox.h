@@ -7,9 +7,9 @@
 class PLUGIN_API CBox
 {
 public:
-	CVector sup;
-	CVector inf;
+	CVector m_vSup;
+	CVector m_vInf;
 
-	void Set(CVector  const& _sup, CVector  const& _inf);
+	void Set(CVector  const& sup, CVector  const& inf);
 };
 #pragma pack(pop)

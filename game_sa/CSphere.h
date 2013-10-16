@@ -7,9 +7,9 @@
 class PLUGIN_API CSphere
 {
 public:
-	CVector center;
-	float radius;
+	CVector m_vCenter;
+	float m_fRadius;
 
-	void Set(float _radius, CVector  const& _center);
+	void Set(float radius, CVector  const& center);
 };
 #pragma pack(pop)
