@@ -114,4 +114,4 @@ public:
 };
 #pragma pack(pop)
 
-static CText& TheText = *(CText*)0xC1B340;
+extern PLUGIN_API CText& TheText;

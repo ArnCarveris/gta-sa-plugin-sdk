@@ -147,7 +147,7 @@ public:
 	{
 		int idx = pObject - this -> m_Objects;
 
-		return idx * 256 + this -> m_ByteMap[idx];
+		return idx * 256 + this -> m_ByteMap[idx].seed;
 	}
 
 	// Returns pointer to object by SCM handle

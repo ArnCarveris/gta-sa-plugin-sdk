@@ -1,5 +1,8 @@
+#pragma once
 #include "plugin\plugin.h"
+#include "CPed.h"
 #include "CVector.h"
+
 #define FUNC_GTASA_crc32fromBlock 0x53CED0
 #define FUNC_GTASA_crc32FromString 0x53CF00
 #define FUNC_GTASA_crc32FromUpcaseString 0x53CF30
@@ -7,6 +10,7 @@
 
 #define FUNC_FindPlayerCoors 0x56E010
 #define FUNC_GetRandomBool 0x4D9C80
+#define FUNC_FindPlayerPed 0x56E210
 
 // Calculates GTA SA CRC32 from block of memory
 static auto GTASA_crc32fromBlock = (unsigned __int32 (__cdecl*)(void *block, size_t num))FUNC_GTASA_crc32fromBlock;
@@ -26,3 +30,6 @@ static auto FindPlayerCoors = (void (__cdecl*)(CVector *outPoint, int playerInde
 // Returns bool depending on randomized value.
 // Uses probability value whereas 0.0 means always FALSE, 1.0 or more means always TRUE.
 static auto GetRandomBool = (bool (__cdecl*)(float probability))FUNC_GetRandomBool;
+
+// Returns pointer to player ped
+PLUGIN_API CPed* FindPlayerPed(int index = -1);

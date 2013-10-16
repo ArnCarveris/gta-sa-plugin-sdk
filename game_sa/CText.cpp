@@ -129,4 +129,4 @@ void CText::getMissionTableName(char *outStr)
 	( (void (__thiscall*)(CText*, char *)) FUNC_CText__getMissionTableName ) (this, outStr);
 }
 
-// PLUGIN_API CText& TheText = *(CText*)VAR_TheText;
+CText& TheText = *(CText*)VAR_TheText;
