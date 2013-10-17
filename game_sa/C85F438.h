@@ -21,5 +21,6 @@ class PLUGIN_API C85F438 : public CDummyAudio
 	CSound *dwordA0;
 	CSound *dwordA4;
 };
+#pragma pack(pop)
 
 VALIDATE_SIZE(C85F438, 0xA8);

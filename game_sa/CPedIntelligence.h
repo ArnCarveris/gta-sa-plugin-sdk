@@ -43,5 +43,6 @@ class PLUGIN_API CPedIntelligence
 	__int32 field_28C;
 	__int32 field_290;
 };
+#pragma pack(pop)
 
 VALIDATE_SIZE(CPedIntelligence, 0x294);

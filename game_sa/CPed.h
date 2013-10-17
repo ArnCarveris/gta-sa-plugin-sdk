@@ -208,7 +208,7 @@ class PLUGIN_API CPed : public CPhysical
 	__int32 field_744;
 	__int32 field_748;
 	__int32 field_74C;
-	__int32             m_dwTimeForBloodFootpr__int32s;
+	__int32             m_dwTimeForBloodFootprints;
 	__int8              m_nBodypartToRemove;
 	__int8 field_755;
 	__int16             m_wMoneyCount;
@@ -229,8 +229,7 @@ class PLUGIN_API CPed : public CPhysical
 	__int16             m_wSpecialModelIndex;
 	__int8 field_796[2];
 	__int32 field_798;
-	class CPed         *m_pTargetedPed;
 };
 #pragma pack(pop)
 
-VALIDATE_SIZE(CPed, 0x7A0);
+VALIDATE_SIZE(CPed, 0x79C);
