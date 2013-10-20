@@ -1,4 +1,5 @@
 #include "CRunningScriptWrapper.h"
+#include "game_sa\CTheScripts.h"
 
 // Constructor
 tRunningScriptWrapper_SavedReturnedValuesArray::tRunningScriptWrapper_SavedReturnedValuesArray()
