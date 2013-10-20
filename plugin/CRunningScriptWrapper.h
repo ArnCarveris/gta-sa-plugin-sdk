@@ -112,28 +112,28 @@ public:
 	///////// Functions to pass arguments /////////
 
 	// Pushes boolean argument
-	void CRunningScriptWrapper::PushBoolean(bool value, bool bIsReturnedValue);
+	void CRunningScriptWrapper::PushBoolean(bool value, bool bIsReturnedValue = true);
 
 	// Pushes float value
-	void CRunningScriptWrapper::PushFloat(float value, bool bIsReturnedValue);
+	void CRunningScriptWrapper::PushFloat(float value, bool bIsReturnedValue = true);
 
 	// Pushes integer value
-	void CRunningScriptWrapper::PushInt(__int32 value, bool bIsReturnedValue);
+	void CRunningScriptWrapper::PushInt(__int32 value, bool bIsReturnedValue = true);
 
 	// Pushes a pointer
-	void CRunningScriptWrapper::PushPointer(void* value, bool bIsReturnedValue);
+	void CRunningScriptWrapper::PushPointer(void* value, bool bIsReturnedValue = true);
 
 	// Pushes a short string value
-	void CRunningScriptWrapper::PushShortString(const char* value, bool bIsReturnedValue);
+	void CRunningScriptWrapper::PushShortString(const char* value, bool bIsReturnedValue = true);
 
 	// Pushes a long string value
-	void CRunningScriptWrapper::PushLongString(const char* value, bool bIsReturnedValue);
+	void CRunningScriptWrapper::PushLongString(const char* value, bool bIsReturnedValue = true);
 
 	// Pushes a varlen string
 	void CRunningScriptWrapper::PushVarlenString(const char* value);
 
 	// Push a global variable value
-	void CRunningScriptWrapper::PushGlobalVariable(int globalVarOffset, eRunningScriptWrapperDataValueType valueType, bool bIsReturnedValue);
+	void CRunningScriptWrapper::PushGlobalVariable(int globalVarOffset, eRunningScriptWrapperDataValueType valueType, bool bIsReturnedValue = true);
 
 	// Pushes a return argument
 	void CRunningScriptWrapper::PushReturnArgument(eRunningScriptWrapperDataValueType valueType);
