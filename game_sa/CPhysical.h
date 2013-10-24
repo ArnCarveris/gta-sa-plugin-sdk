@@ -11,7 +11,7 @@ class PLUGIN_API CPhysical : public CEntity
 {
 public:
 	__int32 field_38;
-	__int32 field_3C;
+	unsigned __int32 m_dwLastCollisionTime;
 	/* https://code.google.com/p/mtasa-blue/source/browse/tags/1.3.4/MTA10/game_sa/CPhysicalSA.h */
 	unsigned __int32 b0x01 : 1; // 64
 	unsigned __int32 m_bApplyGravity : 1;
@@ -72,7 +72,7 @@ public:
 	CVector          m_vLastCollisionPosn;
 	unsigned __int16 m_wDamagedPart;
 	__int16 field_FA;
-	CEntity         *m_pAttachedTo;
+	class CPhysical *m_pAttachedTo;
 	CVector          m_vAttachOffset;
 	CVector          m_vAttachRotation;
 	CQuaternion      m_qAttachRotation;
@@ -87,7 +87,28 @@ public:
 	// originally virtual functions
 	void ProcessEntityCollision(CEntity *entity, CColPoint *point);
 
-
+	// functions
+	void RemoveAndAdd();
+	void AddToMovingList();
+	void RemoveFromMovingList();
+	void ApplyMoveForce(float x, float y, float z);
+	void ApplyTurnForce(float x1, float y1, float z1, float x2, float y2, float z2);
+	// opcode 07D5
+	void SetVelocityInDirection(float dir_x, float dir_y, float dir_z, float vel_x, float vel_y, float vel_z, bool unk);
+	void ApplyMoveSpeed();
+	void ApplyTurnSpeed();
+	void ApplyFriction();
+	void ApplyFrictionMoveForce(float x, float y, float z);
+	void ApplyFrictionTurnForce(float x1, float y1, float z1, float x2, float y2, float z2);
+	// stores entity into m_apCollidedEntities array.
+	void AddCollisionRecord(CEntity *collidedEntity);
+	// checks if physical is collided with this entity
+	bool GetHasCollidedWith(CEntity *entity);
+	// removes entity from m_apCollidedEntities array.
+	void RemoveRefsToEntity(CEntity *entity);
+	void ApplyAirResistance();
+	class CPhysical *Attach(CPhysical *attachTo, float offsetX, float offsetY, float offsetZ, float rotX, float rotY, float rotZ);
+	void Detach(float x, float y, float z, bool applyTurnForce);
 };
 #pragma pack(pop)
 
