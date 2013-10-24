@@ -1,3 +1,4 @@
+#pragma once
 #include "plugin\plugin.h"
 
 struct tPoolObjectFlags
@@ -155,7 +156,7 @@ public:
 	{
 		int idx = handle / 256;
 
-		return *(BYTE*)&this -> m_ByteMap[idx] == *(BYTE*)&handle ? &this -> m_Objects[idx] : NULL;
+		return idx < this -> m_Size && *(BYTE*)&this -> m_ByteMap[idx] == *(BYTE*)&handle ? &this -> m_Objects[idx] : NULL;
 	}
 };
 #pragma pack(pop)
