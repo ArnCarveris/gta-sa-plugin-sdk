@@ -144,7 +144,7 @@ public:
 	}
 
 	// Returns SCM handle for object
-	int GetHandleOfObject(T* pObject)
+	int GetHandleByPointer(T* pObject)
 	{
 		int idx = pObject - this -> m_Objects;
 
@@ -152,7 +152,7 @@ public:
 	}
 
 	// Returns pointer to object by SCM handle
-	T* GetObjectByHandle(int handle)
+	T* AtHandle(int handle)
 	{
 		int idx = handle / 256;
 
