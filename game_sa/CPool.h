@@ -67,7 +67,7 @@ public:
 	}
 
 	// Returns pointer to object by index
-	T* atIndex(int idx)
+	T* AtIndex(int idx)
 	{
 		if(this -> m_ByteMap[idx].seed)
 		{

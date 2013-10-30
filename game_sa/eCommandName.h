@@ -1,4 +1,5 @@
 #pragma once
+
 enum eCommandName : __int32
 {
 	COMMAND_NOP                                                = 0x0000,
@@ -204,8 +205,8 @@ enum eCommandName : __int32
 	COMMAND_VAR_FLOAT                                          = 0x00C8,
 	COMMAND_LVAR_INT                                           = 0x00C9,
 	COMMAND_LVAR_FLOAT                                         = 0x00CA,
-
-
+	COMMAND__OPCODE_00CB                                       = 0x00CB,
+	COMMAND__OPCODE_00CC                                       = 0x00CC,
 	COMMAND_REPEAT                                             = 0x00CD,
 	COMMAND_ENDREPEAT                                          = 0x00CE,
 	COMMAND_IF                                                 = 0x00CF,
@@ -1450,30 +1451,4 @@ enum eCommandName : __int32
 	COMMAND_GET_OBJECT_ROTATION_VELOCITY                       = 0x05A6,
 	COMMAND_ADD_VELOCITY_RELATIVE_TO_OBJECT_VELOCITY           = 0x05A7,
 	COMMAND_GET_OBJECT_SPEED                                   = 0x05A8,
-	COMMAND_IS_MISSION_SKIP                                    = 0x05A9,
-	COMMAND_SET_IN_AMMUNATION                                  = 0x05AA,
-	COMMAND_DO_SAVE_GAME                                       = 0x05AB,
-	COMMAND_IS_RETRY                                           = 0x05AC,
-	COMMAND_DUMMY                                              = 0x05AD,
-	COMMAND_MARK_CUTSCENE_START                                = 0x05AE,
-	COMMAND_MARK_CUTSCENE_END                                  = 0x05AF,
-	COMMAND_CUTSCENE_SCROLL                                    = 0x05B0,
-	COMMAND_SET_LVAR_TEXT_LABEL_TO_LVAR_TEXT_LABEL             = 0x05B1,
-	COMMAND_SET_VAR_TEXT_LABEL_TO_LVAR_TEXT_LABEL              = 0x05B2,
-	COMMAND_SET_LVAR_TEXT_LABEL_TO_VAR_TEXT_LABEL              = 0x05B3,
-	COMMAND_VAR_TEXT_LABEL                                     = 0x05B4,
-	COMMAND_LVAR_TEXT_LABEL                                    = 0x05B5,
-	COMMAND_IS_TEXT_LABEL_VAR_EQUAL_TO_TEXT_LABEL              = 0x05B6,
-	COMMAND_IS_TEXT_LABEL_LVAR_EQUAL_TO_TEXT_LABEL             = 0x05B7,
-	COMMAND_IS_TEXT_LABEL_VAR_EQUAL_TO_TEXT_LABEL_VAR          = 0x05B8,
-	COMMAND_IS_TEXT_LABEL_LVAR_EQUAL_TO_TEXT_LABEL_LVAR        = 0x05B9,
-	COMMAND_IS_TEXT_LABEL_VAR_EQUAL_TO_TEXT_LABEL_LVAR         = 0x05BA,
-	COMMAND_DO_2D_LINES_INTERSECT                              = 0x05BB,
-	COMMAND_GET_2D_LINES_INTERSECT_POINT                       = 0x05BC,
-	COMMAND_IS_2D_POINT_IN_TRIANGLE                            = 0x05BD,
-	COMMAND_IS_2D_POINT_IN_RECTANGLE_ON_LEFT_SIDE_OF_LINE      = 0x05BE,
-	COMMAND_IS_2D_POINT_ON_LEFT_SIDE_OF_2D_LINE                = 0x05BF,
-	COMMAND_CHAR_LOOK_AT_OBJECT_ALWAYS                         = 0x05C0,
-	COMMAND_APPLY_COLLISION_ON_OBJECT                          = 0x05C1,
-	COMMAND_SAVE_STRING_TO_DEBUG_FILE                          = 0x05C2,
 };

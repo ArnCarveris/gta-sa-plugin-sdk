@@ -18,7 +18,7 @@
 
 #define FUNC(a) (void (*a)())
 
-#define PREPARE_FOR_REDIRECTION() __asm { mov eax, -1 }
+#define PREPARE_FOR_REDIRECTION() const char* __GFDIKGJDSFSF__ = __FUNCTION__; __asm { mov eax, __GFDIKGJDSFSF__ }
 #define VALIDATE_SIZE(struc, size) static_assert(sizeof(struc) == size, "Invalid structure size of " #struc)
 #define NOINLINE __declspec(noinline)
 
