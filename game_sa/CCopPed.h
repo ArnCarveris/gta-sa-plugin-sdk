@@ -7,6 +7,7 @@
 #pragma pack(push, 4)
 class PLUGIN_API CCopPed : public CPed
 {
+public:
 	__int32 field_79C;
 	eCopType       m_dwCopType;
 	__int32 field_7A4;

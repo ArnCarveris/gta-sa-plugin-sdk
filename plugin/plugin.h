@@ -61,6 +61,8 @@ public:
 	int reserved[2];
 };
 
+class CVehicle;
+
 namespace plugin
 {
 	namespace Core
@@ -96,5 +98,12 @@ namespace plugin
 		PLUGIN_API CPlugin const * RegisterPlugin(char *name, char *author, char *filename, char *version, unsigned int versionId, 
 			unsigned int game, void *additionalData);
 		PLUGIN_API CPlugin const * GetPluginByName(char *name);
+	};
+	namespace StructPlugins
+	{
+		// returns plugin index
+		PLUGIN_API unsigned int RegisterVehiclePlugin(unsigned int size, unsigned int userId, void *constructor, void *destructor);
+		PLUGIN_API void *GetVehiclePlugin(CVehicle *vehicle, unsigned int id);
+		PLUGIN_API void *FindVehiclePluginByUserId(CVehicle *vehicle, unsigned int userId);
 	};
 };

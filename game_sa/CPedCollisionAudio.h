@@ -3,11 +3,11 @@
 #include "plugin\plugin.h"
 #include "CDummyAudio.h"
 #include "CSound.h"
-#include "C85F438.h"
 
 #pragma pack(push, 1)
 class PLUGIN_API CPedCollisionAudio : public CDummyAudio
 {
+public:
   __int8 field_7C;
   __int8 field_7D;
   __int16 field_7E;
@@ -21,7 +21,7 @@ class PLUGIN_API CPedCollisionAudio : public CDummyAudio
   CSound *field_9C;
   __int32 field_A0;
   CSound *field_A4;
-  C85F438 m_85F438;
+  __int8 m_85F438[0xA8];
   CSound *field_150;
   float field_154;
   float field_158;

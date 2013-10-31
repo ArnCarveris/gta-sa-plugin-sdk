@@ -73,14 +73,9 @@ public:
 	static void SetOutlinePosition(short value);
 	// toggles character proportions in text
 #ifdef SetProp
-#define SET_PROP_USED
 #undef SetProp
 #endif
 	static void SetProp(bool on);
-#ifdef SET_PROP_USED
-#undef SET_PROP_USED
-#define SetProp SetPropA
-#endif
 	// setups text background
 	static void SetBackground(bool background, bool backgroundOnlyText);
 	// sets background color

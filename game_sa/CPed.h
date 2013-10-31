@@ -16,6 +16,7 @@
 #pragma pack(push, 1)
 class PLUGIN_API CPed : public CPhysical
 {
+public:
 	CPedCollisionAudio  m_CollisionAudio;
 	CPedVoice           m_PedVoice;
 	CWeaponAudio        m_WeaponAudio;

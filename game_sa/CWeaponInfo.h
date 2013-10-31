@@ -10,6 +10,7 @@
 #pragma pack(push, 4)
 class PLUGIN_API CWeaponInfo
 {
+public:
 	eWeaponType m_eWeaponType;
 	float m_fTargetRange;
 	float m_fWeaponRange;
@@ -48,7 +49,7 @@ class PLUGIN_API CWeaponInfo
 	// static variables
 
 	// weapon names array. Count: MAX_WEAPON_NAMES(50)
-	static char *ms_aWeaponNames;
+	static char **ms_aWeaponNames;
 
 	// static functions
 

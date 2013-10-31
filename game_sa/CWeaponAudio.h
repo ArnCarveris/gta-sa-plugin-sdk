@@ -7,6 +7,7 @@
 #pragma pack(push, 1)
 class PLUGIN_API CWeaponAudio : public CDummyAudio
 {
+public:
 	__int8 field_7C;
 	__int8 field_7D;
 	__int8 field_7E;

@@ -2,8 +2,30 @@
 #include <d3d9.h>
 #include <list>
 #include "patch\CPatch.h"
+#include "game_sa\CPool.h"
+#include "game_sa\CVehicle.h"
 
 using namespace std;
+
+void AllocateVehicleAdditional();
+
+void **vehicleAdditional;
+unsigned int vehiclePluginsSize;
+void **pedAdditional;
+unsigned int pedPluginsSize;
+void **objectAdditional;
+unsigned int objectPluginsSize;
+
+class CStructPlugin
+{
+public:
+	unsigned int size;
+	unsigned int userId;
+	void *constructor;
+	void *destructor;
+};
+
+list<CStructPlugin*>vehiclePlugins;
 
 #define ProcessOneCommand(script) ((void (__thiscall *)(CRunningScript *))0x469EB0)(script);
 
@@ -63,6 +85,77 @@ void Initialise()
 	CPatch::RedirectCall(0x53BFC7, plugin::Core::GameProcessScriptsFuncExe); // CGame::Process
 	CPatch::RedirectCall(0x618F05, plugin::Core::GameProcessScriptsFuncExe);
 }
+
+// vehicle additional data
+
+void AllocateVehicleAdditional()
+{
+	vehicleAdditional = new void*[(*(CPool<CVehicle> **)0xB74494)->m_Size];
+	vehiclePluginsSize = 0;
+}
+
+void ReleaseVehicleAdditional()
+{
+	delete vehicleAdditional;
+	for(auto i = vehiclePlugins.begin(); i != vehiclePlugins.end(); ++i)
+		delete i._Ptr->_Myval;
+}
+
+unsigned int plugin::StructPlugins::RegisterVehiclePlugin(unsigned int size, unsigned int userId, void *constructor, void *destructor)
+{
+	CStructPlugin *plugin = new CStructPlugin;
+	plugin->size = size;
+	plugin->userId = userId;
+	plugin->constructor = constructor;
+	plugin->destructor = destructor;
+	vehiclePlugins.push_back(plugin);
+	unsigned int result = vehiclePluginsSize;
+	vehiclePluginsSize += size;
+	return result;
+}
+
+void *plugin::StructPlugins::GetVehiclePlugin(CVehicle *vehicle, unsigned int id)
+{
+	unsigned int vehicleId = ((unsigned int)vehicle - (unsigned int)(*(CPool<CVehicle> **)0xB74494)->m_Objects) / 0xA18;
+	return (void *)((unsigned int)vehicleAdditional[vehicleId] + id);
+}
+
+void *FindVehiclePluginByUserId(CVehicle *vehicle, unsigned int userId)
+{
+	unsigned int vehicleId = ((unsigned int)vehicle - (unsigned int)(*(CPool<CVehicle> **)0xB74494)->m_Objects) / 0xA18;
+	unsigned int size = 0;
+	for(auto i = vehiclePlugins.begin(); i != vehiclePlugins.end(); ++i)
+	{
+		if(i._Ptr->_Myval->userId == userId)
+			return (void *)((unsigned int)vehicleAdditional[vehicleId] + size);
+		size += i._Ptr->_Myval->size;
+	}
+	return NULL;
+}
+
+void __fastcall OnVehicleConstructor(CVehicle *vehicle)
+{
+	unsigned int vehicleId = ((unsigned int)vehicle - (unsigned int)(*(CPool<CVehicle> **)0xB74494)->m_Objects) / 0xA18;
+	vehicleAdditional[vehicleId] = new __int8[vehiclePluginsSize];
+	unsigned int size = 0;
+	for(auto i = vehiclePlugins.begin(); i != vehiclePlugins.end(); ++i)
+	{
+		((void (*)(void *))i._Ptr->_Myval->constructor)((void *)((unsigned int)vehicleAdditional[vehicleId] + size));
+		size += i._Ptr->_Myval->size;
+	}
+};
+
+void __fastcall OnVehicleDestructor(CVehicle *vehicle)
+{
+	unsigned int vehicleId = ((unsigned int)vehicle - (unsigned int)(*(CPool<CVehicle> **)0xB74494)->m_Objects) / 0xA18;
+	unsigned int size = 0;
+	for(auto i = vehiclePlugins.begin(); i != vehiclePlugins.end(); ++i)
+	{
+		((void (*)(void *))i._Ptr->_Myval->destructor)((void *)((unsigned int)vehicleAdditional[vehicleId] + size));
+		size += i._Ptr->_Myval->size;
+	}
+	delete vehicleAdditional[vehicleId];
+};
 
 void Shutdown()
 {

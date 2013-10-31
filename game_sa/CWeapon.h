@@ -6,6 +6,7 @@
 #pragma pack(push, 4)
 class PLUGIN_API CWeapon
 {
+public:
 	eWeaponType m_Type;
 	unsigned __int32 m_dwState;
 	unsigned __int32 m_dwAmmoInClip;

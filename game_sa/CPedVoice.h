@@ -7,6 +7,7 @@
 #pragma pack(push, 1)
 class PLUGIN_API CPedVoice : public CDummyAudio
 {
+public:
 	__int8 field_7C[20];
 	__int8 field_90;
 	__int8 field_91;

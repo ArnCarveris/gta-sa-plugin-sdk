@@ -6,6 +6,7 @@
 #pragma pack(push, 4)
 class PLUGIN_API CPedIK
 {
+public:
 	class CPed *m_pPed;
 	LimbOrienation m_TorsoOrien;
 	float m_fSlopePitch;

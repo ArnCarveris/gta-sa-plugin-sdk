@@ -5,6 +5,7 @@
 #pragma pack(push, 4)
 class PLUGIN_API LimbOrienation
 {
+public:
 	float m_fYaw;
 	float m_fPitch;
 };

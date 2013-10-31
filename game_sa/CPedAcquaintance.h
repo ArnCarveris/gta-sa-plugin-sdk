@@ -5,6 +5,7 @@
 #pragma pack(push, 4)
 class PLUGIN_API CPedAcquaintance
 {
+public:
 	unsigned __int32 m_dwRespect;
 	unsigned __int32 m_dwLike;
 	unsigned __int32 field_8;

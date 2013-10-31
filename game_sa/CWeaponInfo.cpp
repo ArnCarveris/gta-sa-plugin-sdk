@@ -10,7 +10,7 @@ CWeaponInfo::~CWeaponInfo()
 	((void (__thiscall *)(CWeaponInfo *))0x743C40)(this);
 }
 
-char *CWeaponInfo::ms_aWeaponNames = (char *)0x8D6150;
+char **CWeaponInfo::ms_aWeaponNames = (char **)0x8D6150;
 
 void CWeaponInfo::LoadWeaponData()
 {

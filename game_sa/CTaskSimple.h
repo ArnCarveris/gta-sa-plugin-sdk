@@ -5,6 +5,7 @@
 #pragma pack(push, 4)
 class PLUGIN_API CTaskSimple
 {
+public:
   void *vmt;
   class CTaskSimple *m_pParentTask;
 };
