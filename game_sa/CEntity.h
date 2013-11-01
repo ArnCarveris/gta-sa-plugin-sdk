@@ -113,6 +113,8 @@ public:
 	void ProcessLightsForEntity();
 	void RemoveEscalator();
 	bool IsEntityOccluded();
+	// calls RpAnimBlendClumpUpdateAnimations()
+	void UpdateAnimations();
 };
 #pragma pack(pop)
 

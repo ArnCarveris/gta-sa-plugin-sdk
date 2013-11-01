@@ -27,6 +27,11 @@ eWeaponType CWeaponInfo::FindWeaponType(char *name)
 	return ((eWeaponType (__cdecl *)(char *))0x743D10)(name);
 }
 
+eWeaponFire CWeaponInfo::FindWeaponFireType(char *name)
+{
+	return ((eWeaponFire (__cdecl *)(char *))0x5BCF30)(name);
+}
+
 void CWeaponInfo::Initialise()
 {
 	((void (__cdecl *)())0x5BF750)();

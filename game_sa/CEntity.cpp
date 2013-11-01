@@ -248,3 +248,8 @@ bool CEntity::IsEntityOccluded()
 {
 	return ((bool (__thiscall *)(CEntity *))0x71FAE0)(this);
 }
+
+void CEntity::UpdateAnimations()
+{
+	((void (__thiscall *)(CEntity *))0x535F00)(this);
+}
