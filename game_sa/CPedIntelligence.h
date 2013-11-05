@@ -5,10 +5,13 @@
 #include "CEventManager.h"
 #include "CEntityScanner.h"
 #include "CAiTimer.h"
+#include "CTaskSimpleUseGun.h"
+#include "CTaskSimpleJetpack.h"
 
 #pragma pack(push, 1)
 class PLUGIN_API CPedIntelligence
 {
+public:
 	class CPed *m_pPed;
 	CTaskManager m_TaskMgr;
 	__int8 field_34[52];
@@ -42,6 +45,9 @@ class PLUGIN_API CPedIntelligence
 	__int32 field_288;
 	__int32 field_28C;
 	__int32 field_290;
+
+	CTaskSimpleJetpack *GetJetpackTask();
+	CTaskSimpleUseGun *GetUseGunTask();
 };
 #pragma pack(pop)
 

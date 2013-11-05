@@ -44,3 +44,8 @@ CPed * FindPlayerPed(int playerId)
 {
 	return ((CPed *(__cdecl *)(int))0x56E210)(playerId);
 }
+
+bool InTwoPlayersMode()
+{
+	return ((bool (__cdecl *)())0x441390)();
+}

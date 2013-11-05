@@ -17,6 +17,8 @@ public:
 	unsigned __int8 field_16;
 	unsigned __int8 field_17;
 	void *m_pParticle; // CParticle *
+
+	bool HasWeaponAmmoToBeUsed();
 };
 #pragma pack(pop)
 

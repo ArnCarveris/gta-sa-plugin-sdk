@@ -22,3 +22,5 @@ PLUGIN_API float FindPlayerHeading(int playerId);
 PLUGIN_API float FindPlayerHeight();
 // returns player ped
 PLUGIN_API CPed * FindPlayerPed(int playerId);
+// 2 players are playing
+PLUGIN_API bool InTwoPlayersMode();

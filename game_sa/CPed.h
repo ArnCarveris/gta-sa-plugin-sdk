@@ -12,8 +12,10 @@
 #include "CPedAcquaintance.h"
 #include "CPedIK.h"
 #include "CWeapon.h"
+#include "CVector2D.h"
+#include "eWeaponType.h"
 
-#pragma pack(push, 1)
+#pragma pack(push, 4)
 class PLUGIN_API CPed : public CPhysical
 {
 public:
@@ -145,11 +147,9 @@ public:
 	CPedIntelligence   *m_pIntelligence;
 	CPlayerData        *m_pPlayerData;
 	unsigned __int8     m_dwUsageType;
-	__int8 _pad0[3];
 	AnimBlendFrameData *m_apBones[19];
 	unsigned __int32    m_dwAnimGroup;
-	__int32 field_4D8;
-	__int32 field_4DC;
+	CVector2D           m_vAnimMovingShiftLocal;
 	CPedAcquaintance    m_Acquaintance;
 	RwObject           *m_pWeaponObject;
 	RwFrame            *m_pGunflashObject;
@@ -161,39 +161,37 @@ public:
 	__int16 field_50A;
 	CPedIK              m_PedIK;
 	__int32 field_52C;
-	__int32             m_nState;
-	__int32             m_dwAnimToPlay;
+	__int32             m_dwState;
+	__int32             m_dwMoveState;
 	__int32 field_538;
 	__int32 field_53C;
 	float               m_fHealth;
 	float               m_fMaxHealth;
 	float               m_fArmour;
 	__int32 field_54C;
-	__int32 field_550;
-	float field_554;
+	CVector2D           m_vAnimMovingShift;
 	float               m_fCurrentRotation;
 	float               m_fAimingRotation;
 	float               m_fHeadingChangeRate;
-	__int32             m_dwMovingState;
+	__int32 field_564;
 	__int32 field_568;
 	CVector field_56C;
 	CVector field_578;
 	CEntity            *m_pContactEntity;
 	float field_588;
-	void               *m_pVehicle; // CVehicle *
+	class CVechicle    *m_pVehicle;
 	__int32 field_590;
 	__int32 field_594;
 	__int32             m_nPedType;
 	void               *m_pStats; // CPedStat *
 	CWeapon             m_aWeapons[13];
-	__int32 field_70C;
-	__int32 field_710;
-	__int32 field_714;
-	__int8              m_nActiveWeaponSlot;
-	__int8 field_719;
-	__int8              m_nWeaponAccuracy;
-	__int8 field_71B;
-	void               *m_pTargetedObject; // CObject *
+	eWeaponType         m_eSavedWeapon; // when we need to hide ped weapon, we save it temporary here
+	eWeaponType         m_eDelayedWeapon; // 'delayed' weapon is like an additional weapon, f.e., simple cop has a nitestick as current and pistol as delayed weapons
+	unsigned __int32    m_dwDelayedWeaponAmmo;
+	unsigned __int8     m_nActiveWeaponSlot;
+	unsigned __int8     m_nWeaponShootingRate;
+	unsigned __int8     m_nWeaponAccuracy;
+	class CObject      *m_pTargetedObject;
 	__int32 field_720;
 	__int32 field_724;
 	__int32 field_728;
@@ -215,9 +213,8 @@ public:
 	__int16             m_wMoneyCount;
 	__int32 field_758;
 	__int32 field_75C;
-	__int8              m_nKilledWeapon;
-	__int8 field_761[3];
-	class CPed         *m_pKilledPed;
+	__int8              m_nLastWeaponDamage;
+	CEntity            *m_pLastEntityDamage;
 	__int32 field_768;
 	CVector             m_vTurretOffset;
 	__int32             m_fTurretAngleA;
@@ -226,10 +223,53 @@ public:
 	__int32             m_dwTurretAmmo;
 	void               *m_pNaviPoint; // CNaviPoint *
 	void               *m_pEnex; // CEnEx *
-	__int32 field_790;
+	float               m_fRemovalDistMultiplier; // 1.0 by default
 	__int16             m_wSpecialModelIndex;
 	__int8 field_796[2];
 	__int32 field_798;
+
+	CPed(ePedType type);
+	~CPed();
+
+	void *operator new(unsigned int size);
+	void operator delete(void *object);
+
+	// class virtual functions
+
+	// Process applied anim
+	void SetMoveAnim();
+	bool Save();
+	bool Load();
+
+	// class functions
+	/*
+	// create money pickups for dead ped
+	void CreateDeadPedMoney();
+	// get coors for dead ped money pickups
+	void CreateDeadPedPickupCoors(float *pX, float *pY, float *pZ);
+	// create weapon pickups for dead ped
+	void CreateDeadPedWeaponPickups();
+	// used in SET_CHAR_STAY_IN_SAME_PLACE opcode
+	void SetStayInSamePlace(bool enable);
+	// associates ped with CPedStat info (use index (ePedStats) of stat in CPedStat array)
+	void SetPedStats(unsigned int index);
+	// set the move state. This is used eMoveState enumeration, but we haven't it yet
+	void SetMoveState(unsigned int state);
+	// remove ped anims
+	void StopNonPartialAnims();
+	// restart ped anims
+	void RestartNonPartialAnims();
+	*/
+
+	void RemoveWeaponAnims(int weaponSlot, float blenDelta);
+
+	// get weapon skill level for this weapon type
+	unsigned char GetWeaponSkill(eWeaponType weaponType);
+
+	// class static functions
+
+	//static void Initialise();
+
 };
 #pragma pack(pop)
 
