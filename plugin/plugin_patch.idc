@@ -1,5 +1,6 @@
 #include <idc.idc>
 
+
 static initFuncRedirectionInfo(mangledName, destination)
 {
 	auto redirectionInfo = object();
@@ -9,14 +10,17 @@ static initFuncRedirectionInfo(mangledName, destination)
 	return redirectionInfo;
 }
 
+
 extern redirectedFunctionsArray;
 	
 extern redirectedFunctionsArrayCount;
+
 
 static AddRedirectionInfo(mangledName, destination)
 {
 	redirectedFunctionsArray[redirectedFunctionsArrayCount++] = initFuncRedirectionInfo(mangledName, destination);
 }
+
 
 static initArrayOfRedirectedFunctions()
 {
@@ -40,11 +44,14 @@ static initArrayOfRedirectedFunctions()
 	AddRedirectionInfo("??1CPlaceable@@QAE@XZ", 0x54F490);
 }
 
+
 static redirectASMcode(source, destination)
 {
-	PatchByte(source++, 0xE9);
-	PatchDword(source, destination - source - 4);
+	PatchByte(source++, 0xB8);
+	PatchDword(source, destination);
+	PatchWord(source + 4, 0xE0FF);
 }
+
 
 static patchFunctions()
 {
@@ -68,9 +75,12 @@ static patchFunctions()
 	return 1;
 }
 
+
 static main() {
 
+
 	Message("\nStarting plugin patch IDC script\n");
+
 
 	initArrayOfRedirectedFunctions();
 	patchFunctions();
