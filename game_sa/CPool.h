@@ -10,6 +10,7 @@ struct tPoolObjectFlags
 #pragma pack(push, 1)
 template<class T> class CPool
 {
+public:
 	T* m_Objects;
 	tPoolObjectFlags* m_ByteMap;
 	__int32 m_Size;		// max number of objects.
