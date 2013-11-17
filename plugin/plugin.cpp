@@ -43,6 +43,8 @@ list<void (*)()>ReInitGameList;
 list<void (*)()>GameProcessList;
 list<void (*)()>GameProcessBeforeScriptsList;
 list<void (*)()>GameProcessAfterScriptsList;
+list<void (*)()>DrawBlipsBeforeList;
+list<void (*)()>DrawBlipsAfterList;
 
 void Initialise();
 void Shutdown();
@@ -71,7 +73,8 @@ void Initialise()
 		CPatch::Nop(DeviceResetAddr[i] + 5, 6);
 	}
 	CPatch::RedirectCall(0x53E293, plugin::Core::DefaultDrawingFuncExe);
-	CPatch::RedirectCall(0x57C2B5, plugin::Core::MenuDrawingFuncExe);
+	CPatch::RedirectCall(0x53E82D, plugin::Core::MenuDrawingFuncExe);
+	CPatch::RedirectCall(0x53EB8C, plugin::Core::MenuDrawingFuncExe);
 	CPatch::RedirectCall(0x53EA03, plugin::Core::PreRenderAfterFuncExe);
 	CPatch::RedirectCall(0x5BD779, plugin::Core::InitialiseRwFuncExe);
 	CPatch::RedirectCall(0x53BC21, plugin::Core::ShutdownRwFuncExe);
@@ -84,6 +87,7 @@ void Initialise()
 	CPatch::RedirectCall(0x53BE8D, plugin::Core::GameProcessScriptsFuncExe); // CGame::ReInitGameObjectVariables()
 	CPatch::RedirectCall(0x53BFC7, plugin::Core::GameProcessScriptsFuncExe); // CGame::Process
 	CPatch::RedirectCall(0x618F05, plugin::Core::GameProcessScriptsFuncExe);
+	CPatch::RedirectJump(0x58AA2D, plugin::Core::DrawBlipsFuncExe);
 }
 
 // vehicle additional data
@@ -206,6 +210,12 @@ void plugin::Core::RegisterFunc(eFuncType type, tRegisteredFunction func)
 	case FUNC_GAME_PROCESS_AFTER_SCRIPTS:
 		GameProcessAfterScriptsList.push_back(func);
 		break;
+	case FUNC_DRAWING_BEFORE_BLIPS:
+		DrawBlipsBeforeList.push_back(func);
+		break;
+	case FUNC_DRAWING_AFTER_BLIPS:
+		DrawBlipsAfterList.push_back(func);
+		break;
 	}
 }
 
@@ -276,10 +286,11 @@ void plugin::Core::MenuDrawingFunc()
 		(*i)();
 }
 
-void plugin::Core::MenuDrawingFuncExe()
+void __fastcall plugin::Core::MenuDrawingFuncExe(int menuMgr)
 {
-	plugin::Core::MenuDrawingFunc();
-	CALLVOID(0x734750);
+	((void (__thiscall *)(int))0x57C290)(menuMgr);
+	if(!(*(__int8 *)0xBA677A))
+		plugin::Core::MenuDrawingFunc();
 }
 
 void plugin::Core::PreRenderAfterFunc()
@@ -371,4 +382,23 @@ PLUGIN_API void plugin::Core::GameProcessAfterScriptsFunc()
 {
 	for(auto i = GameProcessAfterScriptsList.begin(); i != GameProcessAfterScriptsList.end(); ++i)
 		(*i)();
+}
+
+PLUGIN_API void plugin::Core::DrawBlipsAfterFunc()
+{
+	for(auto i = DrawBlipsAfterList.begin(); i != DrawBlipsAfterList.end(); ++i)
+		(*i)();
+}
+
+PLUGIN_API void plugin::Core::DrawBlipsBeforeFunc()
+{
+	for(auto i = DrawBlipsBeforeList.begin(); i != DrawBlipsBeforeList.end(); ++i)
+		(*i)();
+}
+
+PLUGIN_API void plugin::Core::DrawBlipsFuncExe()
+{
+	plugin::Core::DrawBlipsBeforeFunc();
+	CALLVOID(0x588050);
+	plugin::Core::DrawBlipsAfterFunc();
 }

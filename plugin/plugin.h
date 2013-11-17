@@ -40,7 +40,9 @@ enum eFuncType
 	FUNC_RE_INIT_GAME,     // when game is re-loading
 	FUNC_GAME_PROCESS,     // when game is processing
 	FUNC_GAME_PROCESS_BEFORE_SCRIPTS, // before scripts processing
-	FUNC_GAME_PROCESS_AFTER_SCRIPTS   // after scripts processing
+	FUNC_GAME_PROCESS_AFTER_SCRIPTS,   // after scripts processing
+	FUNC_DRAWING_BEFORE_BLIPS, // before CRadar::DrawBlips
+	FUNC_DRAWING_AFTER_BLIPS   // after CRadar::DrawBlips
 };
 
 enum eGame
@@ -74,7 +76,7 @@ namespace plugin
 		PLUGIN_API void DefaultDrawingFunc();
 		PLUGIN_API void DefaultDrawingFuncExe();
 		PLUGIN_API void MenuDrawingFunc();
-		PLUGIN_API void MenuDrawingFuncExe();
+		PLUGIN_API void __fastcall MenuDrawingFuncExe(int menuMgr);
 		PLUGIN_API void PreRenderBeforeFunc();
 		PLUGIN_API void PreRenderBeforeFuncExe();
 		PLUGIN_API void PreRenderAfterFunc();
@@ -92,6 +94,9 @@ namespace plugin
 		PLUGIN_API void GameProcessScriptsFuncExe();
 		PLUGIN_API void GameProcessBeforeScriptsFunc();
 		PLUGIN_API void GameProcessAfterScriptsFunc();
+		PLUGIN_API void DrawBlipsAfterFunc();
+		PLUGIN_API void DrawBlipsBeforeFunc();
+		PLUGIN_API void DrawBlipsFuncExe();
 	};
 	namespace System
 	{
