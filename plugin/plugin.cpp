@@ -9,6 +9,11 @@ using namespace std;
 
 void AllocateVehicleAdditional();
 
+unsigned int RyosukesChange3D = 0;
+unsigned int RyosukesReset3D = 0;
+HRESULT RyosukeResult;
+void CheckForRyosukesPlugins();
+
 void **vehicleAdditional;
 unsigned int vehiclePluginsSize;
 void **pedAdditional;
@@ -62,16 +67,44 @@ BOOL APIENTRY DllMain(HMODULE module, DWORD reason, LPVOID reserved)
 	return TRUE;
 }
 
-unsigned int DeviceResetAddr[] = {0x7F9788, 0x7F9710, 0x7F935C, 0x7F9248, 0x7F86C2, 0x7F9A16, 0x7F839F, 0x7F8327, 0x7F81FF,
-	0x7F8187, 0x7F7AA4, 0x7F8B79, 0x7F7990, 0x7F9B43, 0x7F8C86, 0x7F87C4 };
+/*unsigned int DeviceResetAddr[] = {0x7F9788, 0x7F9710, 0x7F935C, 0x7F9248, 0x7F9A16, 0x7F839F, 0x7F8327, 0x7F81FF,
+	0x7F8187, 0x7F7AA4, 0x7F8B79, 0x7F7990, 0x7F9B43, 0x7F8C86, 0x7F87C4 };*/
 
 void Initialise()
 {
-	for(int i=0; i<16; i++)
-	{
-		CPatch::RedirectCall(DeviceResetAddr[i], plugin::Core::DeviceResetFuncExe);
-		CPatch::Nop(DeviceResetAddr[i] + 5, 6);
-	}
+	CheckForRyosukesPlugins();
+	CPatch::RedirectCall(0x7F9788, plugin::Core::DeviceResetFuncExe);
+	CPatch::Nop(0x7F978D, 6);
+	CPatch::RedirectCall(0x7F9710, plugin::Core::DeviceResetFuncExe);
+	CPatch::Nop(0x7F9715, 6);
+	CPatch::RedirectCall(0x7F935C, plugin::Core::DeviceResetFuncExe);
+	CPatch::Nop(0x7F9361, 6);
+	CPatch::RedirectCall(0x7F9248, plugin::Core::DeviceResetFuncExe);
+	CPatch::Nop(0x7F924D, 6);
+	CPatch::RedirectCall(0x7F9A16, plugin::Core::DeviceResetFuncExe);
+	CPatch::Nop(0x7F9A1B, 6);
+	CPatch::RedirectCall(0x7F839F, plugin::Core::DeviceResetFuncExe);
+	CPatch::Nop(0x7F83A4, 6);
+	CPatch::RedirectCall(0x7F8327, plugin::Core::DeviceResetFuncExe);
+	CPatch::Nop(0x7F832C, 6);
+	CPatch::RedirectCall(0x7F81FF, plugin::Core::DeviceResetFuncExe);
+	CPatch::Nop(0x7F8204, 6);
+	CPatch::RedirectCall(0x7F8187, plugin::Core::DeviceResetFuncExe);
+	CPatch::Nop(0x7F818C, 6);
+	CPatch::RedirectCall(0x7F7AA4, plugin::Core::DeviceResetFuncExe);
+	CPatch::Nop(0x7F7AA9, 6);
+	CPatch::RedirectCall(0x7F8B7B, plugin::Core::DeviceResetFuncExe);
+	CPatch::Nop(0x7F8B80, 4);
+	CPatch::RedirectCall(0x7F7990, plugin::Core::DeviceResetFuncExe);
+	CPatch::Nop(0x7F7995, 6);
+	CPatch::RedirectCall(0x7F9B43, plugin::Core::DeviceResetFuncExe);
+	CPatch::Nop(0x7F9B48, 6);
+	CPatch::RedirectCall(0x7F8C88, plugin::Core::DeviceResetFuncExe);
+	CPatch::Nop(0x7F8C8D, 4);
+	CPatch::RedirectCall(0x7F87C6, plugin::Core::DeviceResetFuncExe);
+	CPatch::Nop(0x7F87CB, 4);
+	CPatch::RedirectCall(0x7F86C4, plugin::Core::DeviceResetChangeFuncExe);
+	CPatch::Nop(0x7F86C9, 4);
 	CPatch::RedirectCall(0x53E293, plugin::Core::DefaultDrawingFuncExe);
 	CPatch::RedirectCall(0x53E82D, plugin::Core::MenuDrawingFuncExe);
 	CPatch::RedirectCall(0x53EB8C, plugin::Core::MenuDrawingFuncExe);
@@ -88,6 +121,18 @@ void Initialise()
 	CPatch::RedirectCall(0x53BFC7, plugin::Core::GameProcessScriptsFuncExe); // CGame::Process
 	CPatch::RedirectCall(0x618F05, plugin::Core::GameProcessScriptsFuncExe);
 	CPatch::RedirectJump(0x58AA2D, plugin::Core::DrawBlipsFuncExe);
+}
+
+void CheckForRyosukesPlugins()
+{
+	if(CPatch::CheckChar(0x7F86C4, 0xE8))
+		RyosukesChange3D = *(unsigned __int32 *)0x7F86C5 + 0x7F86C9;
+	if(CPatch::CheckChar(0x7F9710, 0xE8))
+		RyosukesReset3D = *(unsigned __int32 *)0x7F9711 + 0x7F9715;
+	else if(CPatch::CheckChar(0x7F9788, 0xE8))
+		RyosukesReset3D = *(unsigned __int32 *)0x7F9789 + 0x7F978D;
+	else if(CPatch::CheckChar(0x7F9A16, 0xE8))
+		RyosukesReset3D = *(unsigned __int32 *)0x7F9A17 + 0x7F9A1B;
 }
 
 // vehicle additional data
@@ -249,10 +294,53 @@ CPlugin const * plugin::System::GetPluginByName(char *name)
 	return NULL;
 }
 
+void __declspec(naked) RyosukeReset3DSafeFunc()
+{
+	__asm mov eax, dword ptr ds:[0xC97C28]
+	RyosukeResult = ((HRESULT (__cdecl *)())RyosukesReset3D)();
+	__asm retn
+}
+
+HRESULT RyosukeReset3DFunc()
+{
+	RyosukeReset3DSafeFunc();
+	return RyosukeResult;
+}
+
+void __declspec(naked) RyosukeChange3DSafeFunc()
+{
+	__asm mov eax, dword ptr ds:[0xC97C28]
+	__asm mov ecx, [eax]
+	RyosukeResult = ((HRESULT (__cdecl *)())RyosukesChange3D)();
+	__asm retn
+}
+
+HRESULT RyosukeChange3DFunc()
+{
+	RyosukeChange3DSafeFunc();
+	return RyosukeResult;
+}
+
+long plugin::Core::DeviceResetChangeFuncExe()
+{
+	HRESULT result;
+	plugin::Core::DeviceResetBeforeFunc();
+	if(RyosukesChange3D)
+		result = RyosukeChange3DFunc();
+	else
+		result = (*(IDirect3DDevice9 **)0xC97C28)->Reset((D3DPRESENT_PARAMETERS *)0xC9C040);
+	plugin::Core::DeviceResetAfterFunc();
+	return result;
+}
+
 long plugin::Core::DeviceResetFuncExe()
 {
+	HRESULT result;
 	plugin::Core::DeviceResetBeforeFunc();
-	HRESULT result = (*(IDirect3DDevice9 **)0xC97C28)->Reset((D3DPRESENT_PARAMETERS *)0xC9C040);
+	if(RyosukesReset3D)
+		result = RyosukeReset3DFunc();
+	else
+		result = (*(IDirect3DDevice9 **)0xC97C28)->Reset((D3DPRESENT_PARAMETERS *)0xC9C040);
 	plugin::Core::DeviceResetAfterFunc();
 	return result;
 }

@@ -24,6 +24,15 @@ public:
 		memset((void *)address, 0x90, size);
 		VirtualProtect((void *)address, size, protect[0], &protect[1]);
 	}
+	inline static bool CheckChar(int address, unsigned char value)
+	{
+		unsigned long protect[2];
+		unsigned char dummy = value;
+		VirtualProtect((void *)address, 1, PAGE_EXECUTE_READ, &protect[0]);
+		memcpy(&dummy, (void *)address, 1);
+		VirtualProtect((void *)address, 1, protect[0], &protect[1]);
+		return (dummy == value);
+	}
 	inline static void RedirectCall(int address, void *func)
 	{
 		int temp = 0xE8;
@@ -57,45 +66,5 @@ public:
 	inline static void SetPointer(int address, void *value)
 	{
 		Patch((void *)address, &value, 4);
-	}
-	inline static void GetChar(int address, char *value)
-	{
-		Patch(value, (void *)address, 1);
-	}
-	inline static void GetShort(int address, short *value)
-	{
-		Patch(value, (void *)address, 2);
-	}
-	inline static void GetInt(int address, int *value)
-	{
-		Patch(value, (void *)address, 4);
-	}
-	inline static void GetFloat(int address, float *value)
-	{
-		Patch(value, (void *)address, 4);
-	}
-	inline static char GetChar(int address)
-	{
-		char value;
-		Patch(&value, (void *)address, 1);
-		return value;
-	}
-	inline static short GetShort(int address)
-	{
-		short value;
-		Patch(&value, (void *)address, 2);
-		return value;
-	}
-	inline static int GetInt(int address)
-	{
-		int value;
-		Patch(&value, (void *)address, 4);
-		return value;
-	}
-	inline static float GetFloat(int address)
-	{
-		float value;
-		Patch(&value, (void *)address, 4);
-		return value;
 	}
 };

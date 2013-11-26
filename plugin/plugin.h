@@ -73,6 +73,7 @@ namespace plugin
 		PLUGIN_API void DeviceResetAfterFunc();
 		PLUGIN_API void DeviceResetBeforeFunc();
 		PLUGIN_API long DeviceResetFuncExe();
+		PLUGIN_API long DeviceResetChangeFuncExe();
 		PLUGIN_API void DefaultDrawingFunc();
 		PLUGIN_API void DefaultDrawingFuncExe();
 		PLUGIN_API void MenuDrawingFunc();
