@@ -167,7 +167,7 @@ public:
 	__int16 CRunningScript::GetOffsetOfGlobalVariable();
 
 	// Returns pointer to script variable of any type.
-	tScriptVarValue* CRunningScript::GetPointerToScriptVariable(unsigned __int8 unk1);
+	tScriptVarValue* CRunningScript::GetPointerToScriptVariable(unsigned __int8 variableType);
 
 	// Collects parameters
 	void CRunningScript::CollectParameters(__int16 count);
