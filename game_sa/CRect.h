@@ -10,18 +10,27 @@ public:
 
 	/* CRect class describes a rectangle.
 
-		  A(X1;Y1)-----------------------|
+		  A(X1;Y2)-----------------------|
 		  |                               |
 		  |                               |
 		  |                               |
-		  |________________________B(X2;Y2)
+		  |________________________B(X2;Y1)
 	
 	*/
-
-	float m_X1;
-	float m_Y1;
-	float m_X2;
-	float m_Y2;
+	union{
+		struct{
+			float m_X1;
+			float m_Y1;
+			float m_X2;
+			float m_Y2;
+		};
+		struct{
+			float m_fLeft;
+			float m_fTop;
+			float m_fRight;
+			float m_fBottom;
+		};
+	};
 
 	CRect(float x1, float y1, float x2, float y2);
 	CRect();

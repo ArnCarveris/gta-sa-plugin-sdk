@@ -10,7 +10,7 @@ class PLUGIN_API CColTrianglePlane
 {
 public:
 	CompressedVector m_Normal;
-	unsigned __int16 m_fDistance;
+	unsigned __int16 m_wDistance;
 	unsigned __int8 m_nOrientation;
 	
 	void GetNormal(CVector &out);

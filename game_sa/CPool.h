@@ -20,8 +20,6 @@ public:
 
 	__int16 m_Pad;
 
-public:
-
 	// Initializes pool
 	CPool* const Initialise(int maxCount, const char* poolName)
 	{

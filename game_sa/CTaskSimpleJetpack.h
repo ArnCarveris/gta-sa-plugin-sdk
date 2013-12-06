@@ -41,4 +41,4 @@ public:
 };
 #pragma pack(pop)
 
-VALIDATE_SIZE(CTaskSimpleJetpack, 0x70);
+//VALIDATE_SIZE(CTaskSimpleJetpack, 0x70);

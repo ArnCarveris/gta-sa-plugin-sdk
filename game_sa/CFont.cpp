@@ -2,6 +2,30 @@
 
 CSprite2d *CFont::Sprite = (CSprite2d *)0xC71AD0;
 CSprite2d *CFont::ButtonSprite = (CSprite2d *)0xC71AD8;
+unsigned __int8& CFont::m_nExtraFontSymbolId = *(unsigned __int8 *)0xC71A54;
+bool& CFont::m_bNewLine = *(bool *)0xC71A55;
+CRGBA *CFont::m_Color = (CRGBA *)0xC71A60;
+CVector2D *CFont::m_Scale = (CVector2D *)0xC71A64;
+float& CFont::m_fSlant = *(float *)0xC71A6C;
+CVector2D *CFont::m_fSlantRefPoint = (CVector2D *)0xC71A70;
+bool& CFont::m_bFontJustify = *(bool *)0xC71A78;
+bool& CFont::m_bFontCentreAlign = *(bool *)0xC71A79;
+bool& CFont::m_bFontRightAlign = *(bool *)0xC71A7A;
+bool& CFont::m_bFontBackground = *(bool *)0xC71A7B;
+bool& CFont::m_bEnlargeBackgroundBox = *(bool *)0xC71A7C;
+bool& CFont::m_bFontPropOn = *(bool *)0xC71A7D;
+bool& CFont::m_bFontIsBlip = *(bool *)0xC71A7E;
+unsigned __int32 CFont::m_dwFontAlpha = *(unsigned __int32 *)0xC71A80;
+CRGBA *CFont::m_FontBackgroundColor = (CRGBA *)0xC71A84;
+float& CFont::m_fWrapx = *(float *)0xC71A88;
+float& CFont::m_fFontCentreSize = *(float *)0xC71A8C;
+float& CFont::m_fRightJustifyWrap = *(float *)0xC71A90;
+unsigned __int8& CFont::m_FontTextureId = *(unsigned __int8 *)0xC71A94;
+eFontStyle& CFont::m_FontStyle = *(eFontStyle *)0xC71A95;
+unsigned __int8& CFont::m_nFontShadow = *(unsigned __int8 *)0xC71A96;
+CRGBA *CFont::m_FontDropColor = (CRGBA *)0xC71A97;
+unsigned __int8& CFont::m_nFontOutlineSize = *(unsigned __int8 *)0xC71A9B;
+unsigned __int8& CFont::m_nFontOutline = *(unsigned __int8 *)0xC71A9C;
 
 void CFont::Initialise()
 {
@@ -147,19 +171,19 @@ void CFont::DrawFonts()
 	((void (__cdecl *)())0x71A210)();
 }
 
-int CFont::GetNumberLines(bool print, float x, float y, char *text)
+short CFont::GetNumberLines(bool print, float x, float y, char *text)
 {
-	return ((int (__cdecl *)(bool, float, float, char *))0x71A220)(print, x, y, text);
+	return ((short (__cdecl *)(bool, float, float, char *))0x71A220)(print, x, y, text);
 }
 
-int CFont::GetNumberLinesNoPrint(float x, float y, char *text)
+short CFont::GetNumberLinesNoPrint(float x, float y, char *text)
 {
-	return ((int (__cdecl *)(float, float, char *))0x71A5E0)(x, y, text);
+	return ((short (__cdecl *)(float, float, char *))0x71A5E0)(x, y, text);
 }
 
-int CFont::GetNumberLinesPrint(float x, float y, char *text)
+short CFont::GetNumberLinesPrint(float x, float y, char *text)
 {
-	return ((int (__cdecl *)(float, float, char *))0x71A600)(x, y, text);
+	return ((short (__cdecl *)(float, float, char *))0x71A600)(x, y, text);
 }
 
 void CFont::GetTextRect(CRect *rect, float x, float y, char *text)

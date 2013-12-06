@@ -74,7 +74,7 @@ public:
 	// non-textured polygon
 	static void Draw2DPolygon(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, CRGBA  const& color);
 	// draws progress line. Progress is a value in ranges 0 - 100.
-	static void DrawProgressBar(float x, float y, float width, float height, float progress, bool drawColoredBorder, bool drawPercentage, bool drawBlackBorder, CRGBA color, CRGBA coloredBorderColor);
+	static void DrawProgressBar(float x, float y, int width, int height, float progress, int progressAdd, bool drawPercentage, bool drawBlackBorder, CRGBA color, CRGBA addColor);
 };
 
 VALIDATE_SIZE(CSprite2d, 4);

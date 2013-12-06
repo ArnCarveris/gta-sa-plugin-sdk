@@ -2,7 +2,6 @@
 #include "plugin\plugin.h"
 #include "RenderWare.h"
 
-#pragma pack(push, 1)
 class PLUGIN_API CVector : public RwV3d
 {
 public:
@@ -39,4 +38,3 @@ public:
 	// Divides vector by a floating point value
 	void operator /= (float divisor);
 };
-#pragma pack(pop)

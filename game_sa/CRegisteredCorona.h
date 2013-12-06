@@ -24,7 +24,7 @@ public:
 	unsigned __int32 m_dwId;
 	RwTexture *m_pTexture;
 	float m_fSize;
-	float m_fAngle;
+	float m_fAngle; // left from III&VC
 	float m_fFarClip;
 	float m_fNearClip;
 	float m_fHeightAboveGround;
@@ -36,7 +36,7 @@ public:
 	unsigned __int8 m_bUsesReflection;
 	unsigned __int8 m_bCheckObstacles : 1;
 	unsigned __int8 m_bOffScreen : 1;
-	unsigned __int8 m_bJustCreared;
+	unsigned __int8 m_bJustCreated;
 	unsigned __int8 m_bFlashWhileFading : 1;
 	unsigned __int8 m_bOnlyFromBelow : 1;
 	unsigned __int8 m_bReflectionDelay : 1;

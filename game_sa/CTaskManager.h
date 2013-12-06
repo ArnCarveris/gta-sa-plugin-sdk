@@ -1,7 +1,7 @@
 #pragma once
 
 #include "plugin\plugin.h"
-#include "CTaskSimple.h"
+#include "CTask.h"
 
 #pragma pack(push, 4)
 class PLUGIN_API CTaskManager

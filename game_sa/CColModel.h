@@ -9,8 +9,8 @@
 class PLUGIN_API CColModel
 {
 public:
-	CBox m_Box;
-	CColSphere m_Sphere;
+	CBox m_boundBox;
+	CColSphere m_colSphere;
 	CColData *m_pColData;
 };
 #pragma pack(pop)

@@ -8,6 +8,7 @@
 #pragma once
 
 #include <Windows.h>
+#include <stddef.h>
 
 #ifdef PLUGIN_EXPORT
 #define PLUGIN_API __declspec(dllexport)
@@ -20,6 +21,8 @@
 
 #define PREPARE_FOR_REDIRECTION() const char* __GFDIKGJDSFSF__ = __FUNCTION__; __asm { mov eax, __GFDIKGJDSFSF__ }
 #define VALIDATE_SIZE(struc, size) static_assert(sizeof(struc) == size, "Invalid structure size of " #struc)
+#define VALIDATE_OFFSET(struc, member, offset) \
+	static_assert(offsetof(struc, member) == offset, "The offset of " #member " in " #struc " is not " #offset "...")
 #define NOINLINE __declspec(noinline)
 
 typedef void (__cdecl* tRegisteredFunction)();

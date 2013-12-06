@@ -6,11 +6,15 @@
 /* File last ed: 27.04.2013                                                                */
 #pragma once
 
+#define _D3D_INCLUDE
+
 #ifndef _IDA_EXPORT
 #include <stdarg.h>
 #endif
 // defines
+#ifdef _D3D_INCLUDE
 #include <d3d9.h>
+#endif
 #define RWFORCEENUMSIZEINT ((int)((~((unsigned int)0))>>1))
 #define RWRGBALONG(r,g,b,a) ((unsigned int) (((a) << 24) | ((r) << 16) | ((g) << 8) | (b)))
 #define MAKECHUNKID(vendorID, chunkID) (((vendorID & 0xFFFFFF) << 8) | (chunkID & 0xFF))
@@ -671,6 +675,7 @@ struct RwRaster
     int            originalHeight;
     int            originalStride;
 #ifndef _IDA_EXPORT
+#ifdef _D3D_INCLUDE
     // RenderWare plugin
     struct
     {
@@ -691,6 +696,7 @@ struct RwRaster
         IDirect3DSwapChain9 *swapChain;
         HWND                *hwnd;
     } RwD3D9Raster;
+#endif
 #endif
 };
 // RxObjSpace3DVertex
@@ -2043,6 +2049,10 @@ enum RpD3D9WorldSectorUsageFlag
 deleted.
 
  *******************************************************************************************/
+// CLUMP
+#define RpClumpRender(clump) ((float (__cdecl *)(RpClump *))0x749B20)(clump)
+#define RpClumpForAllAtomics(clump, callback, data) ((void (__cdecl *)(RpClump *, void *, void *))0x749B70)(clump, callback, data)
+
 // TEXTURE
 #define RwTextureRegisterPlugin(size, pluginId, ctor, dtor, copy) ((int (__cdecl *)(int, int, void *, void *, void *))0x7F3BB0)(size, pluginId, ctor, dtor, copy)
 #define RpAnisotPluginAttach() ((signed int (__cdecl *)())0x748F70)()
@@ -2071,6 +2081,8 @@ deleted.
 
 // GEOMETRY
 #define RpGeometryStreamRead(version) ((RpGeometry *(__cdecl *)(unsigned int))0x74D190)(version)
+#define RpGeometryForAllMaterials(geometry, callback, data) ((void (__cdecl *)(RpGeometry *, void *, void *))0x74C790)(geometry, callback, data)
+
 // D3D9
 #define rwD3D9EnableClippingIfNeeded(object, type) ((int (__cdecl *)(RpAtomic *, int))0x756D90)(object, type)
 #define rwD3D9GetRenderState(state, value) ((int (__cdecl *)(int, void *))0x7FC320)(state, value)
@@ -2133,3 +2145,8 @@ deleted.
 #define RwImageDestroy(image) ((bool (__cdecl *)(RwImage *))0x802740)(image)
 #define RwTextureCreate(raster) ((RwTexture *(__cdecl *)(RwRaster *))0x7F37C0)(raster)
 #define RwTextureDestroy(texture) ((unsigned int (__cdecl *)(RwTexture *))0x7F3820)(texture)
+
+// MATERIAL
+#define RpMaterialUVAnimExists(material) ((unsigned int (__cdecl *)(RpMaterial *))0x7CC530)(material)
+#define RpMaterialUVAnimAddAnimTime(material, time) ((unsigned int (__cdecl *)(RpMaterial *, float))0x7CC4B0)(material, time)
+#define RpMaterialUVAnimApplyUpdate(material) ((unsigned int (__cdecl *)(RpMaterial *))0x7CC110)(material)

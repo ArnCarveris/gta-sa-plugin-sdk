@@ -45,4 +45,4 @@ public:
 };
 #pragma pack(pop)
 
-VALIDATE_SIZE(CTaskSimpleUseGun, 0x3C);
+//VALIDATE_SIZE(CTaskSimpleUseGun, 0x3C);

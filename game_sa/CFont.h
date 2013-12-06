@@ -7,14 +7,14 @@
 #define MAX_FONT_SPRITES 2
 #define MAX_FONT_BUTTON_SPRITES 15
 
-enum eFontAlignment
+enum eFontAlignment : unsigned __int8
 {
 	ALIGN_CENTER,
 	ALIGN_LEFT,
 	ALIGN_RIGHT
 };
 
-enum eFontStyle
+enum eFontStyle : unsigned __int8
 {
 	FONT_GOTHIC,
 	FONT_SUBTITLES,
@@ -31,8 +31,30 @@ public:
 	static CSprite2d *Sprite;
 	// button textures array. Num of elements: MAX_FONT_BUTTON_SPRITES (15)
 	static CSprite2d *ButtonSprite;
-
-	// TODO: finish variables list
+	static unsigned __int8& m_nExtraFontSymbolId;
+	static bool& m_bNewLine;
+	static CRGBA *m_Color;
+	static CVector2D *m_Scale;
+	static float& m_fSlant;
+	static CVector2D *m_fSlantRefPoint;
+	static bool& m_bFontJustify;
+	static bool& m_bFontCentreAlign;
+	static bool& m_bFontRightAlign;
+	static bool& m_bFontBackground;
+	static bool& m_bEnlargeBackgroundBox;
+	static bool& m_bFontPropOn;
+	static bool& m_bFontIsBlip;
+	static unsigned __int32 m_dwFontAlpha;
+	static CRGBA *m_FontBackgroundColor;
+	static float& m_fWrapx;
+	static float& m_fFontCentreSize;
+	static float& m_fRightJustifyWrap;
+	static unsigned __int8& m_FontTextureId;
+	static eFontStyle& m_FontStyle;
+	static unsigned __int8& m_nFontShadow;
+	static CRGBA *m_FontDropColor;
+	static unsigned __int8& m_nFontOutlineSize;
+	static unsigned __int8& m_nFontOutline;
 
 	// static functions
 
@@ -89,9 +111,9 @@ public:
 	static float GetStringWidth(char *string, bool unk1, bool unk2);
 	// same as RenderFontBuffer()
 	static void DrawFonts();
-	static int GetNumberLines(bool print, float x, float y, char *text);
-	static int GetNumberLinesNoPrint(float x, float y, char *text);
-	static int GetNumberLinesPrint(float x, float y, char *text);
+	static short GetNumberLines(bool print, float x, float y, char *text);
+	static short GetNumberLinesNoPrint(float x, float y, char *text);
+	static short GetNumberLinesPrint(float x, float y, char *text);
 	static void GetTextRect(CRect *rect, float x, float y, char *text);
 	static void PrintString(float x, float y, char *text);
 	static void PrintStringFromBottom(float x, float y, char *text);

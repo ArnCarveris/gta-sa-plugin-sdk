@@ -207,7 +207,7 @@ public:
 	__int32 field_744;
 	__int32 field_748;
 	__int32 field_74C;
-	__int32             m_dwTimeForBloodFootprints;
+	__int32             m_dwDeathTime;
 	__int8              m_nBodypartToRemove;
 	__int8 field_755;
 	__int16             m_wMoneyCount;

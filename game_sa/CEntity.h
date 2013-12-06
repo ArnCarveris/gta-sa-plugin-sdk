@@ -103,7 +103,7 @@ public:
 	bool GetIsTouching(CVector const &posn, float radius);
 	bool GetIsOnScreen();
 	void ModifyMatrixForTreeInWind();
-	void ModifyMatrixForBannerInWind();
+	void ModifyMatrixForBannerInWind(); // left from GTAIII
 	CColModel *GetColModel();
 	float GetDistanceFromCentreOfMassToBaseOfModel();
 	void CleanUpOldReference(class CEntity**pEntity);

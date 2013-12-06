@@ -3,7 +3,7 @@
 #include "plugin\plugin.h"
 #include "CVector.h"
 
-#pragma pack(push, 1)
+#pragma pack(push, 4)
 class PLUGIN_API CBox
 {
 public:
@@ -13,3 +13,5 @@ public:
 	void Set(CVector  const& sup, CVector  const& inf);
 };
 #pragma pack(pop)
+
+VALIDATE_SIZE(CBox, 0x18);
