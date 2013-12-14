@@ -24,3 +24,8 @@ PLUGIN_API float FindPlayerHeight();
 PLUGIN_API CPed * FindPlayerPed(int playerId);
 // 2 players are playing
 PLUGIN_API bool InTwoPlayersMode();
+// vectorsub
+PLUGIN_API CVector VectorSub(CVector const& from, CVector const& what);
+// matrix mul
+PLUGIN_API CVector Multiply3x3(CMatrix  const& matrix, CVector  const& vec);
+PLUGIN_API RpHAnimHierarchy *GetAnimHierarchyFromSkinClump(RpClump *clump);

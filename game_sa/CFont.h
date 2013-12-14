@@ -50,7 +50,7 @@ public:
 	static float& m_fFontCentreSize;
 	static float& m_fRightJustifyWrap;
 	static unsigned __int8& m_FontTextureId;
-	static eFontStyle& m_FontStyle;
+	static unsigned __int8& m_FontStyle;
 	static unsigned __int8& m_nFontShadow;
 	static CRGBA *m_FontDropColor;
 	static unsigned __int8& m_nFontOutlineSize;

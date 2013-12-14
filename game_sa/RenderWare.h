@@ -2134,6 +2134,8 @@ deleted.
 
 //MATRIX
 #define RwMatrixUpdate(matrix) ((RwMatrixTag *(__cdecl *)(RwMatrixTag *)) 0x7F18A0)(matrix)
+#define RwMatrixMultiply(result, left, right) ((RwMatrixTag *(__cdecl *)(RwMatrixTag *, RwMatrixTag *, RwMatrixTag *)) 0x7F18B0)(result, left, right)
+#define RwMatrixRotate(matrix, axis, angle, combineOp) ((RwMatrixTag *(__cdecl *)(RwMatrixTag *, RwV3d *, float, int)) 0x7F1FD0)(matrix, axis, angle, combineOp);
 
 // globals
 #define RwEngineInstance (*(RwGlobals **)0xC97B24)

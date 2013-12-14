@@ -59,6 +59,7 @@ public:
         }
 		*/
 };
+#pragma pack(pop)
 
 VALIDATE_SIZE(CControllerState, 0x30);
 
@@ -72,40 +73,46 @@ public:
 	bool CycleWeaponRightJustDown();
 	bool CycleWeaponLeftJustDown();
 
-
-public:
 	// VARIABLES
-	CControllerState NewState;
-	CControllerState OldState;
-	__int16 SteeringLeftRightBuffer[10];
-	signed __int32 DrunkDrivingBufferUsed;
-	CControllerState PCTempKeyState;
-	CControllerState PCTempJoyState;
-	CControllerState PCTempMouseState;
-	char Phase;
-	char __pad1;
-	__int16 Mode;
-	signed __int16 ShakeDur;
-	WORD DisablePlayerControls;
-	BYTE ShakeFreq;
-	char bHornHistory[5];
-	BYTE iCurrHornHistory;
-	BYTE JustOutOfFrontEnd;
-	BYTE bApplyBrakes;
-	BYTE bDisablePlayerEnterCar;
-	BYTE bDisablePlayerDuck;
-	BYTE bDisablePlayerFireWeapon;
-	BYTE bDisablePlayerFireWeaponWithL1;
-	BYTE bDisablePlayerCycleWeapon;
-	BYTE bDisablePlayerJump;
-	BYTE bDisablePlayerDisplayVitalStats;
-	int LastTimeTouched;
-	signed __int32 AverageWeapon;
-	signed __int32 AverageEntries;
-	DWORD NoShakeBeforeThis;
-	char NoShakeFreq;
-	__int16 __pad2;
-	char __pad3;
+
+  CControllerState NewState;
+  CControllerState OldState;
+  __int16 SteeringLeftRightBuffer[10];
+  int DrunkDrivingBufferUsed;
+  CControllerState PCTempKeyState;
+  CControllerState PCTempJoyState;
+  CControllerState PCTempMouseState;
+  char Phase;
+  char field_109;
+  __int16 Mode;
+  __int16 ShakeDur;
+  __int16 DisablePlayerControls;
+  char ShakeFreq;
+  char bHornHistory[5];
+  char field_116;
+  char field_117;
+  char field_118;
+  char m_bDisablePlayerEnterCar;
+  char m_bDisablePlayerDuck;
+  char m_bDisablePlayerFireWeapon;
+  char m_bDisablePlayerFireWeaponWithL1;
+  char m_bDisablePlayerCycleWeapon;
+  char m_bDisablePlayerJump;
+  char m_bDisablePlayerDisplayVitalStats;
+  char field_120;
+  char field_121;
+  char field_122;
+  char field_123;
+  char field_124;
+  char field_125;
+  char field_126;
+  char field_127;
+  int field_128;
+  int field_12C;
+  char field_130;
+  char field_131;
+  __int16 field_132;
+
 
 	// Static variables
 

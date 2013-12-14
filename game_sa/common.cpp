@@ -49,3 +49,18 @@ bool InTwoPlayersMode()
 {
 	return ((bool (__cdecl *)())0x441390)();
 }
+
+CVector VectorSub(CVector const& from, CVector const& what)
+{
+	return ((CVector (__cdecl *)(CVector const&, CVector const&))0x40FE60)(from, what);
+}
+
+CVector Multiply3x3(CMatrix  const& matrix, CVector  const& vec)
+{
+	return ((CVector (__cdecl *)(CMatrix  const&, CVector  const&))0x59C790)(matrix, vec);
+}
+
+RpHAnimHierarchy *GetAnimHierarchyFromSkinClump(RpClump *clump)
+{
+	return ((RpHAnimHierarchy *(__cdecl *)(RpClump *))0x734A40)(clump);
+}
