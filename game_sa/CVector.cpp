@@ -27,6 +27,11 @@ float CVector::Magnitude()
 	return ((float (__thiscall*)(CVector*)) FUNC_CVector__Magnitude)(this);
 }
 
+float CVector::Magnitude2D()
+{
+	return ((float (__thiscall *)(CVector *))0x406D50)(this);
+}
+
 // Normalises a vector
 void CVector::Normalise()
 {
@@ -34,7 +39,7 @@ void CVector::Normalise()
 }
 
 // Normalises a vector and returns length
-float CVector::NormaliseGetLength()
+float CVector::NormaliseAndMag()
 {
 	return ( (float (__thiscall*)(CVector*)) FUNC_CVector__NormaliseGetLength)(this);
 }
@@ -79,4 +84,14 @@ void CVector::operator *= (float multiplier)
 void CVector::operator /= (float divisor)
 {
 	( (void (__thiscall*)(CVector*, float divisor)) FUNC_CVector__operatorDivisionAssignmentFloat)(this, divisor);
+}
+
+void CVector::FromMultiply(CMatrix  const& matrix, CVector const& vector)
+{
+	((void(__thiscall *)(CVector *, CMatrix  const&, CVector const&))0x59C670)(this, matrix, vector);
+}
+
+void CVector::FromMultiply3x3(CMatrix  const& matrix, CVector const& vector)
+{
+	((void(__thiscall *)(CVector *, CMatrix  const&, CVector const&))0x59C6D0)(this, matrix, vector);
 }

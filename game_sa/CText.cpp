@@ -88,9 +88,9 @@ CText::~CText()
 }
 
 // Returns text pointer by GXT key
-const char *__thiscall CText::Get(const char *key)
+char *__thiscall CText::Get(char *key)
 {
-	return ( (const char *(__thiscall*)(CText*, const char *key)) FUNC_CText__Get )(this, key);
+	return ( (char *(__thiscall*)(CText*, const char *key)) FUNC_CText__Get )(this, key);
 }
 
 // Reads MPACK tag

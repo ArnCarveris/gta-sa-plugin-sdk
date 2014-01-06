@@ -12,9 +12,9 @@ NOINLINE CClumpModelInfo::~CClumpModelInfo()
 	//((void (__thiscall *)(CClumpModelInfo *))0x4C5750)(this);
 }
 
-CColModel *CClumpModelInfo::GetCollisionModel()
+CBox *CClumpModelInfo::GetBoundingBox()
 {
-	return ((CColModel *(__thiscall *)(CClumpModelInfo *))this->vtable[15])(this);
+	return ((CBox *(__thiscall *)(CClumpModelInfo *))this->vtable[15])(this);
 }
 
 void CClumpModelInfo::SetClump(RpClump *clump)

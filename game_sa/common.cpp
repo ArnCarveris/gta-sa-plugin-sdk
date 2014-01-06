@@ -45,6 +45,11 @@ CPed * FindPlayerPed(int playerId)
 	return ((CPed *(__cdecl *)(int))0x56E210)(playerId);
 }
 
+CVehicle * FindPlayerVehicle(int playerId, bool bIncludeRemote)
+{
+	return ((CVehicle *(__cdecl *)(int, bool))0x56E0D0)(playerId, bIncludeRemote);
+}
+
 bool InTwoPlayersMode()
 {
 	return ((bool (__cdecl *)())0x441390)();

@@ -204,7 +204,11 @@ void CSprite2d::Draw2DPolygon(float x1, float y1, float x2, float y2, float x3, 
 }
 
 // draws progress line. Progress is a value in ranges 0 - 100.
-void CSprite2d::DrawProgressBar(float x, float y, int width, int height, float progress, int progressAdd, bool drawPercentage, bool drawBlackBorder, CRGBA color, CRGBA addColor)
+void CSprite2d::DrawBarChart(float x, float y, unsigned short width, unsigned char height, float progress, 
+							signed char progressAdd, unsigned char drawPercentage, unsigned char drawBlackBorder, 
+							CRGBA color, CRGBA addColor)
 {
-	((void (__cdecl *)(float, float, int, int, float, int, bool, bool, CRGBA, CRGBA))0x728640)(x, y, width, height, progress, progressAdd, drawPercentage, drawBlackBorder, color, addColor);
+	((void (__cdecl *)(float, float, unsigned short, unsigned char, float, signed char, unsigned char, 
+		unsigned char, CRGBA, CRGBA))0x728640)(x, y, width, height, progress, progressAdd, drawPercentage, 
+		drawBlackBorder, color, addColor);
 }

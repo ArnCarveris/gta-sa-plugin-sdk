@@ -12,17 +12,17 @@ NOINLINE CBaseModelInfo::~CBaseModelInfo()
 	//((void (__thiscall *)(CBaseModelInfo *))0x4C5510)(this);
 }
 
-CBaseModelInfo *CBaseModelInfo::AsSimpleModel()
+CBaseModelInfo *CBaseModelInfo::AsAtomicModelInfoPtr()
 {
 	return ((CBaseModelInfo *(__thiscall *)(CBaseModelInfo *))this->vtable[1])(this);
 }
 
-CBaseModelInfo *CBaseModelInfo::AsCarmodModel()
+CBaseModelInfo *CBaseModelInfo::AsDamageAtomicModelInfoPtr()
 {
 	return ((CBaseModelInfo *(__thiscall *)(CBaseModelInfo *))this->vtable[2])(this);
 }
 
-CBaseModelInfo *CBaseModelInfo::AsLodModel()
+CBaseModelInfo *CBaseModelInfo::AsLodAtomicModelInfoPtr()
 {
 	return ((CBaseModelInfo *(__thiscall *)(CBaseModelInfo *))this->vtable[3])(this);
 }
@@ -52,7 +52,7 @@ void CBaseModelInfo::DeleteRwObject()
 	((void (__thiscall *)(CBaseModelInfo *))this->vtable[8])(this);
 }
 
-unsigned int CBaseModelInfo::GetRwObjectType()
+unsigned int CBaseModelInfo::GetRwModelType()
 {
 	return ((unsigned int (__thiscall *)(CBaseModelInfo *))this->vtable[9])(this);
 }
