@@ -12,4 +12,4 @@ public:
 };
 #pragma pack(pop)
 
-extern PLUGIN_API CScene *Scene;
+extern PLUGIN_API CScene &Scene;

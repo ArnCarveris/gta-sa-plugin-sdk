@@ -10,11 +10,11 @@ class PLUGIN_API CMenuManager
 public:
 	__int8 field_0;
 	__int8 field_1[3];
-	float              m_fStatsScrollSpeed;
+	float               m_fStatsScrollSpeed;
 	__int8 field_8;
 	__int8 field_9[23];
 	__int8 field_20;
-	bool               m_bHudOn;
+	bool                m_bHudOn;
 	__int8 field_22[2];
 	__int32             m_dwRadarMode;
 	__int8 field_28[4];

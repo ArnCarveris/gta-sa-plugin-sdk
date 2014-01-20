@@ -7,7 +7,8 @@
 
 using namespace std;
 
-void AllocateVehicleAdditional();
+void AllocateAdditional();
+void ReleaseAdditional();
 
 unsigned int RyosukesChange3D = 0;
 unsigned int RyosukesReset3D = 0;
@@ -18,19 +19,20 @@ void **vehicleAdditional;
 unsigned int vehiclePluginsSize;
 void **pedAdditional;
 unsigned int pedPluginsSize;
-void **objectAdditional;
-unsigned int objectPluginsSize;
 
-class CStructPlugin
+unsigned int gVehicleCounter = 0;
+unsigned int gPedCounter = 0;
+
+struct tStructPluginDesc
 {
-public:
 	unsigned int size;
 	unsigned int userId;
 	void *constructor;
 	void *destructor;
 };
 
-list<CStructPlugin*>vehiclePlugins;
+list<tStructPluginDesc*>vehiclePlugins;
+list<tStructPluginDesc*>pedPlugins;
 
 #define ProcessOneCommand(script) ((void (__thiscall *)(CRunningScript *))0x469EB0)(script);
 
@@ -42,6 +44,7 @@ list<void (*)()>MenuDrawingList;
 list<void (*)()>PreRenderBeforeList;
 list<void (*)()>PreRenderAfterList;
 list<void (*)()>InitialiseRWList;
+list<void (*)()>InitialiseTheScriptsList;
 list<void (*)()>ShutdownRWList;
 list<void (*)()>InitGameList;
 list<void (*)()>ReInitGameList;
@@ -50,6 +53,15 @@ list<void (*)()>GameProcessBeforeScriptsList;
 list<void (*)()>GameProcessAfterScriptsList;
 list<void (*)()>DrawBlipsBeforeList;
 list<void (*)()>DrawBlipsAfterList;
+list<void (*)()>RegisterRwPluginList;
+list<void (*)()>DrawBeforeHUDList;
+list<void (*)()>DrawAfterHUDList;
+list<void (*)()>VehicleCtorList;
+list<void (*)()>VehicleDtorList;
+list<void (*)()>PedCtorList;
+list<void (*)()>PedDtorList;
+list<void (*)()>PoolsBeforeInitialisationList;
+list<void (*)()>PoolsAfterInitialisationList;
 
 void Initialise();
 void Shutdown();
@@ -70,8 +82,11 @@ BOOL APIENTRY DllMain(HMODULE module, DWORD reason, LPVOID reserved)
 /*unsigned int DeviceResetAddr[] = {0x7F9788, 0x7F9710, 0x7F935C, 0x7F9248, 0x7F9A16, 0x7F839F, 0x7F8327, 0x7F81FF,
 	0x7F8187, 0x7F7AA4, 0x7F8B79, 0x7F7990, 0x7F9B43, 0x7F8C86, 0x7F87C4 };*/
 
+FILE *dbg;
+
 void Initialise()
 {
+	dbg = fopen("plugin.log", "w");
 	CheckForRyosukesPlugins();
 	CPatch::RedirectCall(0x7F9788, plugin::Core::DeviceResetFuncExe);
 	CPatch::Nop(0x7F978D, 6);
@@ -121,6 +136,34 @@ void Initialise()
 	CPatch::RedirectCall(0x53BFC7, plugin::Core::GameProcessScriptsFuncExe); // CGame::Process
 	CPatch::RedirectCall(0x618F05, plugin::Core::GameProcessScriptsFuncExe);
 	CPatch::RedirectJump(0x58AA2D, plugin::Core::DrawBlipsFuncExe);
+	CPatch::RedirectCall(0x53ECA1, plugin::Core::RegisterRwPluginFuncExe);
+	CPatch::RedirectCall(0x46937B, plugin::Core::InitialiseTheScriptsFuncExe);
+	CPatch::RedirectCall(0x53E4FF, plugin::Core::DrawHUDExe);
+	CPatch::RedirectCall(0x5BF85B, plugin::Core::PoolsInitialisationFuncExe);
+	/************additional data*************/
+	CPatch::RedirectJump(0x6D624B, plugin::Core::VehicleCtorFuncExe);
+	CPatch::RedirectCall(0x6E2D35, plugin::Core::VehicleDtorFuncExe);
+	CPatch::RedirectJump(0x5E85FC, plugin::Core::PedCtorFuncExe);
+	CPatch::RedirectCall(0x5E880C, plugin::Core::PedDtorFuncExe);
+	/****************************************/
+}
+
+void LOG(char *format, ...)
+{
+	char final[512];
+	va_list ap;
+	va_start(ap, format);
+	vsnprintf(final, 512, format, ap);
+	va_end(ap);
+	fputs(final, dbg);
+	fputs("\n", dbg);
+}
+
+void Shutdown()
+{
+	for(auto i = pluginList.begin(); i != pluginList.end(); ++i)
+		delete *i;
+	ReleaseAdditional();
 }
 
 void CheckForRyosukesPlugins()
@@ -135,24 +178,40 @@ void CheckForRyosukesPlugins()
 		RyosukesReset3D = *(unsigned __int32 *)0x7F9A17 + 0x7F9A1B;
 }
 
-// vehicle additional data
-
-void AllocateVehicleAdditional()
+unsigned int plugin::Core::GetVersion()
 {
-	vehicleAdditional = new void*[(*(CPool<CVehicle> **)0xB74494)->m_Size];
-	vehiclePluginsSize = 0;
+	return _PLUGIN_VERSION;
 }
 
-void ReleaseVehicleAdditional()
+/******************************* additional data *********************************/
+
+void AllocateAdditional()
 {
-	delete vehicleAdditional;
+	vehicleAdditional = new void*[(*(CPool<void *> **)0xB74494)->m_Size];
+	vehiclePluginsSize = 0;
+	LOG("AllocateAdditional: allocating vehicle data for %d vehicles", (*(CPool<void *> **)0xB74494)->m_Size);
+	pedAdditional = new void*[(*(CPool<void *> **)0xB74490)->m_Size];
+	pedPluginsSize = 0;
+	LOG("AllocateAdditional: allocating ped data for %d peds", (*(CPool<void *> **)0xB74490)->m_Size);
+}
+
+void ReleaseAdditional()
+{
+	delete[] vehicleAdditional;
 	for(auto i = vehiclePlugins.begin(); i != vehiclePlugins.end(); ++i)
 		delete i._Ptr->_Myval;
+	LOG("ReleaseAdditional: releasing vehicle data (%d vehicle plugins were registered)", vehiclePlugins.size());
+	delete[] pedAdditional;
+	for(auto i = pedPlugins.begin(); i != pedPlugins.end(); ++i)
+		delete i._Ptr->_Myval;
+	LOG("ReleaseAdditional: releasing ped data (%d ped plugins were registered)", pedPlugins.size());
 }
+
+/******************************* vehicle additional data *********************************/
 
 unsigned int plugin::StructPlugins::RegisterVehiclePlugin(unsigned int size, unsigned int userId, void *constructor, void *destructor)
 {
-	CStructPlugin *plugin = new CStructPlugin;
+	tStructPluginDesc *plugin = new tStructPluginDesc;
 	plugin->size = size;
 	plugin->userId = userId;
 	plugin->constructor = constructor;
@@ -160,18 +219,23 @@ unsigned int plugin::StructPlugins::RegisterVehiclePlugin(unsigned int size, uns
 	vehiclePlugins.push_back(plugin);
 	unsigned int result = vehiclePluginsSize;
 	vehiclePluginsSize += size;
+	char pluginId[8];
+	strncpy(pluginId, (char *)&userId, 4);
+	pluginId[5] = '\0';
+	LOG("plugin::StructPlugins::RegisterVehiclePlugin: Registering plugin %s with size %d. Plugins total size: %d", 
+		pluginId, size, vehiclePluginsSize);
 	return result;
 }
 
 void *plugin::StructPlugins::GetVehiclePlugin(CVehicle *vehicle, unsigned int id)
 {
-	unsigned int vehicleId = ((unsigned int)vehicle - (unsigned int)(*(CPool<CVehicle> **)0xB74494)->m_Objects) / 0xA18;
+	unsigned int vehicleId = ((unsigned int)vehicle - (unsigned int)(*(CPool<void> **)0xB74494)->m_Objects) / 0xA18;
 	return (void *)((unsigned int)vehicleAdditional[vehicleId] + id);
 }
 
-void *FindVehiclePluginByUserId(CVehicle *vehicle, unsigned int userId)
+void *plugin::StructPlugins::FindVehiclePluginByUserId(CVehicle *vehicle, unsigned int userId)
 {
-	unsigned int vehicleId = ((unsigned int)vehicle - (unsigned int)(*(CPool<CVehicle> **)0xB74494)->m_Objects) / 0xA18;
+	unsigned int vehicleId = ((unsigned int)vehicle - (unsigned int)(*(CPool<void> **)0xB74494)->m_Objects) / 0xA18;
 	unsigned int size = 0;
 	for(auto i = vehiclePlugins.begin(); i != vehiclePlugins.end(); ++i)
 	{
@@ -184,33 +248,146 @@ void *FindVehiclePluginByUserId(CVehicle *vehicle, unsigned int userId)
 
 void __fastcall OnVehicleConstructor(CVehicle *vehicle)
 {
-	unsigned int vehicleId = ((unsigned int)vehicle - (unsigned int)(*(CPool<CVehicle> **)0xB74494)->m_Objects) / 0xA18;
-	vehicleAdditional[vehicleId] = new __int8[vehiclePluginsSize];
+	gVehicleCounter++;
+	unsigned int vehicleId = ((unsigned int)vehicle - (unsigned int)(*(CPool<void> **)0xB74494)->m_Objects) / 0xA18;
+	LOG("OnVehicleConstructor: vehicle %d, vehicleId - %d, vehicleCount - %d", vehicle, vehicleId, gVehicleCounter);
 	unsigned int size = 0;
-	for(auto i = vehiclePlugins.begin(); i != vehiclePlugins.end(); ++i)
+	char pluginId[8];
+	if(vehiclePluginsSize > 0)
 	{
-		((void (*)(void *))i._Ptr->_Myval->constructor)((void *)((unsigned int)vehicleAdditional[vehicleId] + size));
-		size += i._Ptr->_Myval->size;
+		vehicleAdditional[vehicleId] = new __int8[vehiclePluginsSize];
+		LOG("  OnVehicleConstructor: allocated vehicle additional data with size %d", vehiclePluginsSize);
+		for(auto i = vehiclePlugins.begin(); i != vehiclePlugins.end(); ++i)
+		{
+			((void (*)(CVehicle *, void *))i._Ptr->_Myval->constructor)(vehicle, (void *)((unsigned int)vehicleAdditional[vehicleId] + size));
+			strncpy(pluginId, (char *)&i._Ptr->_Myval->userId, 4);
+			pluginId[5] = '\0';
+			LOG("    OnVehicleConstructor: constructor for %s plugin (size %d) at %d", pluginId, i._Ptr->_Myval->size, 
+				(unsigned int)vehicleAdditional[vehicleId] + size);
+			size += i._Ptr->_Myval->size;
+		}
+		LOG("  OnVehicleConstructor: registered %d plugins, total size %d", vehiclePlugins.size(), size);
 	}
+	else
+		LOG("  OnVehicleConstructor: no vehicle plugins registered");
 };
 
 void __fastcall OnVehicleDestructor(CVehicle *vehicle)
 {
-	unsigned int vehicleId = ((unsigned int)vehicle - (unsigned int)(*(CPool<CVehicle> **)0xB74494)->m_Objects) / 0xA18;
+	gVehicleCounter--;
+	unsigned int vehicleId = ((unsigned int)vehicle - (unsigned int)(*(CPool<void> **)0xB74494)->m_Objects) / 0xA18;
+	LOG("OnVehicleDestructor: vehicle, vehicleId - %d, vehicleCount - %d", vehicle, vehicleId, gVehicleCounter);
 	unsigned int size = 0;
+	char pluginId[8];
 	for(auto i = vehiclePlugins.begin(); i != vehiclePlugins.end(); ++i)
 	{
-		((void (*)(void *))i._Ptr->_Myval->destructor)((void *)((unsigned int)vehicleAdditional[vehicleId] + size));
+		((void (*)(CVehicle *, void *))i._Ptr->_Myval->destructor)(vehicle, (void *)((unsigned int)vehicleAdditional[vehicleId] + size));
+		strncpy(pluginId, (char *)&i._Ptr->_Myval->userId, 4);
+		pluginId[5] = '\0';
+		LOG("   OnVehicleDestructor: destructor for %s plugin (size %d) at %d", pluginId, i._Ptr->_Myval->size, 
+			(unsigned int)vehicleAdditional[vehicleId] + size);
 		size += i._Ptr->_Myval->size;
 	}
-	delete vehicleAdditional[vehicleId];
+	if(vehiclePluginsSize > 0)
+	{
+		delete vehicleAdditional[vehicleId];
+		LOG("  OnVehicleDestructor: deleted vehicle additional data");
+	}
+	else
+		LOG("  OnVehicleDestructor: no vehicle plugins registered");
 };
 
-void Shutdown()
+/********************************************** ped additional data *************************************************/
+
+unsigned int plugin::StructPlugins::RegisterPedPlugin(unsigned int size, unsigned int userId, void *constructor, void *destructor)
 {
-	for(auto i = pluginList.begin(); i != pluginList.end(); ++i)
-		delete *i;
+	tStructPluginDesc *plugin = new tStructPluginDesc;
+	plugin->size = size;
+	plugin->userId = userId;
+	plugin->constructor = constructor;
+	plugin->destructor = destructor;
+	pedPlugins.push_back(plugin);
+	unsigned int result = pedPluginsSize;
+	pedPluginsSize += size;
+	char pluginId[8];
+	strncpy(pluginId, (char *)&userId, 4);
+	pluginId[5] = '\0';
+	LOG("plugin::StructPlugins::RegisterPedPlugin: Registering plugin %s with size %d. Plugins total size: %d", 
+		pluginId, size, pedPluginsSize);
+	return result;
 }
+
+void *plugin::StructPlugins::GetPedPlugin(CPed *ped, unsigned int id)
+{
+	unsigned int pedId = ((unsigned int)ped - (unsigned int)(*(CPool<void> **)0xB74490)->m_Objects) / 0x7C4;
+	return (void *)((unsigned int)pedAdditional[pedId] + id);
+}
+
+void *plugin::StructPlugins::FindPedPluginByUserId(CPed *vehicle, unsigned int userId)
+{
+	unsigned int pedId = ((unsigned int)vehicle - (unsigned int)(*(CPool<void> **)0xB74490)->m_Objects) / 0x7C4;
+	unsigned int size = 0;
+	for(auto i = pedPlugins.begin(); i != pedPlugins.end(); ++i)
+	{
+		if(i._Ptr->_Myval->userId == userId)
+			return (void *)((unsigned int)pedAdditional[pedId] + size);
+		size += i._Ptr->_Myval->size;
+	}
+	return NULL;
+}
+
+void __fastcall OnPedConstructor(CPed *ped)
+{
+	gPedCounter++;
+	unsigned int pedId = ((unsigned int)ped - (unsigned int)(*(CPool<void> **)0xB74490)->m_Objects) / 0x7C4;
+	LOG("OnPedConstructor: ped %d, pedId - %d, pedCounter - %d", ped, pedId, gPedCounter);
+	unsigned int size = 0;
+	char pluginId[8];
+	if(pedPluginsSize > 0)
+	{
+		pedAdditional[pedId] = new __int8[pedPluginsSize];
+		LOG("  OnPedConstructor: allocated ped additional data with size %d", pedPluginsSize);
+		for(auto i = pedPlugins.begin(); i != pedPlugins.end(); ++i)
+		{
+			((void (*)(CPed *, void *))i._Ptr->_Myval->constructor)(ped, (void *)((unsigned int)pedAdditional[pedId] + size));
+			strncpy(pluginId, (char *)&i._Ptr->_Myval->userId, 4);
+			pluginId[5] = '\0';
+			LOG("    OnPedConstructor: constructor for %s plugin (size %d) at %d", pluginId, i._Ptr->_Myval->size, 
+				(unsigned int)pedAdditional[pedId] + size);
+			size += i._Ptr->_Myval->size;
+		}
+		LOG("  OnPedConstructor: no ped plugins registered");
+	}
+	else
+		LOG("  OnPedConstructor: no ped plugins registered");
+};
+
+void __fastcall OnPedDestructor(CPed *ped)
+{
+	gPedCounter--;
+	unsigned int pedId = ((unsigned int)ped - (unsigned int)(*(CPool<void> **)0xB74490)->m_Objects) / 0x7C4;
+	LOG("OnPedDestructor: ped %d, pedId - %d", ped, pedId);
+	char pluginId[8];
+	unsigned int size = 0;
+	for(auto i = pedPlugins.begin(); i != pedPlugins.end(); ++i)
+	{
+		((void (*)(CPed *, void *))i._Ptr->_Myval->destructor)(ped, (void *)((unsigned int)pedAdditional[pedId] + size));
+		strncpy(pluginId, (char *)&i._Ptr->_Myval->userId, 4);
+		pluginId[5] = '\0';
+		LOG("    OnPedDestructor: destructor for %s plugin (size %d) at %d", pluginId, i._Ptr->_Myval->size, 
+			(unsigned int)pedAdditional[pedId] + size);
+		size += i._Ptr->_Myval->size;
+	}
+	if(pedPluginsSize > 0)
+	{
+		delete pedAdditional[pedId];
+		LOG("  OnPedDestructor: deleted ped additional data");
+	}
+	else
+		LOG("  OnPedDestructor: no ped plugins registered");
+};
+
+/*************************************************************************************************/
 
 void plugin::Core::RegisterFunc(eFuncType type, tRegisteredFunction func)
 {
@@ -260,6 +437,36 @@ void plugin::Core::RegisterFunc(eFuncType type, tRegisteredFunction func)
 		break;
 	case FUNC_DRAWING_AFTER_BLIPS:
 		DrawBlipsAfterList.push_back(func);
+		break;
+	case FUNC_REGISTER_RW_PLUGIN:
+		RegisterRwPluginList.push_back(func);
+		break;
+	case FUNC_INITIALISE_SCRIPTS:
+		InitialiseTheScriptsList.push_back(func);
+		break;
+	case FUNC_DRAWING_BEFORE_HUD:
+		DrawBeforeHUDList.push_back(func);
+		break;
+	case FUNC_DRAWING_AFTER_HUD:
+		DrawAfterHUDList.push_back(func);
+		break;
+	case FUNC_VEHICLE_CONSTRUCTOR:
+		VehicleCtorList.push_back(func);
+		break;
+	case FUNC_VEHICLE_DESTRUCTOR:
+		VehicleDtorList.push_back(func);
+		break;
+	case FUNC_PED_CONSTRUCTOR:
+		PedDtorList.push_back(func);
+		break;
+	case FUNC_PED_DESTRUCTOR:
+		PedDtorList.push_back(func);
+		break;
+	case FUNC_BEFORE_POOLS_INITIALISATION:
+		PoolsBeforeInitialisationList.push_back(func);
+		break;
+	case FUNC_AFTER_POOLS_INITIALISATION:
+		PoolsAfterInitialisationList.push_back(func);
 		break;
 	}
 }
@@ -489,4 +696,157 @@ PLUGIN_API void plugin::Core::DrawBlipsFuncExe()
 	plugin::Core::DrawBlipsBeforeFunc();
 	CALLVOID(0x588050);
 	plugin::Core::DrawBlipsAfterFunc();
+}
+
+PLUGIN_API void plugin::Core::RegisterRwPluginFunc()
+{
+	for(auto i = RegisterRwPluginList.begin(); i != RegisterRwPluginList.end(); ++i)
+		(*i)();
+}
+
+PLUGIN_API bool plugin::Core::RegisterRwPluginFuncExe()
+{
+	bool result = ((bool (__cdecl *)())0x53D870)();
+	plugin::Core::RegisterRwPluginFunc();
+	return result;
+}
+
+PLUGIN_API void plugin::Core::InitialiseTheScriptsFunc()
+{
+	for(auto i = InitialiseTheScriptsList.begin(); i != InitialiseTheScriptsList.end(); ++i)
+		(*i)();
+}
+
+PLUGIN_API void plugin::Core::InitialiseTheScriptsFuncExe()
+{
+	bool result = ((bool (__cdecl *)())0x4B2AD0)();
+	plugin::Core::InitialiseTheScriptsFunc();
+}
+
+PLUGIN_API void plugin::Core::DrawBeforeHUDFunc()
+{
+	for(auto i = DrawBeforeHUDList.begin(); i != DrawBeforeHUDList.end(); ++i)
+		(*i)();
+}
+
+PLUGIN_API void plugin::Core::DrawAfterHUDFunc()
+{
+	for(auto i = DrawAfterHUDList.begin(); i != DrawAfterHUDList.end(); ++i)
+		(*i)();
+}
+
+PLUGIN_API void plugin::Core::DrawHUDExe()
+{
+	plugin::Core::DrawBeforeHUDFunc();
+	((void (__cdecl *)())0x58FAE0)();
+	plugin::Core::DrawAfterHUDFunc();
+}
+
+PLUGIN_API void plugin::Core::PoolsBeforeInitialisationFunc()
+{
+	for(auto i = PoolsBeforeInitialisationList.begin(); i != PoolsBeforeInitialisationList.end(); ++i)
+		(*i)();
+}
+
+PLUGIN_API void plugin::Core::PoolsAfterInitialisationFunc()
+{
+	for(auto i = PoolsAfterInitialisationList.begin(); i != PoolsAfterInitialisationList.end(); ++i)
+		(*i)();
+}
+
+PLUGIN_API void plugin::Core::PoolsInitialisationFuncExe() // redirect call at 0x5BF85B
+{
+	plugin::Core::PoolsBeforeInitialisationFunc();
+	((void (__cdecl *)())0x550F10)();
+	AllocateAdditional();
+	plugin::Core::PoolsAfterInitialisationFunc();
+}
+
+PLUGIN_API void plugin::Core::VehicleCtorFunc(CVehicle *vehicle)
+{
+	OnVehicleConstructor(vehicle);
+	for(auto i = VehicleCtorList.begin(); i != VehicleCtorList.end(); ++i)
+		((void (__cdecl *)(CVehicle *))*i)(vehicle);
+}
+
+PLUGIN_API void __declspec(naked) plugin::Core::VehicleCtorFuncExe()
+{
+	// redirect jump at 0x6D624B
+	__asm{
+		mov dword ptr [esi+0x574], 0x48484848
+		pushad
+		push esi
+		call plugin::Core::VehicleCtorFunc
+		add esp, 4
+		popad
+		mov eax, 0x6D6255
+		jmp eax
+	}
+}
+
+PLUGIN_API void plugin::Core::VehicleDtorFunc(CVehicle *vehicle)
+{
+	OnVehicleDestructor(vehicle);
+	for(auto i = VehicleDtorList.begin(); i != VehicleDtorList.end(); ++i)
+		((void (__cdecl *)(CVehicle *))*i)(vehicle);
+}
+
+PLUGIN_API void __declspec(naked) plugin::Core::VehicleDtorFuncExe()
+{
+	// redirect call at 0x6E2D35
+	__asm{
+		mov eax, 0x542450 // call CPhysical::~CPhysical
+		call eax
+		pushad
+		push esi
+		call plugin::Core::VehicleDtorFunc
+		add esp, 4
+		popad
+		retn
+	}
+}
+
+PLUGIN_API void plugin::Core::PedCtorFunc(CPed *ped)
+{
+	OnPedConstructor(ped);
+	for(auto i = PedCtorList.begin(); i != PedCtorList.end(); ++i)
+		((void (__cdecl *)(CPed *))*i)(ped);
+}
+
+PLUGIN_API void __declspec(naked) plugin::Core::PedCtorFuncExe()
+{
+	// redirect jump at 0x5E85FC
+	__asm{
+		pushad
+		push esi
+		call plugin::Core::PedCtorFunc
+		add esp, 4
+		popad
+		mov ecx, [esp+0x2C]
+		pop edi
+		mov eax, 0x5E8601
+		jmp eax
+	}
+}
+
+PLUGIN_API void plugin::Core::PedDtorFunc(CPed *ped)
+{
+	OnPedDestructor(ped);
+	for(auto i = PedDtorList.begin(); i != PedDtorList.end(); ++i)
+		((void (__cdecl *)(CPed *))*i)(ped);
+}
+
+PLUGIN_API void __declspec(naked) plugin::Core::PedDtorFuncExe()
+{
+	// redirect call at 0x5E880C
+	__asm{
+		mov eax, 0x542450 // call CPhysical::~CPhysical
+		call eax
+		pushad
+		push esi
+		call plugin::Core::PedDtorFunc
+		add esp, 4
+		popad
+		retn
+	}
 }

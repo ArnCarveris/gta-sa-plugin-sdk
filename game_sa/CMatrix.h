@@ -1,6 +1,7 @@
 #pragma once
 #include "plugin\plugin.h"
 #include "RenderWare.h"
+#include "CQuaternion.h"
 
 #pragma pack(push, 4)
 class PLUGIN_API CMatrix : public RwMatrixTag
@@ -39,7 +40,7 @@ public:
 	void Rotate(float x, float y, float z); // rotate on 3 axes
 	void Reorthogonalise();
 	void CopyToRwMatrix(RwMatrixTag *matrix); // similar to UpdateRW(RwMatrixTag *)
-	void RotationFromQuaternion(RtQuat *quat);
+	void SetRotate(CQuaternion  const& quat);
 	void operator=(CMatrix const& right);
 	void operator+=(CMatrix const& right);
 	void operator*=(CMatrix const& right);

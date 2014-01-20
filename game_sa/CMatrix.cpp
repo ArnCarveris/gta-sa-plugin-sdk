@@ -157,9 +157,9 @@ void CMatrix::CopyToRwMatrix(RwMatrixTag *matrix)
 	((void (__thiscall *)(CMatrix *, RwMatrixTag *))0x59B8B0)(this, matrix);
 }
 
-void CMatrix::RotationFromQuaternion(RtQuat *quat)
+void CMatrix::SetRotate(CQuaternion  const& quat)
 {
-	((void (__thiscall *)(CMatrix *, RtQuat *))0x59BBF0)(this, quat);
+	((void (__thiscall *)(CMatrix *, CQuaternion  const&))0x59BBF0)(this, quat);
 }
 
 void CMatrix::operator=(CMatrix const& right)

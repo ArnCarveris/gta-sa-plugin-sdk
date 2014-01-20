@@ -212,3 +212,14 @@ void CSprite2d::DrawBarChart(float x, float y, unsigned short width, unsigned ch
 		unsigned char, CRGBA, CRGBA))0x728640)(x, y, width, height, progress, progressAdd, drawPercentage, 
 		drawBlackBorder, color, addColor);
 }
+
+#define DrawBarChart(x, y, width, height, progress, progressAdd, drawPercentage, \
+    drawBlackBorder, color, addColor) ((void (__cdecl *)(float, float, unsigned short,\
+    unsigned char, float, signed char, unsigned char, unsigned char, int, int))0x728640)\
+    (x, y, width, height, progress, progressAdd, drawPercentage, drawBlackBorder, color,\
+    addColor);
+
+void Draw()
+{
+    DrawBarChart(300.0, 100.0, 300, 50, 60.0, 0, false, true, 0xFF0000FF, 0);
+}

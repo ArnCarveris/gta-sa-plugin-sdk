@@ -31,6 +31,22 @@ enum eCarLock
 	CARLOCK_SKIP_SHUT_DOORS
 };
 
+enum eVehicleType
+{
+	VEHICLE_AUTOMOBILE,
+	VEHICLE_MTRUCK,
+	VEHICLE_QUAD,
+	VEHICLE_HELI,
+	VEHICLE_PLANE,
+	VEHICLE_BOAT,
+	VEHICLE_TRAIN,
+	VEHICLE_FHELI,
+	VEHICLE_FPLANE,
+	VEHICLE_BIKE,
+	VEHICLE_BMX,
+	VEHICLE_TRAILER
+};
+
 #pragma pack(push, 4)
 class PLUGIN_API  CVehicle : public CPhysical
 {
@@ -170,10 +186,10 @@ public:
 	                          // 3 = remotely set ?
 	                          // 4 = Timed Bomb has been activated
 	                          // 5 = On ignition has been activated
-    UInt8 m_nOverrideLights : 2; // uses enum NO_CAR_LIGHT_OVERRIDE, FORCE_CAR_LIGHTS_OFF, FORCE_CAR_LIGHTS_ON
-    UInt8 m_nWinchType : 2; // Does this vehicle use a winch?
-    UInt8 m_nGunsCycleIndex : 2; // Cycle through alternate gun hardpoints on planes/helis
-    UInt8 m_nOrdnanceCycleIndex : 2; // Cycle through alternate ordnance hardpoints on planes/helis
+	UInt8 m_nOverrideLights : 2; // uses enum NO_CAR_LIGHT_OVERRIDE, FORCE_CAR_LIGHTS_OFF, FORCE_CAR_LIGHTS_ON
+	UInt8 m_nWinchType : 2; // Does this vehicle use a winch?
+	UInt8 m_nGunsCycleIndex : 2; // Cycle through alternate gun hardpoints on planes/helis
+	UInt8 m_nOrdnanceCycleIndex : 2; // Cycle through alternate ordnance hardpoints on planes/helis
 	UInt8 m_nUsedForCover; // Has n number of cops hiding/attempting to hid behind it
 	UInt8 m_nAmmoInClip; // Used to make the guns on boat do a reload (20 by default).
 	UInt8 m_nPacMansCollected; // initialised, but not used?
@@ -231,13 +247,16 @@ public:
 	};
 	RwTexture *m_pCustomCarPlate;
 	class CVehicle *field_58C;
-	UInt32     m_dwVehicleClass;
-	UInt32     m_dwVehicleSubClass;
+	UInt32     m_dwVehicleClass; // see enum eVehicleType
+	UInt32     m_dwVehicleSubClass; // see enum eVehicleType
 	Int16      m_wPreviousRemapTxd;
 	Int16      m_wRemapTxd;
 	RwTexture *m_pRemapTexture;
-
+	
 	void SetComponentVisibility(RwFrame *component, unsigned int visibilityState);
+	static void SetComponentAtomicAlpha(RpAtomic *atomic, int alpha);
+	void SetWindowOpenFlag(unsigned char door);
+	void ClearWindowOpenFlag(unsigned char door);
 };
 #pragma pack(pop)
 

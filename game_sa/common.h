@@ -4,6 +4,7 @@
 #include "CPed.h"
 #include "CVehicle.h"
 #include "CWeaponInfo.h"
+#include "CAnimBlendClumpData.h"
 
 // returns player coors
 PLUGIN_API CVector FindPlayerCoors(int playerId);
@@ -32,3 +33,9 @@ PLUGIN_API CVector VectorSub(CVector const& from, CVector const& what);
 // matrix mul
 PLUGIN_API CVector Multiply3x3(CMatrix  const& matrix, CVector  const& vec);
 PLUGIN_API RpHAnimHierarchy *GetAnimHierarchyFromSkinClump(RpClump *clump);
+
+PLUGIN_API extern UInt32 &ClumpOffset;
+
+#define RpClumpGetAnimBlendClumpData(clump) (*(CAnimBlendClumpData **)(((unsigned int)(clump) + ClumpOffset)))
+
+PLUGIN_API AnimBlendFrameData *RpAnimBlendClumpFindFrame(RpClump *clump, char *name);

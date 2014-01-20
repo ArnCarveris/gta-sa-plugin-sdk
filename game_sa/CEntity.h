@@ -57,7 +57,6 @@ public:
 	class CEntity *m_pLod;
 	unsigned __int8 m_nNumLodChildren;
 	unsigned __int8 m_nNumLodChildrenRendered;
-	unsigned __int8 m_nTypeState;
 	unsigned __int8 m_nType : 3;
 	unsigned __int8 m_nStatus : 5;
 
