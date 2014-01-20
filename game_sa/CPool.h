@@ -8,10 +8,10 @@ struct tPoolObjectFlags
 };
 
 #pragma pack(push, 1)
-template<class T> class CPool
+template<class A, class B = A> class CPool
 {
 public:
-	T* m_Objects;
+	B* m_Objects;
 	tPoolObjectFlags* m_ByteMap;
 	__int32 m_Size;		// max number of objects.
 	__int32 m_Top;		// count of objects - 1
@@ -23,7 +23,7 @@ public:
 	// Initializes pool
 	CPool* const Initialise(int maxCount, const char* poolName)
 	{
-		this -> m_Objects = new T[maxCount];
+		this -> m_Objects = new B[maxCount];
 
 		this -> m_ByteMap = new tPoolObjectFlags[maxCount];
 
@@ -66,7 +66,7 @@ public:
 	}
 
 	// Returns pointer to object by index
-	T* AtIndex(int idx)
+	A* AtIndex(int idx)
 	{
 		if(this -> m_ByteMap[idx].seed)
 		{
@@ -95,7 +95,7 @@ public:
 	}
 
 	// Allocates object
-	T* Allocate()
+	A* Allocate()
 	{
 		int startSearchFrom = this -> m_Top + 1;
 		int searchTo = this -> m_Size;
@@ -135,7 +135,7 @@ public:
 	}
 
 	// Deallocates object
-	void Deallocate(T* pObject)
+	void Deallocate(A* pObject)
 	{
 		int idx = pObject - this -> m_Objects;
 
@@ -143,7 +143,7 @@ public:
 	}
 
 	// Returns SCM handle for object
-	int GetHandleByPointer(T* pObject)
+	int GetHandleByPointer(A* pObject)
 	{
 		int idx = pObject - this -> m_Objects;
 
@@ -151,7 +151,7 @@ public:
 	}
 
 	// Returns pointer to object by SCM handle
-	T* AtHandle(int handle)
+	A* AtHandle(int handle)
 	{
 		int idx = handle / 256;
 
