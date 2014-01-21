@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AnimBlendFrameData.h" />
+    <ClInclude Include="C2dEffect.h" />
+    <ClInclude Include="CAEAudioEntity.h" />
+    <ClInclude Include="CAERadioTrackManager.h" />
+    <ClInclude Include="CAESound.h" />
+    <ClInclude Include="CAETwinLoopSoundEntity.h" />
+    <ClInclude Include="CAEVehicleAudioEntity.h" />
+    <ClInclude Include="CAiTimer.h" />
+    <ClInclude Include="CAnimBlendClumpData.h" />
+    <ClInclude Include="CAtomicModelInfo.h" />
+    <ClInclude Include="CAutoPilot.h" />
+    <ClInclude Include="CBaseModelInfo.h" />
+    <ClInclude Include="CBox.h" />
+    <ClInclude Include="CBuilding.h" />
+    <ClInclude Include="CBulletTraces.h" />
+    <ClInclude Include="CCam.h" />
+    <ClInclude Include="CCamera.h" />
+    <ClInclude Include="CCamPathSplines.h" />
+    <ClInclude Include="CCivilianPed.h" />
+    <ClInclude Include="CClock.h" />
+    <ClInclude Include="CClothes.h" />
+    <ClInclude Include="CClumpModelInfo.h" />
+    <ClInclude Include="CColBox.h" />
+    <ClInclude Include="CColData.h" />
+    <ClInclude Include="CColLine.h" />
+    <ClInclude Include="CColModel.h" />
+    <ClInclude Include="CColPoint.h" />
+    <ClInclude Include="CColSphere.h" />
+    <ClInclude Include="CColTriangle.h" />
+    <ClInclude Include="CColTrianglePlane.h" />
+    <ClInclude Include="CMatrixLink.h" />
+    <ClInclude Include="CCopPed.h" />
+    <ClInclude Include="CCoronas.h" />
+    <ClInclude Include="CCrimeBeingQd.h" />
+    <ClInclude Include="CCutsceneShadow.h" />
+    <ClInclude Include="CDamageManager.h" />
+    <ClInclude Include="CDarkel.h" />
+    <ClInclude Include="CDummy.h" />
+    <ClInclude Include="CEmergencyPed.h" />
+    <ClInclude Include="CEntity.h" />
+    <ClInclude Include="CEntityScanner.h" />
+    <ClInclude Include="CEventManager.h" />
+    <ClInclude Include="CExplosion.h" />
+    <ClInclude Include="CFileMgr.h" />
+    <ClInclude Include="CFont.h" />
+    <ClInclude Include="CGame.h" />
+    <ClInclude Include="CGeneral.h" />
+    <ClInclude Include="cHandlingDataMgr.h" />
+    <ClInclude Include="CHudColours.h" />
+    <ClInclude Include="CMatrix.h" />
+    <ClInclude Include="CMenuManager.h" />
+    <ClInclude Include="CMessages.h" />
+    <ClInclude Include="CMissionCleanup.h" />
+    <ClInclude Include="CModelInfo.h" />
+    <ClInclude Include="CNodeAddress.h" />
+    <ClInclude Include="CObject.h" />
+    <ClInclude Include="CObjectInfo.h" />
+    <ClInclude Include="common.h" />
+    <ClInclude Include="CompressedVector.h" />
+    <ClInclude Include="CPad.h" />
+    <ClInclude Include="CPed.h" />
+    <ClInclude Include="CPedAcquaintance.h" />
+    <ClInclude Include="CPedCollisionAudio.h" />
+    <ClInclude Include="CPedIK.h" />
+    <ClInclude Include="CPedIntelligence.h" />
+    <ClInclude Include="CPedVoice.h" />
+    <ClInclude Include="CPhysical.h" />
+    <ClInclude Include="CPlaceable.h" />
+    <ClInclude Include="CPlaneTrail.h" />
+    <ClInclude Include="CPlaneTrails.h" />
+    <ClInclude Include="CPlayerData.h" />
+    <ClInclude Include="CPlayerInfo.h" />
+    <ClInclude Include="CPlayerPed.h" />
+    <ClInclude Include="CPointlight.h" />
+    <ClInclude Include="CPointlights.h" />
+    <ClInclude Include="CPool.h" />
+    <ClInclude Include="CPools.h" />
+    <ClInclude Include="CPtrList.h" />
+    <ClInclude Include="CQuaternion.h" />
+    <ClInclude Include="CQueuedMode.h" />
+    <ClInclude Include="CRadar.h" />
+    <ClInclude Include="CRect.h" />
+    <ClInclude Include="CReference.h" />
+    <ClInclude Include="CReferences.h" />
+    <ClInclude Include="CRegisteredCorona.h" />
+    <ClInclude Include="CRenderer.h" />
+    <ClInclude Include="CRepeatSector.h" />
+    <ClInclude Include="CRGBA.h" />
+    <ClInclude Include="CRunningScript.h" />
+    <ClInclude Include="CScene.h" />
+    <ClInclude Include="CShadowCamera.h" />
+    <ClInclude Include="CSimpleTransform.h" />
+    <ClInclude Include="CSphere.h" />
+    <ClInclude Include="CSprite.h" />
+    <ClInclude Include="CSprite2d.h" />
+    <ClInclude Include="CStats.h" />
+    <ClInclude Include="CStoredCollPoly.h" />
+    <ClInclude Include="CTask.h" />
+    <ClInclude Include="CTaskComplex.h" />
+    <ClInclude Include="CTaskComplexKillPedOnFoot.h" />
+    <ClInclude Include="CTaskManager.h" />
+    <ClInclude Include="CTaskSimple.h" />
+    <ClInclude Include="CTaskSimpleJetpack.h" />
+    <ClInclude Include="CTaskSimpleUseGun.h" />
+    <ClInclude Include="CTexDictionary.h" />
+    <ClInclude Include="CText.h" />
+    <ClInclude Include="CTheScripts.h" />
+    <ClInclude Include="CTheZones.h" />
+    <ClInclude Include="CTimeCycleInfo.h" />
+    <ClInclude Include="CTimeModelInfo.h" />
+    <ClInclude Include="CTimer.h" />
+    <ClInclude Include="cTransmission.h" />
+    <ClInclude Include="CTxdStore.h" />
+    <ClInclude Include="CVector.h" />
+    <ClInclude Include="CVector2D.h" />
+    <ClInclude Include="CVehicle.h" />
+    <ClInclude Include="CVehicleModelInfo.h" />
+    <ClInclude Include="CVisibilityPlugins.h" />
+    <ClInclude Include="CWanted.h" />
+    <ClInclude Include="CWantedAudio.h" />
+    <ClInclude Include="CWeapon.h" />
+    <ClInclude Include="CWeaponAudio.h" />
+    <ClInclude Include="CWeaponInfo.h" />
+    <ClInclude Include="CWeaponModelInfo.h" />
+    <ClInclude Include="CWorld.h" />
+    <ClInclude Include="CZone.h" />
+    <ClInclude Include="eCamMode.h" />
+    <ClInclude Include="eCommandName.h" />
+    <ClInclude Include="eCopType.h" />
+    <ClInclude Include="eEntityStatus.h" />
+    <ClInclude Include="eEntityType.h" />
+    <ClInclude Include="ePedType.h" />
+    <ClInclude Include="eTaskType.h" />
+    <ClInclude Include="eVehicleHandlingFlags.h" />
+    <ClInclude Include="eVehicleHandlingModelFlags.h" />
+    <ClInclude Include="eWeaponFire.h" />
+    <ClInclude Include="eWeaponFlags.h" />
+    <ClInclude Include="eWeaponType.h" />
+    <ClInclude Include="functions.h" />
+    <ClInclude Include="IFrame.h" />
+    <ClInclude Include="LimbOrienation.h" />
+    <ClInclude Include="RenderWare.h" />
+    <ClInclude Include="RwObjectNameIdAssocation.h" />
+    <ClInclude Include="sa_sdk.h" />
+    <ClInclude Include="tBikeHandlingData.h" />
+    <ClInclude Include="tBoatHandlingData.h" />
+    <ClInclude Include="tFlyingHandlingData.h" />
+    <ClInclude Include="tHandlingData.h" />
+    <ClInclude Include="tTransmissionGear.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CAEAudioEntity.cpp" />
+    <ClCompile Include="CAERadioTrackManager.cpp" />
+    <ClCompile Include="CAESound.cpp" />
+    <ClCompile Include="CAtomicModelInfo.cpp" />
+    <ClCompile Include="CBaseModelInfo.cpp" />
+    <ClCompile Include="CBox.cpp" />
+    <ClCompile Include="CBuilding.cpp" />
+    <ClCompile Include="CBulletTraces.cpp" />
+    <ClCompile Include="CCamera.cpp" />
+    <ClCompile Include="CClock.cpp" />
+    <ClCompile Include="CClumpModelInfo.cpp" />
+    <ClCompile Include="CColBox.cpp" />
+    <ClCompile Include="CColLine.cpp" />
+    <ClCompile Include="CColPoint.cpp" />
+    <ClCompile Include="CColSphere.cpp" />
+    <ClCompile Include="CColTriangle.cpp" />
+    <ClCompile Include="CColTrianglePlane.cpp" />
+    <ClCompile Include="CMatrixLink.cpp" />
+    <ClCompile Include="CCoronas.cpp" />
+    <ClCompile Include="CCutsceneShadow.cpp" />
+    <ClCompile Include="CDarkel.cpp" />
+    <ClCompile Include="CDummy.cpp" />
+    <ClCompile Include="CEntity.cpp" />
+    <ClCompile Include="CFileMgr.cpp" />
+    <ClCompile Include="CFont.cpp" />
+    <ClCompile Include="CGame.cpp" />
+    <ClCompile Include="CGeneral.cpp" />
+    <ClCompile Include="cHandlingDataMgr.cpp" />
+    <ClCompile Include="CHudColours.cpp" />
+    <ClCompile Include="CMatrix.cpp" />
+    <ClCompile Include="CMenuManager.cpp" />
+    <ClCompile Include="CMessages.cpp" />
+    <ClCompile Include="CMissionCleanup.cpp" />
+    <ClCompile Include="CModelInfo.cpp" />
+    <ClCompile Include="common.cpp" />
+    <ClCompile Include="CompressedVector.cpp" />
+    <ClCompile Include="CPad.cpp" />
+    <ClCompile Include="CPed.cpp" />
+    <ClCompile Include="CPedIntelligence.cpp" />
+    <ClCompile Include="CPhysical.cpp" />
+    <ClCompile Include="CPlaceable.cpp" />
+    <ClCompile Include="CPlaneTrail.cpp" />
+    <ClCompile Include="CPlaneTrails.cpp" />
+    <ClCompile Include="CPools.cpp" />
+    <ClCompile Include="CQuaternion.cpp" />
+    <ClCompile Include="CRadar.cpp" />
+    <ClCompile Include="CRect.cpp" />
+    <ClCompile Include="CReference.cpp" />
+    <ClCompile Include="CReferences.cpp" />
+    <ClCompile Include="CRegisteredCorona.cpp" />
+    <ClCompile Include="CRGBA.cpp" />
+    <ClCompile Include="CRunningScript.cpp" />
+    <ClCompile Include="CScene.cpp" />
+    <ClCompile Include="CShadowCamera.cpp" />
+    <ClCompile Include="CSimpleTransform.cpp" />
+    <ClCompile Include="CSphere.cpp" />
+    <ClCompile Include="CSprite.cpp" />
+    <ClCompile Include="CSprite2d.cpp" />
+    <ClCompile Include="CStats.cpp" />
+    <ClCompile Include="CTask.cpp" />
+    <ClCompile Include="CTaskComplex.cpp" />
+    <ClCompile Include="CTaskComplexKillPedOnFoot.cpp" />
+    <ClCompile Include="CTaskSimple.cpp" />
+    <ClCompile Include="CTexDictionary.cpp" />
+    <ClCompile Include="CText.cpp" />
+    <ClCompile Include="CTheScripts.cpp" />
+    <ClCompile Include="CTheZones.cpp" />
+    <ClCompile Include="CTimeCycleInfo.cpp" />
+    <ClCompile Include="CTimeModelInfo.cpp" />
+    <ClCompile Include="CTimer.cpp" />
+    <ClCompile Include="cTransmission.cpp" />
+    <ClCompile Include="CTxdStore.cpp" />
+    <ClCompile Include="CVector.cpp" />
+    <ClCompile Include="CVector2D.cpp" />
+    <ClCompile Include="CVehicle.cpp" />
+    <ClCompile Include="CVisibilityPlugins.cpp" />
+    <ClCompile Include="CWeapon.cpp" />
+    <ClCompile Include="CWeaponInfo.cpp" />
+    <ClCompile Include="CWeaponModelInfo.cpp" />
+    <ClCompile Include="CWorld.cpp" />
+    <ClCompile Include="CZone.cpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{5EA2007D-DFCA-4A74-86CE-5D00B1FF663F}</ProjectGuid>
+    <RootNamespace>SA_SDK</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v100</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level1</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <ExceptionHandling>false</ExceptionHandling>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

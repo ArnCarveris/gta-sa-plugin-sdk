@@ -1,0 +1,708 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{5156635e-763c-4001-a15b-e7bcd459e277}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources">
+      <UniqueIdentifier>{1a5c193b-e92e-4697-bd01-89daacb9fc42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\_sdk">
+      <UniqueIdentifier>{a91c3834-bc9d-4a35-b62c-b90055265efb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AnimBlendFrameData.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="C2dEffect.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CAEAudioEntity.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CAERadioTrackManager.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CAESound.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CAETwinLoopSoundEntity.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CAEVehicleAudioEntity.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CAiTimer.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CAnimBlendClumpData.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CAtomicModelInfo.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CAutoPilot.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CBaseModelInfo.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CBox.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CBuilding.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CBulletTraces.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CCam.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CCamera.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CCamPathSplines.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CCivilianPed.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CClock.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CClothes.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CClumpModelInfo.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CColBox.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CColData.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CColLine.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CColModel.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CColPoint.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CColSphere.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CColTriangle.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CColTrianglePlane.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CCopPed.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CCoronas.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CCrimeBeingQd.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CCutsceneShadow.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CDamageManager.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CDarkel.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CDummy.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CEmergencyPed.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CEntity.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CEntityScanner.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CEventManager.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CExplosion.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CFileMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CFont.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CGame.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CGeneral.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="cHandlingDataMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CHudColours.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CMatrix.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CMenuManager.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CMessages.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CMissionCleanup.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CNodeAddress.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CObject.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjectInfo.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CompressedVector.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CPad.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CPed.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CPedAcquaintance.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CPedCollisionAudio.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CPedIK.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CPedIntelligence.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CPedVoice.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CPhysical.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlaceable.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlaneTrail.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlaneTrails.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayerData.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayerInfo.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayerPed.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CPointlight.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CPointlights.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CPool.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CQuaternion.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CQueuedMode.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CRadar.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CRect.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CReference.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CReferences.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CRegisteredCorona.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CRenderer.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CRGBA.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CRunningScript.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CScene.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CShadowCamera.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CSphere.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CSprite.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CSprite2d.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CStats.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CStoredCollPoly.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CTask.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CTaskComplex.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CTaskComplexKillPedOnFoot.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CTaskManager.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CTaskSimple.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CTaskSimpleJetpack.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CTaskSimpleUseGun.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CTexDictionary.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CText.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CTheScripts.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CTheZones.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CTimeCycleInfo.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CTimeModelInfo.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CTimer.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="cTransmission.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CTxdStore.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CVector.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CVector2D.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CVehicle.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CVehicleModelInfo.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CVisibilityPlugins.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CWanted.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CWantedAudio.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CWeapon.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CWeaponAudio.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CWeaponInfo.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CWeaponModelInfo.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CWorld.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CZone.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="eCamMode.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="eCommandName.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="eCopType.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="eEntityStatus.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="eEntityType.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ePedType.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="eTaskType.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="eVehicleHandlingFlags.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="eVehicleHandlingModelFlags.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="eWeaponFire.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="eWeaponFlags.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="eWeaponType.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="functions.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IFrame.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LimbOrienation.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderWare.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="RwObjectNameIdAssocation.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="tBikeHandlingData.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="tBoatHandlingData.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="tFlyingHandlingData.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="tHandlingData.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="tTransmissionGear.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CMatrixLink.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CSimpleTransform.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CRepeatSector.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CPtrList.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CModelInfo.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="sa_sdk.h">
+      <Filter>Headers\_sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="CPools.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CAEAudioEntity.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CAERadioTrackManager.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CAESound.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CAtomicModelInfo.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CBaseModelInfo.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CBox.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CBuilding.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CBulletTraces.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CCamera.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CClock.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CClumpModelInfo.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CColBox.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CColLine.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CColPoint.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CColSphere.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CColTriangle.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CColTrianglePlane.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CCoronas.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CCutsceneShadow.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CDarkel.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CDummy.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CEntity.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CFileMgr.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CFont.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CGame.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CGeneral.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="cHandlingDataMgr.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CHudColours.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CMatrix.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CMenuManager.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CMessages.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CMissionCleanup.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="common.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CompressedVector.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CPad.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CPed.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CPedIntelligence.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CPhysical.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlaceable.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlaneTrail.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlaneTrails.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CQuaternion.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CRect.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CReference.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CReferences.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CRegisteredCorona.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CRGBA.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CRunningScript.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CScene.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CShadowCamera.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CSphere.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CSprite.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CSprite2d.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CStats.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CTask.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CTaskComplex.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CTaskComplexKillPedOnFoot.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CTaskSimple.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CTexDictionary.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CText.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CTheScripts.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CTheZones.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CTimeCycleInfo.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CTimeModelInfo.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CTimer.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="cTransmission.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CTxdStore.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CVector.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CVector2D.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CVehicle.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CVisibilityPlugins.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CWeapon.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CWeaponInfo.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CWeaponModelInfo.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CWorld.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CZone.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CMatrixLink.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CSimpleTransform.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CRadar.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CModelInfo.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CPools.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

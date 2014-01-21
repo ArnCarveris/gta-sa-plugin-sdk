@@ -1,0 +1,98 @@
+﻿Построение начато 21.01.2014 21:02:41.
+     1>Проект "D:\Games\GTA_SA2\SA_SDK\SA_SDK\SA_SDK.vcxproj" в узле 2 (целевые объекты Build).
+     1>ClCompile:
+         D:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W1 /WX- /O2 /Oi /Oy- /GL /D _WINDLL /D _MBCS /Gm- /MT /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt CPools.cpp
+         CPools.cpp
+       Link:
+         D:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Games\GTA_SA2\SA_SDK\Release\SA_SDK.dll" /NOLOGO /MANIFEST /ManifestFile:"Release\SA_SDK.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\Games\GTA_SA2\SA_SDK\Release\SA_SDK.pdb" /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Games\GTA_SA2\SA_SDK\Release\SA_SDK.lib" /MACHINE:X86 /DLL Release\CAEAudioEntity.obj
+         Release\CAERadioTrackManager.obj
+         Release\CAESound.obj
+         Release\CAtomicModelInfo.obj
+         Release\CBaseModelInfo.obj
+         Release\CBox.obj
+         Release\CBuilding.obj
+         Release\CBulletTraces.obj
+         Release\CCamera.obj
+         Release\CClock.obj
+         Release\CClumpModelInfo.obj
+         Release\CColBox.obj
+         Release\CColLine.obj
+         Release\CColPoint.obj
+         Release\CColSphere.obj
+         Release\CColTriangle.obj
+         Release\CColTrianglePlane.obj
+         Release\CMatrixLink.obj
+         Release\CCoronas.obj
+         Release\CCutsceneShadow.obj
+         Release\CDarkel.obj
+         Release\CDummy.obj
+         Release\CEntity.obj
+         Release\CFileMgr.obj
+         Release\CFont.obj
+         Release\CGame.obj
+         Release\CGeneral.obj
+         Release\cHandlingDataMgr.obj
+         Release\CHudColours.obj
+         Release\CMatrix.obj
+         Release\CMenuManager.obj
+         Release\CMessages.obj
+         Release\CMissionCleanup.obj
+         Release\CModelInfo.obj
+         Release\common.obj
+         Release\CompressedVector.obj
+         Release\CPad.obj
+         Release\CPed.obj
+         Release\CPedIntelligence.obj
+         Release\CPhysical.obj
+         Release\CPlaceable.obj
+         Release\CPlaneTrail.obj
+         Release\CPlaneTrails.obj
+         Release\CPools.obj
+         Release\CQuaternion.obj
+         Release\CRadar.obj
+         Release\CRect.obj
+         Release\CReference.obj
+         Release\CReferences.obj
+         Release\CRegisteredCorona.obj
+         Release\CRGBA.obj
+         Release\CRunningScript.obj
+         Release\CScene.obj
+         Release\CShadowCamera.obj
+         Release\CSimpleTransform.obj
+         Release\CSphere.obj
+         Release\CSprite.obj
+         Release\CSprite2d.obj
+         Release\CStats.obj
+         Release\CTask.obj
+         Release\CTaskComplex.obj
+         Release\CTaskComplexKillPedOnFoot.obj
+         Release\CTaskSimple.obj
+         Release\CTexDictionary.obj
+         Release\CText.obj
+         Release\CTheScripts.obj
+         Release\CTheZones.obj
+         Release\CTimeCycleInfo.obj
+         Release\CTimeModelInfo.obj
+         Release\CTimer.obj
+         Release\cTransmission.obj
+         Release\CTxdStore.obj
+         Release\CVector.obj
+         Release\CVector2D.obj
+         Release\CVehicle.obj
+         Release\CVisibilityPlugins.obj
+         Release\CWeapon.obj
+         Release\CWeaponInfo.obj
+         Release\CWeaponModelInfo.obj
+         Release\CWorld.obj
+         Release\CZone.obj
+            Создается библиотека D:\Games\GTA_SA2\SA_SDK\Release\SA_SDK.lib и объект D:\Games\GTA_SA2\SA_SDK\Release\SA_SDK.exp
+         Создание кода
+         Создание кода завершено
+         SA_SDK.vcxproj -> D:\Games\GTA_SA2\SA_SDK\Release\SA_SDK.dll
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"D:\Games\GTA_SA2\SA_SDK\Release\SA_SDK.dll;#2" /manifest Release\SA_SDK.dll.intermediate.manifest "D:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\Include\Manifest\dpiaware.manifest"
+     1>Построение проекта "D:\Games\GTA_SA2\SA_SDK\SA_SDK\SA_SDK.vcxproj" завершено (целевые объекты Build).
+
+Построение успешно завершено.
+
+Затраченное время: 00:00:05.26
