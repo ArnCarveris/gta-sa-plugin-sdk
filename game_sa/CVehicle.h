@@ -7,6 +7,10 @@
 #include "CAutoPilot.h"
 #include "eVehicleHandlingFlags.h"
 #include "CStoredCollPoly.h"
+#include "CVehicleModelInfo.h"
+#include "tBoatHandlingData.h"
+#include "CPtrList.h"
+#include "CRideAnimData.h"
 
 /*  Thanks to MTA team for https://code.google.com/p/mtasa-blue/source/browse/tags/1.3.4/MTA10/game_sa/CVehicleSA.h */
 
@@ -46,6 +50,14 @@ enum eVehicleType
 	VEHICLE_BMX,
 	VEHICLE_TRAILER
 };
+
+enum eOrdnanceType;
+enum eFlightModel;
+enum eDoors;
+enum eBikeWheelSpecial;
+
+class CWeapon;
+typedef int tWheelState;
 
 #pragma pack(push, 4)
 class PLUGIN_API  CVehicle : public CPhysical
@@ -252,12 +264,234 @@ public:
 	Int16      m_wPreviousRemapTxd;
 	Int16      m_wRemapTxd;
 	RwTexture *m_pRemapTexture;
+
+	// static CColModel m_aSpecialColModel[4]
+	static CColModel *m_aSpecialColModel;
+
+	CVehicle();
+	~CVehicle();
 	
-	void SetComponentVisibility(RwFrame *component, unsigned int visibilityState);
-	static void SetComponentAtomicAlpha(RpAtomic *atomic, int alpha);
-	void SetWindowOpenFlag(unsigned char door);
-	void ClearWindowOpenFlag(unsigned char door);
+	// originally vtable functions
+
+	void ProcessControlCollisionCheck();
+	void ProcessControlInputs(unsigned char playerNum);
+	// component index in m_apModelNodes array
+	void GetComponentWorldPosition(int componentId, CVector& posnOut);
+	// component index in m_apModelNodes array
+	bool IsComponentPresent(int componentId);
+	void OpenDoor(CPed* ped, int componentId, eDoors door, float doorOpenRatio, bool playSound);
+	void ProcessOpenDoor(CPed* ped, unsigned int doorComponentId, unsigned int arg2, unsigned int arg3, float arg4);
+	float GetDooorAngleOpenRatio(unsigned int door);
+	float GetDooorAngleOpenRatio(eDoors door);
+	bool IsDoorReady(unsigned int door);
+	bool IsDoorReady(eDoors door);
+	bool IsDoorFullyOpen(unsigned int door);
+	bool IsDoorFullyOpen(eDoors door);
+	bool IsDoorClosed(unsigned int door);
+	bool IsDoorClosed(eDoors door);
+	bool IsDoorMissing(unsigned int door);
+	bool IsDoorMissing(eDoors door);
+	// check if car has roof as extra
+	bool IsOpenTopCar();
+	// remove ref to this entity
+	void RemoveRefsToVehicle(CEntity* entity);
+	void BlowUpCar(CEntity* damager, unsigned char bHideExplosion);
+	void BlowUpCarCutSceneNoExtras(bool bNoCamShake, bool bNoSpawnFlyingComps, bool bDetachWheels, bool bExplosionSound);
+	bool SetUpWheelColModel(CColModel* wheelCol);
+	// returns false if it's not possible to burst vehicle's tyre or it is already damaged. bPhysicalEffect=true applies random moving force to vehicle
+	bool BurstTyre(unsigned char tyreComponentId, bool bPhysicalEffect);
+	bool IsRoomForPedToLeaveCar(unsigned int arg0, CVector* arg1);
+	void ProcessDrivingAnims(CPed* driver, unsigned char arg1);
+	// get special ride anim data for bile or quad
+	CRideAnimData* GetRideAnimData();
+	void SetupSuspensionLines();
+	CVector AddMovingCollisionSpeed(CVector& arg0);
+	void Fix();
+	void SetupDamageAfterLoad();
+	void DoBurstAndSoftGroundRatios();
+	float GetHeightAboveRoad();
+	void PlayCarHorn();
+	int GetNumContactWheels();
+	void VehicleDamage(float damageIntensity, unsigned short collisionComponent, CEntity* damager, CVector* vecCollisionCoors, CVector* vecCollisionDirection, eWeaponType weapon);
+	bool CanPedStepOutCar(bool arg0);
+	bool CanPedJumpOutCar(CPed* ped);
+	bool GetTowHitchPos(CVector& posnOut, bool arg1, CVehicle* arg2);
+	bool GetTowBarPos(CVector& posnOut, bool arg1, CVehicle* arg2);
+	// always return true
+	bool SetTowLink(CVehicle* arg0, bool arg1);
+	bool BreakTowLink();
+	float FindWheelWidth(bool bRear);
+	// always return true
+	bool Save();
+	// always return true
+	bool Load();
+
+	//funcs
+
+	static void Shutdown();
+	// -1 if no remap index
+	int GetRemapIndex();
+	void SetRemapTexDictionary(int txdId);
+	// index for m_awRemapTxds[] array
+	void SetRemap(int remapIndex);
+	void SetCollisionLighting(unsigned char lighting);
+	void UpdateLightingFromStoredPolys();
+	void CalculateLightingFromCollision();
+	void ResetAfterRender();
+	// 2 - bike, 3 - heli, 4 - boat, 5 - plane
+	int GetVehicleAppearance();
+	// returns false if vehicle model has no car plate material
+	bool CustomCarPlate_TextureCreate(CVehicleModelInfo* model);
+	void CustomCarPlate_TextureDestroy();
+	bool CanBeDeleted();
+	float ProcessWheelRotation(tWheelState wheelState, CVector const& arg1, CVector const& arg2, float arg3);
+	bool CanVehicleBeDamaged(CEntity* damager, eWeaponType weapon, unsigned char* arg2);
+	void ProcessDelayedExplosion();
+	bool AddPassenger(CPed* passenger);
+	bool AddPassenger(CPed* passenger, unsigned char seatNumber);
+	void RemovePassenger(CPed* passenger);
+	void SetDriver(CPed* driver);
+	void RemoveDriver(bool arg0);
+	CPed* SetUpDriver(int pedType, bool arg1, bool arg2);
+	CPed* SetupPassenger(int seatNumber, int pedType, bool arg2, bool arg3);
+	bool IsPassenger(CPed* ped);
+	bool IsPassenger(int modelIndex);
+	bool IsDriver(CPed* ped);
+	bool IsDriver(int modelIndex);
+	void KillPedsInVehicle();
+	// return this->m_pCoords->matrix.at.z <= -0.9;
+	bool IsUpsideDown();
+	// return this->m_pCoords->matrix.right.z >= 0.8 || this->m_pCoords->matrix.right.z <= -0.8;
+	bool IsOnItsSide();
+	bool CanPedOpenLocks(CPed* ped);
+	bool CanDoorsBeDamaged();
+	bool CanPedEnterCar();
+	void ProcessCarAlarm();
+	bool IsVehicleNormal();
+	void ChangeLawEnforcerState(unsigned char state);
+	bool IsLawEnforcementVehicle();
+	bool ShufflePassengersToMakeSpace();
+	void ExtinguishCarFire();
+	void ActivateBomb();
+	void ActivateBombWhenEntered();
+	bool CarHasRoof();
+	float HeightAboveCeiling(float arg0, eFlightModel arg1);
+	void SetComponentVisibility(RwFrame* component, unsigned int visibilityState);
+	void ApplyBoatWaterResistance(tBoatHandlingData* boatHandling, float arg1);
+	void SetComponentAtomicAlpha(RpAtomic* atomic, int alpha);
+	void UpdateClumpAlpha();
+	void UpdatePassengerList();
+	CPed* PickRandomPassenger();
+	void AddDamagedVehicleParticles();
+	void MakeDirty(CColPoint& colPoint);
+	bool AddWheelDirtAndWater(CColPoint& colPoint, unsigned int arg1, unsigned char arg2, unsigned char arg3);
+	void SetGettingInFlags(unsigned char doorId);
+	void SetGettingOutFlags(unsigned char doorId);
+	void ClearGettingInFlags(unsigned char doorId);
+	void ClearGettingOutFlags(unsigned char doorId);
+	void SetWindowOpenFlag(unsigned char doorId);
+	void ClearWindowOpenFlag(unsigned char doorId);
+	bool SetVehicleUpgradeFlags(int upgradeModelIndex, int componentIndex, int& resultModelIndex);
+	bool ClearVehicleUpgradeFlags(int arg0, int componentIndex);
+	RpAtomic* CreateUpgradeAtomic(CBaseModelInfo* model, UpgradePosnDesc const* upgradePosn, RwFrame* parentComponent, bool isDamaged);
+	void RemoveUpgrade(int upgradeId);
+	// return upgrade model id or -1 if not present
+	int GetUpgrade(int upgradeId);
+	RpAtomic* CreateReplacementAtomic(CBaseModelInfo* model, RwFrame* component, int arg2, bool bDamaged, bool bIsWheel);
+	void AddReplacementUpgrade(int modelIndex, int nodeId);
+	void RemoveReplacementUpgrade(int nodeId);
+	// return upgrade model id or -1 if not present
+	void GetReplacementUpgrade(int nodeId);
+	void RemoveAllUpgrades();
+	int GetSpareHasslePosId();
+	void SetHasslePosId(int hasslePos, bool enable);
+	void InitWinch(int arg0);
+	void UpdateWinch();
+	void RemoveWinch();
+	void ReleasePickedUpEntityWithWinch();
+	void PickUpEntityWithWinch(CEntity* arg0);
+	CEntity* QueryPickedUpEntityWithWinch();
+	float GetRopeHeightForHeli();
+	void SetRopeHeightForHeli(float height);
+	void RenderDriverAndPassengers();
+	void PreRenderDriverAndPassengers();
+	float GetPlaneGunsAutoAimAngle();
+	int GetPlaneNumGuns();
+	void SetFiringRateMultiplier(float multiplier);
+	float GetFiringRateMultiplier();
+	unsigned int GetPlaneGunsRateOfFire();
+	CVector GetPlaneGunsPosition(int gunId);
+	unsigned int GetPlaneOrdnanceRateOfFire(eOrdnanceType ordnanceType);
+	CVector GetPlaneOrdnancePosition(eOrdnanceType ordnanceType);
+	void SelectPlaneWeapon(bool bChange, eOrdnanceType ordnanceType);
+	void DoPlaneGunFireFX(CWeapon* weapon, CVector& particlePos, CVector& gunshellPos, int particleIndex);
+	void FirePlaneGuns();
+	void FireUnguidedMissile(eOrdnanceType ordnanceType, bool bCheckTime);
+	bool CanBeDriven();
+	void ReactToVehicleDamage(CPed* ped);
+	bool GetVehicleLightsStatus();
+	bool CanPedLeanOut(CPed* ped);
+	void SetVehicleCreatedBy(int createdBy);
+	void SetupRender();
+	void ProcessWheel(CVector& arg0, CVector& arg1, CVector& arg2, CVector& arg3, int arg4, float arg5, float arg6, float arg7, char arg8, float* arg9, tWheelState* arg10, unsigned short arg11);
+	void ProcessBikeWheel(CVector& arg0, CVector& arg1, CVector& arg2, CVector& arg3, int arg4, float arg5, float arg6, float arg7, float arg8, char arg9, float* arg10, tWheelState* arg11, eBikeWheelSpecial arg12, unsigned short arg13);
+	// return nearest wheel?
+	int FindTyreNearestPoint(float x, float y);
+	void InflictDamage(CEntity* damager, eWeaponType weapon, float intensity, CVector coords);
+	void KillPedsGettingInVehicle();
+	bool UsesSiren();
+	bool IsSphereTouchingVehicle(float x, float y, float z, float radius);
+	void FlyingControl(eFlightModel flightModel, float arg1, float arg2, float arg3, float arg4);
+	// always return false?
+	void BladeColSectorList(CPtrList& ptrList, CColModel& colModel, CMatrix& matrix, short arg3, float arg4);
+	void SetComponentRotation(RwFrame* component, int axis, float angle, bool bResetPosition);
+	void SetTransmissionRotation(RwFrame* component, float arg1, float arg2, CVector posn, bool isFront);
+	void ProcessBoatControl(tBoatHandlingData* boatHandling, float& arg1, bool arg2, bool arg3);
+	void DoBoatSplashes(float arg0);
+	void DoSunGlare();
+	void AddWaterSplashParticles();
+	void AddExhaustParticles();
+	// always return false?
+	bool AddSingleWheelParticles(tWheelState arg0, unsigned int arg1, float arg2, float arg3, CColPoint* arg4, CVector* arg5, float arg6, int arg7, unsigned int surfaceType, bool* bloodState, unsigned int arg10);
+	bool GetSpecialColModel();
+	void RemoveVehicleUpgrade(int upgradeModelIndex);
+	void AddUpgrade(int modelIndex, int upgradeIndex);
+	void UpdateTrailerLink(bool arg0, bool arg1);
+	void UpdateTractorLink(bool arg0, bool arg1);
+	CEntity* ScanAndMarkTargetForHeatSeekingMissile(CEntity* entity);
+	void FireHeatSeakingMissile(CEntity* targetEntity, eOrdnanceType ordnanceType, bool arg2);
+	void PossiblyDropFreeFallBombForPlayer(eOrdnanceType ordnanceType, bool arg1);
+	void ProcessSirenAndHorn(bool arg0);
+	bool DoHeadLightEffect(int dummyId, CMatrix& vehicleMatrix, unsigned char lightId, unsigned char lightState);
+	void DoHeadLightBeam(int arg0, CMatrix& matrix, unsigned char arg2);
+	void DoHeadLightReflectionSingle(CMatrix& matrix, unsigned char lightId);
+	void DoHeadLightReflectionTwin(CMatrix& matrix);
+	void DoHeadLightReflection(CMatrix& arg0, unsigned int arg1, unsigned char arg2, unsigned char arg3);
+	bool DoTailLightEffect(int lightId, CMatrix& matrix, unsigned char arg2, unsigned char arg3, unsigned int arg4, unsigned char arg5);
+	void DoVehicleLights(CMatrix& matrix, unsigned int flags);
+	void FillVehicleWithPeds(bool bSetClothesToAfro);
+	static void* operator new(unsigned int size);
+	static void operator delete(void* data);
+	static void operator delete(void* data, int arg1);
+	void DoBladeCollision(CVector arg0, CMatrix& matrix, short arg2, float arg3, float arg4);
+	void AddVehicleUpgrade(int modelId);
+	void SetupUpgradesAfterLoad();
+	void GetPlaneWeaponFiringStatus(bool& status, eOrdnanceType& ordnanceType);
+	void ProcessWeapons();
 };
 #pragma pack(pop)
 
 VALIDATE_SIZE(CVehicle, 0x5A0);
+
+bool IsVehiclePointerValid(CVehicle* vehicle);
+RpAtomic* RemoveUpgradeCB(RpAtomic* atomic, void* data);
+RpAtomic* FindUpgradeCB(RpAtomic* atomic, void* data);
+RwObject* RemoveObjectsCB(RwObject* object, void* data);
+RwFrame* RemoveObjectsCB(RwFrame* component, void* data);
+RwObject* CopyObjectsCB(RwObject* object, void* data);
+RwObject* FindReplacementUpgradeCB(RwObject* object, void* data);
+RpAtomic* RemoveAllUpgradesCB(RpAtomic* atomic, void* data);
+RpMaterial* SetCompAlphaCB(RpMaterial* material, void* data);
+RwObject* SetVehicleAtomicVisibilityCB(RwObject* object, void* data);
+RwFrame* SetVehicleAtomicVisibilityCB(RwFrame* component, void* data);
+void DestroyVehicleAndDriverAndPassengers(CVehicle* vehicle);
