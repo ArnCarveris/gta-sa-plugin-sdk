@@ -172,104 +172,104 @@ void CVehicle::SetupSuspensionLines()
 CVector CVehicle::AddMovingCollisionSpeed(CVector& arg0)
 {
 	CVector result;
-	((void (__thiscall *)(CVehicle*, CVector*, CVector&))vtable[75])(this, &result, arg0);
+	((void (__thiscall *)(CVehicle*, CVector*, CVector&))vtable[49])(this, &result, arg0);
 	return result;
 }
 
 // Converted from void CVehicle::Fix(void) 0x871F48
 void CVehicle::Fix()
 {
-	((void (__thiscall *)(CVehicle*))vtable[77])(this);
+	((void (__thiscall *)(CVehicle*))vtable[50])(this);
 }
 
 // Converted from void CVehicle::SetupDamageAfterLoad(void) 0x871F4C
 void CVehicle::SetupDamageAfterLoad()
 {
-	((void (__thiscall *)(CVehicle*))vtable[79])(this);
+	((void (__thiscall *)(CVehicle*))vtable[51])(this);
 }
 
 // Converted from void CVehicle::DoBurstAndSoftGroundRatios(void) 0x871F50
 void CVehicle::DoBurstAndSoftGroundRatios()
 {
-	((void (__thiscall *)(CVehicle*))vtable[81])(this);
+	((void (__thiscall *)(CVehicle*))vtable[52])(this);
 }
 
 // Converted from float CVehicle::GetHeightAboveRoad(void) 0x871F54
 float CVehicle::GetHeightAboveRoad()
 {
-	return ((float (__thiscall *)(CVehicle*))vtable[83])(this);
+	return ((float (__thiscall *)(CVehicle*))vtable[53])(this);
 }
 
 // Converted from void CVehicle::PlayCarHorn(void) 0x871F58
 void CVehicle::PlayCarHorn()
 {
-	((void (__thiscall *)(CVehicle*))vtable[85])(this);
+	((void (__thiscall *)(CVehicle*))vtable[54])(this);
 }
 
 // Converted from int CVehicle::GetNumContactWheels(void) 0x871F5C
 int CVehicle::GetNumContactWheels()
 {
-	return ((int (__thiscall *)(CVehicle*))vtable[87])(this);
+	return ((int (__thiscall *)(CVehicle*))vtable[55])(this);
 }
 
 // Converted from void CVehicle::VehicleDamage(float damageIntensity,ushort collisionComponent,CEntity *damager,CVector *vecCollisionCoors,CVector *vecCollisionDirection,eWeaponType weapon) 0x871F60
 void CVehicle::VehicleDamage(float damageIntensity, unsigned short collisionComponent, CEntity* damager, CVector* vecCollisionCoors, CVector* vecCollisionDirection, eWeaponType weapon)
 {
-	((void (__thiscall *)(CVehicle*, float, unsigned short, CEntity*, CVector*, CVector*, eWeaponType))vtable[89])(this, damageIntensity, collisionComponent, damager, vecCollisionCoors, vecCollisionDirection, weapon);
+	((void (__thiscall *)(CVehicle*, float, unsigned short, CEntity*, CVector*, CVector*, eWeaponType))vtable[56])(this, damageIntensity, collisionComponent, damager, vecCollisionCoors, vecCollisionDirection, weapon);
 }
 
 // Converted from bool CVehicle::CanPedStepOutCar(bool) 0x871F64
 bool CVehicle::CanPedStepOutCar(bool arg0)
 {
-	return ((bool (__thiscall *)(CVehicle*, bool))vtable[91])(this, arg0);
+	return ((bool (__thiscall *)(CVehicle*, bool))vtable[57])(this, arg0);
 }
 
 // Converted from bool CVehicle::CanPedJumpOutCar(CPed *ped) 0x871F68
 bool CVehicle::CanPedJumpOutCar(CPed* ped)
 {
-	return ((bool (__thiscall *)(CVehicle*, CPed*))vtable[93])(this, ped);
+	return ((bool (__thiscall *)(CVehicle*, CPed*))vtable[58])(this, ped);
 }
 
 // Converted from bool CVehicle::GetTowHitchPos(CVector &posnOut,bool,CVehicle*) 0x871F6C
 bool CVehicle::GetTowHitchPos(CVector& posnOut, bool arg1, CVehicle* arg2)
 {
-	return ((bool (__thiscall *)(CVehicle*, CVector&, bool, CVehicle*))vtable[95])(this, posnOut, arg1, arg2);
+	return ((bool (__thiscall *)(CVehicle*, CVector&, bool, CVehicle*))vtable[59])(this, posnOut, arg1, arg2);
 }
 
 // Converted from bool CVehicle::GetTowBarPos(CVector &posnOut,bool,CVehicle*) 0x871F70
 bool CVehicle::GetTowBarPos(CVector& posnOut, bool arg1, CVehicle* arg2)
 {
-	return ((bool (__thiscall *)(CVehicle*, CVector&, bool, CVehicle*))vtable[97])(this, posnOut, arg1, arg2);
+	return ((bool (__thiscall *)(CVehicle*, CVector&, bool, CVehicle*))vtable[60])(this, posnOut, arg1, arg2);
 }
 
 // Converted from bool CVehicle::SetTowLink(CVehicle*,bool) 0x871F74
 bool CVehicle::SetTowLink(CVehicle* arg0, bool arg1)
 {
-	return ((bool (__thiscall *)(CVehicle*, CVehicle*, bool))vtable[99])(this, arg0, arg1);
+	return ((bool (__thiscall *)(CVehicle*, CVehicle*, bool))vtable[61])(this, arg0, arg1);
 }
 
 // Converted from bool CVehicle::BreakTowLink(void) 0x871F78
 bool CVehicle::BreakTowLink()
 {
-	return ((bool (__thiscall *)(CVehicle*))vtable[101])(this);
+	return ((bool (__thiscall *)(CVehicle*))vtable[62])(this);
 }
 
 // Converted from float CVehicle::FindWheelWidth(bool bRear) 0x871F7C
 float CVehicle::FindWheelWidth(bool bRear)
 {
-	return ((float (__thiscall *)(CVehicle*, bool))vtable[103])(this, bRear);
+	return ((float (__thiscall *)(CVehicle*, bool))vtable[63])(this, bRear);
 }
 
 // Converted from bool CVehicle::Save(void) 0x871F80
 bool CVehicle::Save()
 {
-	return ((bool (__thiscall *)(CVehicle*))vtable[105])(this);
+	return ((bool (__thiscall *)(CVehicle*))vtable[64])(this);
 }
 
 // Converted from bool CVehicle::Load(void) 0x871F84
 bool CVehicle::Load()
 {
-	return ((bool (__thiscall *)(CVehicle*))vtable[107])(this);
+	return ((bool (__thiscall *)(CVehicle*))vtable[65])(this);
 }
 
 // Converted from stdcall void CVehicle::Shutdown(void) 0x6D0B40
