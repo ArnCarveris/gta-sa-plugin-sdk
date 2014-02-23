@@ -290,4 +290,6 @@ public:
 };
 #pragma pack(pop)
 
+VALIDATE_SIZE(CCamera, 0xD78);
+
 extern PLUGIN_API CCamera& TheCamera;
