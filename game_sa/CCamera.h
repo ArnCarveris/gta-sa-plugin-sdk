@@ -290,4 +290,4 @@ public:
 };
 #pragma pack(pop)
 
-extern PLUGIN_API CCamera *TheCamera;
+extern PLUGIN_API CCamera& TheCamera;
