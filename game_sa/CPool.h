@@ -160,4 +160,24 @@ public:
 };
 #pragma pack(pop)
 
+// This function returns a size of the largest structure.
+template <class T1 = char, class T2 = char, class T3 = char, class T4 = char, class T5 = char, class T6 = char, class T7 = char, class T8 = char, class T9 = char, class T10 = char> inline size_t GetSizeOfLargestStruct()
+{
+	union type
+	{
+		T1;
+		T2;
+		T3;
+		T4;
+		T5;
+		T6;
+		T7;
+		T8;
+		T9;
+		T10;
+	};
+
+	return sizeof(type);
+}
+
 VALIDATE_SIZE(CPool<int>, 0x14);
