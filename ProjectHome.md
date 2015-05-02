@@ -1,0 +1,1 @@
+SDK for writing plugins for GTASA with C++.
